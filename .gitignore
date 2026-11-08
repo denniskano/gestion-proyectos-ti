@@ -1,6 +1,4 @@
 .DS_Store
 
-# Libros publicados. Quedan solo en la carpeta local.
-PMBOK*.pdf
-Pablo Lled*.pdf
-*Sapag*.pdf
+# Libros publicados. Viven en bibliografia/ y no se publican.
+bibliografia/
