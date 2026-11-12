@@ -20,14 +20,12 @@
 \definecolor{bcp}{HTML}{0B2545}
 \definecolor{cobre}{HTML}{C65D12}
 \definecolor{tinta}{HTML}{1C2833}
-\definecolor{linea}{HTML}{E6E1D8}
-\definecolor{papel}{HTML}{F6F4F0}
 
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{bcp}{\small MGT209 · E01 · Versión 2}}
 \fancyhead[R]{\textcolor{bcp}{\small Banca Personas · BCP}}
-\fancyfoot[L]{\textcolor{tinta}{\footnotesize Caso de negocio y Project Charter}}
+\fancyfoot[L]{\textcolor{tinta}{\footnotesize Agente financiero personal}}
 \fancyfoot[R]{\textcolor{tinta}{\footnotesize\thepage}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{cobre}\leaders\hrule height \headrulewidth\hfill}}
@@ -35,272 +33,305 @@
 
 \titleformat{\section}{\large\bfseries\color{bcp}}{\thesection}{0.7em}{}[\vspace{-0.4em}{\color{cobre}\titlerule}]
 \titleformat{\subsection}{\normalsize\bfseries\color{bcp}}{\thesubsection}{0.6em}{}
-\titlespacing*{\section}{0pt}{1.15em}{0.55em}
-\titlespacing*{\subsection}{0pt}{0.85em}{0.3em}
+\titlespacing*{\section}{0pt}{1.05em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.75em}{0.25em}
 
-\setlist[itemize]{leftmargin=1.15em,itemsep=0.22em,topsep=0.3em}
-\setlength{\parskip}{0.38em}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.18em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=1.25em,itemsep=0.18em,topsep=0.25em}
+\setlength{\parskip}{0.32em}
 \setlength{\parindent}{0pt}
-\hypersetup{pdftitle={E01 Versión 2. Caso de negocio y Project Charter},pdfauthor={MGT209}}
+\hypersetup{pdftitle={E01 Versión 2. Agente financiero personal},pdfauthor={Franco Stywar Antony Vargas Chino; Albert Christian Hidalgo Sánchez; Sergio Perez Ruiz; Carlos E. Ruiz Perez; Dennis Jack Paitan Cano}}
 
 \newcommand{\usd}[1]{USD~#1}
-\newcommand{\fuente}[1]{\textit{#1}}
+\newcommand{\pen}[1]{S/~#1}
 
 \begin{document}
 
 \begin{center}
-{\color{bcp}\small Universidad Nacional de Ucayali \textperiodcentered\ Maestría en Ingeniería de Sistemas}\\[0.35em]
-{\color{cobre}\bfseries\small MGT209 Gestión de Proyectos en TI \textperiodcentered\ Entregable E01 \textperiodcentered\ Versión 2}\\[0.7em]
-{\color{bcp}\LARGE\bfseries Caso de negocio y constitución del proyecto}\\[0.35em]
-{\large Plataforma omnicanal y copiloto del asesor\\ para la atención de Banca Personas del BCP}\\[0.45em]
+{\color{bcp}\small Universidad Nacional de Ucayali \textperiodcentered\ Maestría en Ingeniería de Sistemas}\\[0.3em]
+{\color{cobre}\bfseries\small MGT209 Gestión de Proyectos en TI \textperiodcentered\ Entregable E01 \textperiodcentered\ Versión 2}\\[0.6em]
+{\color{bcp}\LARGE\bfseries Caso de negocio y constitución del proyecto}\\[0.3em]
+{\large Agente financiero personal de Banca Personas del BCP}\\[0.15em]
+{\normalsize Informa y simula. No asesora, no coloca y no mueve dinero.}\\[0.45em]
+{\small Franco Stywar Antony Vargas Chino \textperiodcentered\ Albert Christian Hidalgo Sánchez}\\[0.15em]
+{\small Sergio Perez Ruiz \textperiodcentered\ Carlos E. Ruiz Perez \textperiodcentered\ Dennis Jack Paitan Cano}\\[0.3em]
 {\small Noviembre 2026}
 \end{center}
 
 \vspace{0.2em}
-\noindent\color{cobre}\rule{\textwidth}{1.1pt}\color{tinta}
+{\color{cobre}\rule{\textwidth}{0.6pt}}
 
-\vspace{0.45em}
-El caso usa un problema real del Banco de Crédito del Perú y declara como supuesto del equipo todo lo que las fuentes públicas no informan. Esos supuestos están en amarillo en \texttt{E01\_Evaluacion\_Economica\_BCP\_Omnicanal.xlsx}. El VAN, la TIR, el ROI y el payback de este informe son el resultado de ese archivo, no cifras escritas aparte. La versión 1 conserva el PDF generado antes de pasar el texto a LaTeX.
+El proyecto es un agente financiero personal, disponible en la aplicación y en la web, con capacidades que el cliente concede y puede revocar. Los indicadores salen del Excel \path{E01_Evaluacion_Economica_BCP_Agente.xlsx}. Las celdas amarillas son supuestos del equipo. No hay un VAN publicado de un producto equivalente: se declara así, y la sensibilidad muestra en qué punto el caso deja de cubrir la tasa.
 
 \section{Ficha ejecutiva}
 
 \subsection{Problema}
-Banca Personas del BCP cerró 2024 con más de 12 millones de clientes. La Banca Móvil tenía 7{,}5 millones de clientes activos, 810 millones de transacciones monetarias y 116 millones de interacciones de servicio. Los canales publicados incluyen 304 agencias, cajeros, agentes, Banca Móvil, banca por internet, WhatsApp y el centro de contacto \fuente{(Banco de Crédito del Perú [BCP], 2025)}.
 
-El teléfono ya no parte de cero. En mayo de 2024 el banco incorporó tecnología cognitiva de voicebot a su IVR y en diciembre lanzó un voicebot de inteligencia artificial \fuente{(BCP, 2025)}. En noviembre, Michael Campbell, líder del centro de contacto, declaró que el 30\,\% de las atenciones se resolvía con voicebot, que el abandono había bajado de alrededor del 50\,\% a menos del 10\,\%, y que el tiempo para dirigir la llamada había pasado de unos dos minutos a menos de 15 segundos \fuente{(Mestanza, 2024)}. En mayo, una de cada cuatro llamadas ya la atendía el asistente Clara en consultas como últimos movimientos, transferencias en proceso y activación de compras por internet \fuente{(T21, 2024)}.
+El cliente de banca personas ya tiene aplicación, banca por internet y Yape. No tiene un agente propio, activo a cualquier hora, que use su posición real y solo las facultades que él le dio. Credicorp informa que BCP Perú cerró 2024 con más de 13,7 millones de clientes y que el 76\,\% opera en digital; Yape tenía 13,7 millones de usuarios activos mensuales, definidos como quienes hicieron al menos una transacción de salida en treinta días (Credicorp, 2025a, 2025b). Esas cifras describen el banco. No son usuarios de este agente.
 
-Lo que las fuentes no miden, y este proyecto toma como problema de diseño, es la ruptura de contexto cuando el cliente pasa del voicebot a WhatsApp, al chat de la Banca Móvil o a un asesor. Tampoco publican el volumen anual de llamadas ni el costo por llamada. El gerente general de IBM Perú describió un contact center de alrededor de 1\,200 posiciones y una aspiración de llevar cerca del 70\,\% de las atenciones rutinarias a inteligencia artificial, y de bajar el tiempo de 5 minutos a 3{,}5 \fuente{(Tuesta, 2024)}. Esa aspiración de 70\,\% y de NPS no se adopta como meta: es la declaración de un proveedor, no un objetivo del banco.
+Lo que ya existe no cubre el hueco. Clara, en WhatsApp, informa saldos, préstamos y fechas de pago (BCP, s.\,f.-a). Salvador orienta a emprendedores y el propio banco dice que no opera, no vende y no aprueba (BCP, s.\,f.-b). En otros mercados el patrón es el mismo con más escala: Erica, de Bank of America, no usa IA generativa ni da consejo de inversión (Bank of America, s.\,f.); AIR, de Revolut, actúa sobre la cuenta del propio cliente y exige biometría para lo sensible (Revolut, 2026); Mago, de Mercado Pago, simula y paga solo con confirmación del titular (Mercado Libre, 2026). Ninguno publica un VAN. En el Perú, Plin por WhatsApp sí ejecuta pagos, con clave y con un tope (Interbank, 2025). Este proyecto no copia esa ejecución.
 
-El NPS publicado tampoco es meta operativa. La memoria consigna 54 puntos en consumo y un promedio de 62 entre banca personas, mayorista y pyme \fuente{(BCP, 2025)}. No publica un NPS del centro de contacto.
+Los sistemas de los productos no se reemplazan. Cada uno sigue siendo el dueño de sus saldos, obligaciones y movimientos. El agente consulta una vista por cliente, con una marca de si el dato está vigente. Si esa vista no está al día, no contesta con el histórico ni completa el hueco. Esa es la falla de diseño que el proyecto evita.
 
-\subsection{Objetivo SMART}
-En 10 meses, hasta la salida a producción, integrar la atención de Banca Personas en teléfono, WhatsApp, chat de Banca Móvil y web, reutilizando el voicebot ya desplegado, y dejar operando el copiloto en las 850 posiciones de atención. Al cierre del tercer año de operación:
+\subsection{Objetivo}
+
+En diez meses, hasta la salida a producción, ofrecer en Banca Móvil y en la web un agente que informa y simula, con tres perfiles que el cliente concede y revoca. Al cierre del mes 11 el traspaso está hecho. Al tercer año de operación:
+
 \begin{itemize}
-  \item contener el 55\,\% de las atenciones de ese perímetro, desde el 30\,\% telefónico reportado;
-  \item bajar el tiempo medio de la llamada que sigue con asesor de 5{,}0 a 3{,}5 minutos;
-  \item capturar como ahorro el 60\,\% de la capacidad teórica liberada. El otro 40\,\% queda como holgura de servicio.
+  \item 500\,000 clientes mantienen un permiso vigente. Es un supuesto del equipo, cerca del 5\,\% de la base digital si se toma el 76\,\% de 13,7 millones. No es un pronóstico del banco.
+  \item El agente no ejecuta ninguna transferencia ni ningún desembolso. Quien confirma es la persona, en el canal; quien ejecuta es el sistema del producto.
+  \item Si la vista de posición no está vigente, el agente no afirma un saldo ni lo completa con el histórico.
+  \item Yape queda como propuesta al dueño de ese producto. No entra en la meta ni en el beneficio.
 \end{itemize}
-Esas tres cifras alimentan el flujo. El mes 11 es cierre y traspaso, no ejecución. Yape queda fuera de construcción.
 
 \subsection{Solución}
-Cuatro piezas, sobre lo que el banco ya tiene:
+
+Seis habilidades, concedidas una a una: ver la posición, explicar movimientos, simular un crédito del banco, proyectar un plan de gasto contra la deuda, mostrar ofertas que el producto ya tasó, y preparar un encargo para que el canal pida confirmación. Tres perfiles las agrupan: Consulta, Planificación, y Ofertas con confirmación. El detalle está en las secciones 2 y 3.
+
+\subsection{Beneficio que entra al flujo}
+
+Entran tres partidas, todas con supuesto declarado. La primera es el margen del primer año de un crédito que el cliente confirma después de una simulación: en el caso base, el 2\,\% de esas simulaciones. La segunda es la pérdida esperada que se evita cuando la proyección muestra que el plan no cabe y el cliente no toma un crédito que sí habría tomado. La tercera es el margen de una oferta ya tasada, solo si el cliente concedió ese perfil y la acepta en el canal.
+
+No entra el ahorro de Clara. No entra un ingreso por NPS. No entra Yape. No entra asesoría de inversión: recomendar valores corresponde a una sociedad agente autorizada por la SMV, y esa intermediación del grupo no está en esta aplicación (Decreto Supremo N.° 020-2023-EF, 2023).
+
+\section{Cómo se engancha al banco}
+
+El agente consulta lo que el banco ya tiene. No reemplaza los sistemas de cuentas, tarjetas ni créditos.
+
 \begin{itemize}
-  \item Orquestador de teléfono, WhatsApp corporativo, chat de Banca Móvil y web, con el contexto de la conversación. No reemplaza el voicebot: se integra con él.
-  \item Doce intenciones. Cinco en el piloto del mes 6. Siete después del dictamen de seguridad, porque mueven productos o credenciales.
-  \item Copiloto para las 850 posiciones: transcripción, sugerencia de respuesta y resumen al cierre.
-  \item Integración por API con el core y el CRM, más los controles de la Resolución SBS N.º 504-2021 y de la Ley N.º 29733. La voz y el chat son datos personales.
+  \item \textbf{Cada producto sigue siendo el registro.} El saldo y la obligación nacen ahí.
+  \item \textbf{Vista vigente.} Por cliente se lee saldo, obligaciones, movimientos recientes, si una oferta ya está calculada y si ese dato está al día. Si no lo está, la herramienta responde que no está confirmado. El texto del modelo no completa el hueco.
+  \item \textbf{Histórico.} Sirve para auditar, probar el agente hacia atrás y mejorar. No contesta el saldo de la sesión cuando la vista vigente existe.
+  \item \textbf{Herramientas.} Catálogo cerrado. Simular y ejecutar son contratos distintos. Cada llamada revalida el permiso. Sin aprobación no hay efecto, que es la compuerta que FINOS pide para agentes (FINOS, s.\,f.). La Autoridad Monetaria de Singapur coloca una salvaguarda entre el agente y los sistemas: denegar, escalar, ejecutar solo dentro de un umbral, u observar (Monetary Authority of Singapore [MAS], 2026). Aquí el umbral de ejecución es cero.
+  \item \textbf{Canales.} La aplicación y la web llaman al agente con la sesión que el cliente ya tiene. No se rediseña la app.
 \end{itemize}
 
-El piloto lleva a WhatsApp y al chat intenciones ya descritas en el teléfono, o de bajo riesgo: últimos movimientos, estado de una transferencia y activación de compras por internet \fuente{(T21, 2024)}; consulta de saldo, que Campbell describió como consulta que el voicebot puede resolver \fuente{(Mestanza, 2024)}; y estado de un reclamo, extensión del equipo alineada con el Reglamento de Conducta de Mercado, Resolución SBS N.º 3274-2017. Después del dictamen del CISO entran bloqueo de tarjeta por pérdida, cambio de clave de cajero, apertura de reclamo, información de deuda de tarjeta, guía de pagos, ubicación o cita en agencia, y derivación al asesor con resumen. La meta de aceptación, supuesto del equipo, es que al menos el 90\,\% de las transferencias del piloto lleguen con ese resumen.
+Yape no publica un portal de desarrolladores ni una API para que un tercero opere un asistente. Lo público es la aplicación, Yape Empresa y un canal de atención (Yape, s.\,f.). La prensa describe IA en ese canal de consultas; eso no es un punto de enchufe. El proyecto financia un descubrimiento: deep link o una API que el dueño de Yape acepte. No se escribe en sus sistemas. El beneficio del Excel no cuenta un solo usuario de Yape.
 
-\subsection{Qué entra al flujo}
-Entra solo la capacidad de asesores liberada y luego capturada. En el año 3 el modelo requiere 382 asesores frente a 850, libera 468 y reconoce el 60\,\%. El beneficio de ese año es \usd{4\,488\,000}. No entra el 30\,\% que el voicebot ya resuelve. No entra venta cruzada ni una mejora de NPS. El cumplimiento de las Resoluciones SBS N.º 504-2021 y N.º 3274-2017 es restricción de diseño, no un ingreso. El costo resultante es \usd{16\,000} por asesor al año y \usd{0{,}92} por llamada atendida hoy. Es un resultado de la fórmula.
+Tampoco se hace lo siguiente: inventar un saldo; usar el histórico como si fuera la posición de hoy; desembolsar o mover dinero desde el texto del agente; presentar una simulación como crédito aprobado; ofrecer productos de inversión.
+
+\section{Habilidades y perfiles}
+
+La habilidad es lo que el cliente autoriza. El perfil es el paquete. Revocar corta la herramienta en la llamada siguiente. Ley N.° 29733: consentimiento previo, informado, expreso, para una finalidad determinada, y revocable (Congreso de la República del Perú, 2011).
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+\textbf{Habilidad} & \textbf{Puede leer o pedir} & \textbf{No puede} \\
+\midrule
+Ver mi posición & Saldo, obligaciones y frescura & Transferir, ni citar una cifra que la herramienta no devolvió \\
+Explicar movimientos & Extracto proyectado & Reclasificar un cargo o abrir una disputa \\
+Simular un crédito & Cuota, plazo, TCEA y total, desde el simulador del producto & Desembolsar, reservar línea o llamar a eso una aprobación \\
+Proyectar un plan & Obligaciones y una simulación de flujo, por ejemplo un viaje & Comprar, apartar saldo o comprometer un pago \\
+Mostrar ofertas & Ofertas ya calculadas por el producto & Aceptarlas o contactar a un tercero \\
+Preparar un encargo & Borrador de monto, destino y producto & Enviarlo al producto si la confirmación falta o expiró \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Consulta} lee posición y movimientos. \textbf{Planificación} suma las dos simulaciones. \textbf{Ofertas con confirmación} suma las ofertas y el borrador. Aceptar, desembolsar y mover dinero los confirma la persona y los ejecuta el producto.
+
+La Resolución SBS N.° 3274-2017, en su texto consolidado al 2 de julio de 2026, exige transparencia de tasas y comisiones, hoja resumen, y un simulador para créditos en cuotas (Superintendencia de Banca, Seguros y AFP [SBS], 2017/2026). La Resolución SBS N.° 01741-2026 exige una vía humana cuando la atención es automatizada, y consentimientos diferenciados, sin casillas premarcadas (SBS, 2026). No se encontró una norma SBS de asesoría automatizada. Por eso el charter no usa la palabra asesor: informa y simula. La cotización es ilustrativa. No es oferta vinculante. Si el cliente contrata, lo hace en el canal, con hoja resumen, TCEA y constancia.
+
+La Resolución SBS N.° 504-2021 pide mínimo privilegio, autenticación y registros de las operaciones que exigen autenticación, y contrato con el proveedor que procese los datos (SBS, 2021). El modelo no se entrena con la conversación del cliente. Si una fase posterior permitiera pagar, entraría la autenticación reforzada. Esa fase no está en este alcance.
 
 \section{Evaluación económica}
-El método es el de Sapag Chain (2011): flujo de caja neto, VAN con el año 0 sin descontar, TIR y payback simple. La tasa de 12\,\% es un supuesto del equipo para un proyecto de eficiencia. No es el WACC del BCP, que estas fuentes no publican. Se usa como referencia el ROE de 16{,}5\,\% de Credicorp en 2024 \fuente{(Credicorp, 2025)}: la tasa del proyecto queda por debajo, porque el riesgo aquí es de adopción y de ejecución, no de cartera.
 
-El volumen estimado del perímetro es 21{,}2 millones de atenciones al año. Sale de 850 asesores, 22 días, 5{,}5 horas productivas y un tiempo medio de 5 minutos, y de atribuir el 30\,\% ya contenido al complemento. El BCP no publica ese volumen. Bajar las horas productivas de 5{,}5 a 4{,}0 reduce el volumen y el costo variable del bot. El ahorro de capacidad no cambia, y el VAN pasa de \usd{5\,682\,302} a \usd{5\,916\,920}: sube, porque se gasta menos en contactos contenidos. El ahorro depende de los 850 asesores, de su costo, de la contención y del tiempo medio.
+El método es el de Sapag Chain (2011): flujo de caja neto, VAN con el año 0 sin descontar, TIR y payback simple. La tasa de 12\,\% es un supuesto del equipo. No es el costo de capital del BCP.
 
-\subsection{Inversión del año 0}
-El charter y el flujo usan la misma cifra: \usd{2\,760\,000}. Es el CAPEX base de \usd{2\,400\,000} más 10\,\% de contingencia y 5\,\% de gestión. El caso base supone que la contingencia se gasta. Si no se gasta, el VAN sube.
+\subsection{Qué está simulado}
 
-\begin{table}[ht]
-\centering
-\small
-\begin{tabular}{@{}lr@{}}
-\toprule
-Partida & USD \\
-\midrule
-Licencias de orquestación y contact center en la nube & 850\,000 \\
-Integración de APIs con core, CRM e identidad & 520\,000 \\
-IA conversacional, copiloto y seguridad del modelo & 640\,000 \\
-Ciberseguridad, pruebas y cumplimiento SBS 504-2021 & 210\,000 \\
-Gestión del cambio de las 1\,200 posiciones & 180\,000 \\
-\midrule
-CAPEX base & 2\,400\,000 \\
-Contingencia 10\,\% y gestión 5\,\% & 360\,000 \\
-\midrule
-Inversión del año 0 & 2\,760\,000 \\
-\bottomrule
-\end{tabular}
-\end{table}
+No hay un costo por usuario ni un lift auditado para este tipo de agente. Klarna publicó un ahorro estimado de su asistente de servicio, no de un agente de capacidades concedidas (Klarna, 2024). DBS publica el valor de todo su portafolio de modelos, no el VAN de un agente personal (DBS, 2025). Esas cifras no entran al Excel.
 
-\noindent Cada año se calcula así. La contención del año 1 es 30\,\% más 0{,}32 por el salto hasta 55\,\%, es decir 38\,\%. La del año 2 es 46\,\%. Del año 3 al 5 es 55\,\%. El tiempo medio sigue la senda 4{,}6, 4{,}0 y 3{,}5 minutos. La captura es 30\,\% en el año 1, 50\,\% en el año 2 y 60\,\% desde el año 3. Los asesores requeridos son las atenciones que siguen con humano, por el tiempo medio, divididas entre los minutos disponibles de un asesor. El beneficio es asesores liberados por costo anual por captura. El OPEX suma el fee de plataforma, soporte, equipo y capacitación (estos tres con 3\,\% anual) y \usd{0{,}06} por contacto contenido adicional.
+El caso base supone, y todo esto está en amarillo: 500\,000 permisos vigentes desde el año 3, con rampas de 16\,\% y 44\,\% en los años 1 y 2; cinco sesiones al año; 30\,\% de ellas son simulación de crédito y otro 30\,\% es proyección de un plan contra la deuda; el 2\,\% de las simulaciones de crédito lo confirma el cliente en el canal; el ticket medio es \pen{6\,000}, unos \usd{1\,600} al tipo de cambio de 3,75, que también es supuesto; el margen del primer año es 6\,\% del ticket y no se repite; en el 35\,\% de las proyecciones el plan no cabe, y el 5\,\% de esos clientes igual habría tomado el crédito, con una pérdida esperada del 3\,\% del ticket; el 30\,\% concede ofertas y el 8\,\% de ellos acepta una al año, con \usd{18} de margen. En el año 3 eso es 15\,000 créditos confirmados y \pen{90} millones de principal. Frente a una cartera de créditos de BCP del orden de \pen{114\,000} millones (Credicorp, 2025a), el principal atribuido es pequeño. Sigue siendo un supuesto, no una meta comercial del banco.
 
-\subsection{Flujo de caja}
-Cifras en millones de USD. El detalle con fórmulas está en la hoja Evaluación.
+\subsection{Inversión y operación}
+
+El CAPEX base es \usd{1\,420\,000}: vista de posición del cliente, 480\,000; herramientas y consentimiento, 360\,000; adaptadores de la app y la web, 280\,000; descubrimiento con Yape, 80\,000; seguridad, conducta y datos, 140\,000; habilitación, 80\,000. Contingencia de 10\,\% y gestión de 5\,\%, sumadas y no compuestas. La inversión del año 0, y la del charter, es \usd{1\,633\,000}. El caso base supone que la contingencia se gasta.
+
+El OPEX suma un fee de plataforma de \usd{80\,000}, un equipo de \usd{260\,000} y soporte de \usd{40\,000}, estos dos con 3\,\% anual, y \usd{0{,}025} por sesión. El fee no crece con los usuarios.
 
 \begin{table}[ht]
 \centering
 \small
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{tabular}{lrrrrr}
 \toprule
-Concepto & Año 0 & Año 1 & Año 2 & Año 3 & Año 4 & Año 5 \\
+ & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
 \midrule
-Beneficio de capacidad & 0{,}00 & 0{,}76 & 2{,}60 & 4{,}49 & 4{,}49 & 4{,}49 \\
-OPEX & 0{,}00 & $-0{,}65$ & $-0{,}76$ & $-0{,}89$ & $-0{,}90$ & $-0{,}91$ \\
-Inversión & $-2{,}76$ & 0{,}00 & 0{,}00 & 0{,}00 & 0{,}00 & 0{,}00 \\
-\midrule
-Flujo de caja neto & $-2{,}76$ & 0{,}11 & 1{,}84 & 3{,}60 & 3{,}59 & 3{,}58 \\
+Crédito confirmado & 0{,}23 & 0{,}63 & 1{,}44 & 1{,}44 & 1{,}44 \\
+Pérdida evitada & 0{,}10 & 0{,}28 & 0{,}63 & 0{,}63 & 0{,}63 \\
+Ofertas & 0{,}03 & 0{,}10 & 0{,}22 & 0{,}22 & 0{,}22 \\
+OPEX & 0{,}39 & 0{,}42 & 0{,}46 & 0{,}47 & 0{,}48 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Indicadores del caso base}
+\noindent Millones de USD. El año 0 es solo la inversión, \usd{1{,}63} millones, sin beneficio ni OPEX.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
+\midrule
+Flujo de caja neto & $-1{,}63$ & $-0{,}02$ & 0{,}59 & 1{,}83 & 1{,}82 & 1{,}81 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{table}[ht]
 \centering
 \small
 \begin{tabularx}{\textwidth}{@{}l l X@{}}
 \toprule
-Indicador & Resultado & Lectura \\
+\textbf{Indicador} & \textbf{Caso base} & \textbf{Lectura} \\
 \midrule
-VAN al 12\,\% & \usd{5\,682\,302} & Positivo: rinde más que la tasa usada. \\
-TIR & 56{,}2\,\% & Supera el 12\,\%. La tasa no está metida dentro de la TIR. \\
-Payback simple & 2{,}22 años & El acumulado cruza cero durante el año 3 de operación. \\
-Beneficios a 5 años & \usd{16\,822\,811} & Solo capacidad capturada. \\
-TCO a 5 años & \usd{6\,860\,786} & Inversión más OPEX. \\
-ROI sobre la inversión & 360{,}9\,\% & (Beneficios $-$ TCO) / inversión. \\
-ROI sobre el TCO & 145{,}2\,\% & La misma utilidad, con un denominador mayor. \\
+VAN al 12\,\% & \usd{2\,292\,923} & Cubre la tasa del equipo. \\
+TIR & 43{,}0\,\% & La tasa de descuento no está dentro de la TIR. \\
+Payback simple & 2{,}59 años & El acumulado cruza cero durante el año 3 de operación. \\
+Beneficios & \usd{8\,229\,600} & Cinco años, sin descontar. \\
+OPEX & \usd{2\,217\,741} & Fee, equipo, soporte e inferencia. \\
+TCO & \usd{3\,850\,741} & Inversión más OPEX. \\
+ROI sobre la inversión & 268{,}1\,\% & (Beneficios $-$ TCO) / inversión. El CAPEX no se resta dos veces. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\noindent La utilidad neta acumulada es \usd{9\,962\,025}. Dividida entre la inversión da el ROI de 360{,}9\,\%. Cada dólar invertido devuelve ese dólar y 3{,}61 dólares adicionales a lo largo de cinco años, sin descontar. El VAN ya descuenta.
+El primer año de operación todavía no paga su OPEX. El resultado se arma desde el segundo año, cuando los permisos vigentes pasan de 80\,000 a 220\,000 y después a 500\,000.
 
-\subsection{Cuándo deja de justificarse}
-La hoja Sensibilidad mueve solo la meta de contención y la captura. La senda del tiempo medio no cambia. La fila Base tiene que coincidir con el VAN de Evaluación: la celda de control está hecha para dar cero.
+\subsection{Dónde se cae}
 
 \begin{table}[ht]
 \centering
 \small
-\begin{tabular}{@{}lrrr@{}}
+\begin{tabular}{lrrr}
 \toprule
-Escenario & VAN (USD) & TIR & ROI \\
+\textbf{Escenario} & \textbf{VAN} & \textbf{TIR} & \textbf{ROI} \\
 \midrule
-Base, 55\,\% y captura 60\,\% & 5\,682\,302 & 56{,}2\,\% & 360{,}9\,\% \\
-Contención 45\,\% & 3\,914\,282 & 44{,}5\,\% & 266{,}2\,\% \\
-Contención 60\,\% & 6\,566\,311 & 61{,}6\,\% & 408{,}3\,\% \\
-Captura 40\,\% & 1\,901\,244 & 29{,}5\,\% & 157{,}8\,\% \\
-Captura 80\,\% & 9\,463\,359 & 77{,}8\,\% & 564{,}1\,\% \\
-Captura 25\,\% & $-934\,549$ & 1{,}3\,\% & 5{,}4\,\% \\
+Base & \usd{2\,292\,923} & 43{,}0\,\% & 268{,}1\,\% \\
+Conversión 1{,}5\,\% & \usd{1\,425\,918} & 32{,}7\,\% & 188{,}8\,\% \\
+Conversión 1{,}0\,\% & \usd{558\,913} & 20{,}8\,\% & 109{,}4\,\% \\
+Conversión 0{,}8\,\% & \usd{212\,111} & 15{,}5\,\% & 77{,}7\,\% \\
+Sin pérdida evitada & \usd{775\,664} & 24{,}0\,\% & 129{,}3\,\% \\
+Meta de 250\,000 clientes & \usd{$-384\,557$} & 5{,}1\,\% & 23{,}1\,\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\noindent Con la meta de 55\,\%, el VAN llega a cero si la captura estable baja a cerca del 30\,\%. Una captura de 25\,\% deja el VAN en \usd{$-934\,549$} y la TIR en 1{,}3\,\%, por debajo del 12\,\%. Bajar solo la contención a 45\,\%, y mantener la captura de 60\,\%, deja el VAN en \usd{3\,914\,282}. La inversión se cae cuando el banco no convierte en ahorro la capacidad liberada. Por eso el patrocinador del negocio es quien responde por la adopción de los asesores, no el proveedor de la licencia.
+Con la pérdida evitada, la conversión puede bajar hasta cerca del 0{,}7\,\% antes de igualar el 12\,\%. Si esa partida se apaga, porque alguien no acepta monetizar un incumplimiento que no ocurrió, el caso todavía pasa: la TIR queda en 24{,}0\,\%, y el umbral de conversión sube a cerca del 1{,}6\,\%. Lo que sí tumba el caso es la adopción. Con 250\,000 permisos vigentes la TIR cae a 5{,}1\,\%. La defensa no es «el modelo rinde solo». Es «rinde si el cliente concede el permiso y confirma en el canal».
 
-\section{Acta de constitución}
+\section{Project charter}
+
+\textbf{Nombre.} Agente financiero personal de Banca Personas.
+
+\textbf{Propósito.} Que el cliente tenga un agente 24/7, en la aplicación y en la web, limitado a lo que él autorizó y apoyado en la posición vigente que ya guardan los productos, no en un texto libre ni en el histórico.
+
+\textbf{Patrocinio.} Un solo dueño del beneficio: la gerencia de banca personas digital, responsable de los permisos vigentes y de que el cliente confirme en el canal. El CIO patrocina el enganche a los sistemas que ya existen; no comparte la meta de 500\,000 permisos. Finanzas aprueba el desembolso de \usd{1\,633\,000} y la contingencia. El director del proyecto puede frenar una salida que afirme un saldo sin vista vigente o que presente una simulación como crédito aprobado. No puede prometer la conversión del 2\,\%.
+
+\textbf{Alcance.} Vista de posición para cuentas, tarjetas y créditos de personas; herramientas y consentimiento; tres perfiles; adaptadores de la app y la web; vía humana; descubrimiento con Yape, sin construirlo.
+
+\textbf{Fuera de alcance.} Desembolsos, transferencias y pagos ejecutados por el agente. Asesoría de inversión o de crédito. Reemplazo de Clara o de Salvador. Rediseño de la aplicación, de la web o de Yape. Que el agente escriba por su cuenta en los sistemas de los productos. Beneficio económico atribuido a usuarios de Yape. Entrenar el modelo con conversaciones de clientes.
+
+\textbf{Hitos.} Mes 2: arquitectura, amenaza y diseño del consentimiento. Mes 4: vista de cuentas, tarjetas y créditos en ambiente de prueba, sin modificar esos sistemas. Mes 6: piloto del perfil Consulta. Mes 8: Planificación en la app y en la web. Mes 10: Ofertas con confirmación en producción, con escape a una persona. Mes 11: cierre, traspaso y decisión registrada sobre Yape. El mes 11 no es ejecución. Los beneficios se miden en años de operación.
+
+\textbf{Presupuesto.} \usd{1\,633\,000} en el año 0. Es la misma cifra del flujo.
+
+\textbf{Riesgos que el charter asume.} Vista vencida contestada con una cifra. Simulación leída como aprobación. Alcance que se corre hacia Yape para hacer cuadrar el VAN. Permisos vigentes por debajo de 250\,000. Conversión por debajo del umbral de la sección 4.
+
+\section{Matriz de interesados}
+
+El criterio es el de poder, interés e impacto de la \textit{Guía de los fundamentos para la dirección de proyectos} (Project Management Institute, 2021).
 
 \begin{table}[ht]
 \centering
 \small
-\begin{tabularx}{\textwidth}{@{}l X@{}}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
 \toprule
-Campo & Definición \\
+\textbf{Interesado} & \textbf{Estrategia} & \textbf{Por qué} \\
 \midrule
-Proyecto & Orquestación omnicanal y copiloto del asesor para Banca Personas del BCP. \\
-Patrocinador & Gerente Central de Experiencia del Cliente y Transformación Digital. Un solo responsable del beneficio. \\
-Patrocinio técnico & CIO. Aprueba arquitectura e integración. No comparte la meta de contención ni de captura. \\
-Quién desembolsa & Gerente Central de Finanzas. Aprueba el caso y el uso de la contingencia. \\
-Director del proyecto & Project manager de la PMO corporativa. Rol simulado, sin nombre de persona. \\
-Plazo & 10 meses hasta producción. El mes 11 es cierre y traspaso. Los beneficios se miden en años de operación. \\
-Presupuesto & \usd{2\,760\,000}, igual a la inversión del año 0 del Excel. \\
+Banca personas digital & Gestionar de cerca & Único dueño del beneficio: permisos y confirmación del cliente. \\
+CIO y plataforma de datos & Gestionar de cerca & Dueños de los sistemas de los productos. El proyecto solo se engancha. \\
+Riesgo de crédito & Gestionar de cerca & La pérdida evitada y el simulador son de su dominio. \\
+Oficial de conducta de mercado & Gestionar de cerca & Frontera entre informar y asesorar. Valida el diseño (SBS, 2017/2026). \\
+CISO & Mantener satisfecho & Mínimo privilegio, trazas y contrato con el proveedor del modelo. \\
+Finanzas & Mantener satisfecho & Desembolso y contingencia. No define las habilidades. \\
+Dueño de Yape & Mantener satisfecho & Poder alto e interés bajo en este alcance. No es sponsor. \\
+Dueño de Clara & Involucrar & Para no solapar el canal de WhatsApp ni contar dos veces el mismo ahorro. \\
+Clientes & Involucrar & Poder formal bajo. Sin su permiso no hay sesión ni beneficio. \\
+SBS & Cumplir & Conducta, simulador y vía humana. No se negocia el VAN. \\
+SMV y la sociedad agente del grupo & Quedarse fuera & Valores y asesoría de inversión no entran. \\
+Proveedor del modelo & Gestionar de cerca & Disponibilidad, y la prohibición de entrenar con datos del cliente. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\subsection{Alineamiento}
-La memoria pone la estrategia del banco en el cliente, la digitalización y la experiencia, y ya cuenta la Banca Móvil, WhatsApp y el voicebot como canales \fuente{(BCP, 2025)}. Este proyecto no abre un canal nuevo. Ordena los que ya existen para Banca Personas y baja el tiempo de la llamada que igual llega a un asesor.
+\section{Cierre}
 
-\subsection{Alcance}
-Dentro: orquestación de teléfono, WhatsApp, chat de Banca Móvil y web para Banca Personas, integrada al voicebot actual; las doce intenciones, con el corte entre piloto y casos que mueven credenciales; copiloto para 850 asesores y gestión del cambio para las 1\,200 posiciones; APIs al core y al CRM, y controles de seguridad y de datos personales.
+La inversión de \usd{1{,}63} millones se justifica en el caso base: VAN de \usd{2{,}29} millones, TIR de 43{,}0\,\% y recuperación en 2{,}59 años. También se justifica si no se cuenta la pérdida evitada. No se justifica si los permisos vigentes se quedan en la mitad de la meta. El agente informa y simula sobre la posición vigente del cliente. El cliente concede cada habilidad. El producto, y no el modelo, ejecuta. Yape se propone; no se presupone.
 
-Fuera: Yape. Al cierre de 2024 superó los 14 millones de usuarios activos \fuente{(BCP, 2025)} y Credicorp reportó 13{,}7 millones de usuarios activos mensuales \fuente{(Credicorp, 2025)}. No se modifica la aplicación. Si un cliente llama por un tema de Yape, el contact center lo atiende con el canal que ya tiene. También quedan fuera la banca mayorista, corporativa e institucional, el reemplazo de hardware de agencias, el rediseño de la Banca Móvil y apagar el voicebot ya desplegado.
+\begin{thebibliography}{99}
+\bibitem[BCP(s.\,f.-a)]{bcp-clara}
+Banco de Crédito del Perú. (s.\,f.-a). \textit{Consúltale a Clara}. \url{https://www.viabcp.com/canales/preguntale-a-clara}
 
-\subsection{Hitos}
-\begin{table}[ht]
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}l c X@{}}
-\toprule
-Hito & Mes & Hecho \\
-\midrule
-H1 Arquitectura y seguridad & 2 & Dictamen de CISO y arquitectura. Cubre la SBS 504-2021 y la Ley 29733. \\
-H2 Integración & 4 & APIs al core en ambiente de prueba, sin reemplazar el voicebot. \\
-H3 Piloto de cinco intenciones & 6 & WhatsApp y chat. Precisión de intención de al menos 88\,\% en el conjunto de prueba acordado con Experiencia de Cliente y Seguridad. 90\,\% de transferencias con resumen. \\
-H4 Copiloto & 8 & 200 asesores en operación. Las siete intenciones restantes solo con dictamen del CISO. \\
-H5 Producción & 10 & Teléfono, WhatsApp, chat y web. Disponibilidad mensual de al menos 99{,}5\,\%. \\
-H6 Cierre & 11 & Aceptación de Operaciones, TI y Experiencia de Cliente. El equipo de proyecto se disuelve. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\bibitem[BCP(s.\,f.-b)]{bcp-salvador}
+Banco de Crédito del Perú. (s.\,f.-b). \textit{Asesor IA de negocio}. \url{https://www.viabcp.com/contigo-emprendedor-bcp/asesor-ia-ce-whatsapp}
 
-\subsection{Autoridad del director del proyecto}
-Asigna y libera a las personas adscritas al proyecto en TI, experiencia de cliente, operaciones y conducta de mercado. Autoriza consumos contra el CAPEX y contra la contingencia de \usd{240\,000}. Un exceso pasa al Gerente Central de Finanzas. Rechaza un entregable del proveedor que no cumpla el criterio del hito o el dictamen de seguridad. La contención de 55\,\% y la captura de 60\,\% no están bajo su autoridad. Quedan con el patrocinador del negocio y con el gerente del contact center.
-
-\section{Matriz de interesados}
-Se usa poder, interés e impacto, como pide el PMBOK \fuente{(Project Management Institute [PMI], 2021)}. Donde el poder formal es bajo y el impacto en la adopción es alto, se agrega involucramiento. Es el caso de los asesores, porque de ellos depende la captura que sostiene el VAN.
-
-\begin{table}[ht]
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}X c c c l@{}}
-\toprule
-Interesado & Poder & Interés & Impacto & Estrategia \\
-\midrule
-Gerente Central de Experiencia de Cliente. Patrocinador único del beneficio. & Alto & Alto & Alto & Gestionar de cerca. \\
-CIO. Patrocinio técnico. & Alto & Alto & Alto & Gestionar de cerca. \\
-Gerente Central de Finanzas. & Alto & Medio & Alto & Mantener satisfecho. \\
-CISO. & Alto & Medio & Alto & Mantener satisfecho. \\
-Oficial de conducta de mercado. & Medio & Alto & Alto & Gestionar de cerca. \\
-Gerente del centro de contacto. & Medio & Alto & Alto & Gestionar de cerca. \\
-Product owners de Banca Móvil. & Medio & Alto & Medio & Gestionar de cerca. \\
-Responsables de Yape. & Alto & Bajo & Bajo & Mantener satisfecho. \\
-Asesores de atención, 850. & Bajo & Alto & Alto & Informar e involucrar. \\
-SBS. & Alto & Medio & Alto & Cumplir. \\
-Clientes de Banca Personas. & Bajo & Alto & Alto & Mantener informado. \\
-Proveedor de la plataforma. & Medio & Alto & Alto & Gestionar de cerca. \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\noindent El oficial de conducta de mercado valida guiones y reclamos bajo la SBS 3274-2017. Los product owners dejan entrar el chat y no rediseñan la aplicación. A Yape se le informa que no se modifica. La SBS no negocia el VAN. El voicebot actual es de IBM; la orquestación se adquiere después, no en este entregable.
-
-\section{Lectura frente al criterio del curso}
-La inversión se justifica en el caso base: el VAN es positivo, la TIR supera el 12\,\% y el payback cae dentro del horizonte. El objetivo, el alcance y el presupuesto usan las mismas cifras que el Excel: 55\,\% de contención al tercer año, tiempo medio de 3{,}5 minutos, captura de 60\,\%, 850 asesores, 1\,200 posiciones y \usd{2\,760\,000}. Yape está fuera. El voicebot que ya existe no se vuelve a contar como beneficio. Los supuestos sin fuente están marcados en el archivo.
-
-No se justifica en cualquier escenario. Con la meta de 55\,\%, el punto de equilibrio de la captura está cerca del 30\,\%. Si esa captura cae a 25\,\%, el VAN pasa a \usd{$-934\,549$}. Esa condición queda dicha para no presentar el resultado como seguro.
-
-\begin{thebibliography}{10}
-\bibitem[BCP(2025)]{bcp2025}
-Banco de Crédito del Perú. (2025). \textit{Memoria integrada 2024}. \url{https://www.viabcp.com/relaciones-con-inversionistas}
+\bibitem[BofA(s.\,f.)]{erica}
+Bank of America. (s.\,f.). \textit{Erica, your virtual financial assistant}. \url{https://info.bankofamerica.com/en/digital-banking/erica}
 
 \bibitem[Congreso(2011)]{ley29733}
-Congreso de la República del Perú. (2011). \textit{Ley N.º 29733, Ley de protección de datos personales}. Diario Oficial El Peruano.
+Congreso de la República del Perú. (2011). \textit{Ley N.° 29733, Ley de Protección de Datos Personales}. \url{https://www.leyes.congreso.gob.pe/Documentos/Leyes/29733.pdf}
 
-\bibitem[Credicorp(2025)]{credicorp2025}
-Credicorp Ltd. (2025, 14 de febrero). \textit{Resultados del cuarto trimestre de 2024} (Form 6-K). \url{https://credicorp.gcs-web.com/static-files/4aa5a029-4538-42fd-856c-e10bb83c203f}
+\bibitem[Credicorp(2025a)]{credicorp-ar}
+Credicorp Ltd. (2025a). \textit{Annual and sustainability report 2024}. \url{https://credicorp.gcs-web.com/system/files-encrypted/nasdaq_kms/assets/2025/02/28/17-34-02/Annual%20and%20Sustainability%20Report%202024%20-%20ENG_.pdf}
 
-\bibitem[Mestanza(2024)]{mestanza2024}
-Mestanza Arquiñigo, C. (2024, 13 de noviembre). La inteligencia artificial llega al call center: cómo responde el voicebot bancario y qué será capaz de hacer. \textit{El Comercio}. \url{https://elcomercio.pe/tecnologia/inteligencia-artificial/la-inteligencia-artificial-llega-al-call-center-como-responde-el-voicebot-bancario-y-que-sera-capaz-de-hacer-ia-bancos-sistema-financiero-atencion-al-cliente-noticia/}
+\bibitem[Credicorp(2025b)]{credicorp-6k}
+Credicorp Ltd. (2025b). \textit{Results for the quarter ended December 31, 2024} (Form 6-K, Exhibit 99.1). \url{https://www.sec.gov/Archives/edgar/data/1001290/000114036125004694/ef20043470_ex99-1.htm}
 
-\bibitem[PMI(2021)]{pmi2021}
-Project Management Institute. (2021). \textit{Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (7.ª ed.).
+\bibitem[DBS(2025)]{dbs}
+DBS. (2025). \textit{Annual report 2024: Innovating impactful solutions}. \url{https://www.dbs.com/annualreports/2024/innovating-impactful-solutions-for-customers.html}
 
-\bibitem[Sapag(2011)]{sapag2011}
-Sapag Chain, N. (2011). \textit{Proyectos de inversión: formulación y evaluación} (2.ª ed.). Pearson Educación.
+\bibitem[DS(2023)]{smv}
+Ministerio de Economía y Finanzas. (2023). \textit{Decreto Supremo N.° 020-2023-EF, Texto Único Ordenado de la Ley del Mercado de Valores}. \url{https://www.smv.gob.pe/ServicioConsultaNormas/uploads/TUO_LMV_DECRETO_SUPREMO_N_020_2023_EF.pdf}
 
-\bibitem[SBS(2017)]{sbs2017}
-Superintendencia de Banca, Seguros y AFP. (2017). \textit{Resolución SBS N.º 3274-2017, Reglamento de gestión de conducta de mercado del sistema financiero}. \url{https://intranet2.sbs.gob.pe/dv_int_cn/1731/v7.0/Adjuntos/3274-2017.R.pdf}
+\bibitem[FINOS(s.\,f.)]{finos}
+FINOS. (s.\,f.). \textit{MI-24: Human-in-the-loop action approval gate}. \url{https://air-governance-framework.finos.org/mitigations/mi-24_human-in-the-loop-action-approval-gate.html}
 
-\bibitem[SBS(2021)]{sbs2021}
-Superintendencia de Banca, Seguros y AFP. (2021). \textit{Resolución SBS N.º 504-2021, Reglamento para la gestión de la seguridad de la información y la ciberseguridad}. \url{https://intranet2.sbs.gob.pe/dv_int_cn/2046/v2.0/Adjuntos/504-2021.R.pdf}
+\bibitem[Interbank(2025)]{plin}
+Interbank. (2025, 31 de octubre). \textit{Plin WhatsApp}. \url{https://interbank.pe/blog/sala-de-prensa/plin-whatsapp-interbank-revolucion-pagos-peru}
 
-\bibitem[T21(2024)]{t21}
-T21. (2024, 30 de mayo). BCP atiende consultas telefónicas con inteligencia artificial (IA). \url{https://t21.pe/bcp-consultas-telefonicas-inteligencia-artificial-ia}
+\bibitem[Klarna(2024)]{klarna}
+Klarna. (2024, 27 de febrero). \textit{AI assistant handles two-thirds of customer service chats in its first month}. \url{https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/}
 
-\bibitem[Tuesta(2024)]{tuesta2024}
-Tuesta Benavides, B. (2024, 16 de febrero). IBM Perú: la IA irá reemplazando tareas operativas por tareas de mayor valor. \textit{EcommerceNews}. \url{https://www.ecommercenews.pe/comercio-electronico/2024/ibm-peru-la-ia-ira-reemplazando-tareas-operativas-por-tareas-de-mayor-valor.html}
+\bibitem[MAS(2026)]{safr}
+Monetary Authority of Singapore. (2026). \textit{Safeguards for agentic finance at runtime} (SAFR v1.1). \url{https://www.mas.gov.sg/-/media/mas-media-library/development/fintech/ai-safr/safr-v1-1.pdf}
+
+\bibitem[Mercado Libre(2026)]{mago}
+Mercado Libre. (2026, 13 de agosto). \textit{Mercado Pago lanza Mago}. \url{https://news.mercadolivre.com/pt/mercado-pago-lanca-mago-assistente-financeiro}
+
+\bibitem[PMI(2021)]{pmbok}
+Project Management Institute. (2021). \textit{Guía de los fundamentos para la dirección de proyectos} (Guía del PMBOK) (7.ª ed.).
+
+\bibitem[Revolut(2026)]{revolut}
+Revolut. (2026, 9 de abril). \textit{AIR: AI by Revolut}. \url{https://www.revolut.com/blog/post/air-ai-by-revolut/}
+
+\bibitem[Sapag(2011)]{sapag}
+Sapag Chain, N. (2011). \textit{Proyectos de inversión: Formulación y evaluación} (2.ª ed.). Pearson Educación.
+
+\bibitem[SBS(2021)]{sbs504}
+Superintendencia de Banca, Seguros y AFP. (2021). \textit{Resolución SBS N.° 504-2021, Reglamento para la gestión de la seguridad de la información y la ciberseguridad}. \url{https://busquedas.elperuano.pe/dispositivo/NL/1929393-1}
+
+\bibitem[SBS(2017/2026)]{sbs3274}
+Superintendencia de Banca, Seguros y AFP. (2017/2026). \textit{Resolución SBS N.° 3274-2017, Reglamento de gestión de conducta de mercado} (texto consolidado al 2 de julio de 2026). \url{https://intranet2.sbs.gob.pe/dv_int_cn/1731/v12.0/Adjuntos/3274-2017%20R%2002.07.26.pdf}
+
+\bibitem[SBS(2026)]{sbs1741}
+Superintendencia de Banca, Seguros y AFP. (2026). \textit{Resolución SBS N.° 01741-2026}. \url{https://intranet2.sbs.gob.pe/dv_int_cn/2589/v1.0/Adjuntos/R%2001741-2026.pdf}
+
+\bibitem[Yape(s.\,f.)]{yape}
+Yape. (s.\,f.). \textit{Yape Empresa}. \url{https://www.yape.com.pe/productos/yape-empresa}
 \end{thebibliography}
 
 \end{document}

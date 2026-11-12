@@ -6,7 +6,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{newtxtext,newtxmath}
 \usepackage{tikz}
-\usetikzlibrary{positioning}
 \usepackage{booktabs}
 \usepackage{array}
 
@@ -16,7 +15,6 @@
 \definecolor{crema}{HTML}{F4F0E8}
 \definecolor{tinta}{HTML}{1B242C}
 \definecolor{muted}{HTML}{5C6B78}
-\definecolor{bien}{HTML}{1E6B45}
 \definecolor{mal}{HTML}{9C2F2F}
 \definecolor{card}{HTML}{FFFFFF}
 
@@ -26,19 +24,18 @@
 \setbeamercolor{item}{fg=cobre}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{itemize item}{\small\color{cobre}\textbullet}
-\setbeamertemplate{itemize subitem}{\scriptsize\color{cobre}--}
 \setbeamertemplate{footline}{%
   \leavevmode%
   \hbox{%
     \begin{beamercolorbox}[wd=\paperwidth,ht=3.1ex,dp=1.3ex,leftskip=1.1em,rightskip=1.1em]{frametitle}%
       \usebeamerfont{author in head/foot}\color{crema}%
-      E01 · Versión 2 · MGT209 · Noviembre 2026%
-      \hfill Banca Personas · BCP%
+      MGT209 · E01 · Versión 2 · Noviembre 2026%
+      \hfill Caso de estudio%
     \end{beamercolorbox}}%
 }
 \setbeamertemplate{frametitle}{%
   \nointerlineskip
-  \begin{beamercolorbox}[wd=\textwidth,ht=2.55em,dp=0.45em,leftskip=0.15em,rightskip=0.3em]{frametitle}%
+  \begin{beamercolorbox}[wd=\textwidth,ht=2.45em,dp=0.4em,leftskip=0.15em,rightskip=0.3em]{frametitle}%
     \usebeamerfont{frametitle}\insertframetitle%
   \end{beamercolorbox}%
   \nointerlineskip
@@ -49,290 +46,314 @@
 \newcommand{\numcard}[3]{%
   \begin{tikzpicture}
     \node[fill=card,draw=bcp,line width=0.6pt,rounded corners=2pt,
-          text width=3.55cm,minimum height=2.35cm,inner sep=6pt,align=center] {%
-      {\fontsize{8}{9}\selectfont\color{muted}#1}\\[0.28em]
-      {\large\bfseries\color{bcp}#2}\\[0.22em]
+          text width=3.55cm,minimum height=2.15cm,inner sep=6pt,align=center] {%
+      {\fontsize{8}{9}\selectfont\color{muted}#1}\\[0.22em]
+      {\large\bfseries\color{bcp}#2}\\[0.18em]
       {\fontsize{8}{9.5}\selectfont\color{tinta}#3}};
   \end{tikzpicture}%
 }
 
 \begin{document}
 
-% ---------- 1 ----------
 {
 \setbeamercolor{background canvas}{bg=bcp}
 \setbeamertemplate{footline}{}
 \begin{frame}[plain]
-\vspace{0.55cm}
-{\color{cobre}\rule{2.1cm}{2.2pt}}\\[0.7em]
-{\color{crema}\normalsize Banca de Crédito del Perú}\\[0.15em]
-{\color{white}\fontsize{26}{30}\selectfont\bfseries Decisión de inversión}\\[0.25em]
-{\color{crema}\Large Orquestación omnicanal y copiloto del asesor}\\[0.1em]
-{\color{crema}\large Banca Personas}\\[1.05em]
+\vspace{0.22cm}
+{\color{cobre}\rule{2.1cm}{2.2pt}}\\[0.35em]
+{\color{crema}\normalsize MGT209 · Gestión de Proyectos en TI · Entregable E01}\\[0.1em]
+{\color{white}\fontsize{22}{26}\selectfont\bfseries Caso de negocio y Project Charter}\\[0.12em]
+{\color{crema}\large Versión 2 · Agente financiero personal}\\[0.08em]
+{\color{crema}\normalsize Caso de estudio: Banca Personas del BCP}\\[0.4em]
 \begin{tikzpicture}
-  \node[fill=bcp2,text=white,rounded corners=2pt,inner sep=9pt,text width=12.4cm] {%
-    \textbf{\color{cobre}El pedido.} Aprobar \textbf{USD 2{,}76 millones} para integrar los canales que el banco ya tiene, sin contar otra vez el ahorro del voicebot.\\[0.35em]
-    Caso base: VAN \textbf{USD 5{,}7 millones} \textperiodcentered\ TIR \textbf{56\,\%} \textperiodcentered\ recuperación en \textbf{2{,}2 años}.};
+  \node[fill=bcp2,text=white,rounded corners=2pt,inner sep=8pt,text width=12.3cm,align=left] {%
+    Recorre el expediente del curso. No está escrita para exponerla al banco.\\[0.28em]
+    El proyecto es un agente que \textbf{informa y simula}, con facultades que el cliente concede.};
 \end{tikzpicture}
-\vspace{0.9cm}
+\vspace{0.32cm}
 
-{\color{crema}\footnotesize MGT209 · Entregable E01 · Versión 2 · Noviembre 2026}
+{\color{crema}\footnotesize Franco Stywar Antony Vargas Chino \textperiodcentered\ Albert Christian Hidalgo Sánchez}\\[0.15em]
+{\color{crema}\footnotesize Sergio Perez Ruiz \textperiodcentered\ Carlos E. Ruiz Perez \textperiodcentered\ Dennis Jack Paitan Cano}\\[0.28em]
+{\color{crema}\scriptsize Universidad Nacional de Ucayali · Noviembre 2026}
 \end{frame}
 }
 
-% ---------- 2 ----------
-\begin{frame}{La decisión, en tres cifras}
-\vspace{0.35cm}
-\begin{center}
-\numcard{Inversión del año 0}{USD 2{,}76 M}{La misma cifra del charter y del flujo.}
-\hspace{0.25cm}
-\numcard{VAN al 12\,\%}{USD 5{,}68 M}{Rinde por encima de la tasa del caso.}
-\hspace{0.25cm}
-\numcard{Recuperación}{2{,}2 años}{El acumulado cruza cero en el año 3.}
-\end{center}
-\vspace{0.55cm}
-\begin{center}
-{\color{bcp}\bfseries La TIR es 56{,}2\,\%. No está escrita a mano: sale del Excel.}
-\end{center}
-\vspace{0.35cm}
-{\small\color{muted} La tasa de 12\,\% es un supuesto del equipo. No es el WACC del BCP. Queda bajo el ROE de 16{,}5\,\% de Credicorp en 2024.}
-\end{frame}
-
-% ---------- 3 ----------
-\begin{frame}{El banco ya resolvió una parte}
+\begin{frame}{Qué tiene que mostrar el E01}
 \vspace{0.15cm}
 \begin{columns}[T]
 \begin{column}{0.48\textwidth}
-{\color{bcp}\bfseries Lo que está publicado}
+{\color{bcp}\bfseries Las cuatro piezas}
 \begin{itemize}
-  \item Más de 12 millones de clientes de Banca Personas.
-  \item 7{,}5 millones de clientes activos en Banca Móvil y 116 millones de interacciones de servicio.
-  \item Voicebot en el teléfono desde 2024.
-  \item 30\,\% de las atenciones ya se resuelven con ese voicebot.
-  \item El abandono bajó de cerca del 50\,\% a menos del 10\,\%.
+\setlength{\itemsep}{0.18em}
+  \item Ficha: problema, objetivo SMART, solución y beneficios.
+  \item Excel: inversión, costos, beneficios, ROI, VAN, TIR y TCO.
+  \item Project Charter.
+  \item Matriz de interesados.
 \end{itemize}
 \end{column}
 \begin{column}{0.50\textwidth}
-\vspace{0.15cm}
-\begin{tikzpicture}
-  \node[fill=bcp,text=crema,rounded corners=2pt,inner sep=8pt,text width=5.7cm] {%
-    \textbf{\color{cobre}Regla del caso}\\[0.4em]
-    Ese 30\,\% no entra al beneficio.\\[0.45em]
-    Si se cuenta otra vez, el proyecto se aprueba con un ahorro que ya existe.};
-\end{tikzpicture}
-\vspace{0.45cm}
-
-{\footnotesize\color{muted} Fuentes: Memoria integrada 2024 del BCP; declaración de Michael Campbell en \textit{El Comercio}, noviembre de 2024.}
+{\color{cobre}\bfseries El criterio del curso}
+\begin{itemize}
+\setlength{\itemsep}{0.18em}
+  \item La inversión se justifica.
+  \item Objetivo, beneficio, interesados y alcance dicen lo mismo.
+  \item Lo publicado se cita. Lo demás se declara como supuesto.
+\end{itemize}
 \end{column}
 \end{columns}
+\vspace{0.4cm}
+{\small El recorrido de estas láminas sigue ese orden: el problema, la solución y su enganche, el modelo económico, el charter y los interesados. Las cifras salen del Excel de la versión 2.}
 \end{frame}
 
-% ---------- 4 ----------
-\begin{frame}{Lo que todavía se compra}
-\vspace{0.08cm}
+\begin{frame}{El problema que elige el caso}
+\vspace{0.1cm}
+El cliente ya tiene aplicación, web y Yape. No tiene un agente propio, a cualquier hora, que use su posición real y solo las facultades que él le dio.
+
+\vspace{0.35em}
 \begin{columns}[T]
-\begin{column}{0.49\textwidth}
-{\color{cobre}\bfseries El hueco}
+\begin{column}{0.48\textwidth}
+{\color{bcp}\bfseries Dato publicado}
 \begin{itemize}
-\setlength{\itemsep}{0.22em}
-  \item El voicebot es de teléfono. WhatsApp, el chat de la app y el asesor no comparten el contexto.
-  \item La llamada que igual llega a una persona sigue en torno a 5 minutos.
-  \item El banco no publica el volumen de llamadas ni el costo por llamada. Eso se declara como supuesto.
+\setlength{\itemsep}{0.16em}
+  \item BCP Perú: más de 13{,}7 millones de clientes. El 76\,\% opera en digital.
+  \item Yape: 13{,}7 millones de usuarios activos al mes.
+  \item Esas cifras describen al banco. No son usuarios del agente.
 \end{itemize}
 \end{column}
-\begin{column}{0.49\textwidth}
-{\color{bcp}\bfseries Lo que no prometemos}
+\begin{column}{0.50\textwidth}
+{\color{cobre}\bfseries Lo que ya existe y no se cuenta}
 \begin{itemize}
-\setlength{\itemsep}{0.22em}
-  \item No prometemos el 70\,\% que mencionó IBM. Es aspiración de un proveedor.
-  \item No movemos el NPS de 54 o de 62. Esos son otros indicadores.
-  \item No incluimos a Yape. Son más de 14 millones de usuarios y otra aplicación.
+\setlength{\itemsep}{0.16em}
+  \item Clara informa por WhatsApp.
+  \item Salvador orienta y el propio banco dice que no opera ni aprueba.
+  \item Volver a contar ese uso inflaría el beneficio.
 \end{itemize}
 \end{column}
 \end{columns}
-\vspace{0.2cm}
+\vspace{0.35cm}
+{\small\color{muted} Fuente: informe de Credicorp 2024, 6-K del cuarto trimestre, y las fichas públicas de Clara y Salvador.}
+\end{frame}
+
+\begin{frame}{Por qué no se copia otro banco}
+\vspace{0.05cm}
+\begin{itemize}
+\setlength{\itemsep}{0.16em}
+  \item \textbf{Revolut AIR} (2026) actúa sobre la cuenta del propio cliente y pide biometría para lo sensible. No publica usuarios del producto.
+  \item \textbf{Mago, de Mercado Pago,} simula y paga solo si el titular confirma. La empresa habla de 17 millones de usuarios. Sin VAN.
+  \item \textbf{Erica} no usa IA generativa y no da consejo de inversión. Sirve para ver el límite, no para copiar una cifra.
+  \item \textbf{Plin por WhatsApp} sí ejecuta pagos, con clave y con tope. El caso no copia esa ejecución.
+\end{itemize}
+\vspace{0.15cm}
 \begin{tikzpicture}
   \node[fill=crema,draw=cobre,line width=0.8pt,rounded corners=2pt,inner sep=6pt,text width=0.96\textwidth] {%
-    \textbf{Meta que sí entra al flujo.} Al tercer año: 55\,\% de contención, 3{,}5 minutos en la llamada que sigue con asesor, y capturar el 60\,\% de la capacidad liberada.};
+    No hay un VAN publicado de un agente personal comparable. Por eso el Excel no importa un ahorro de Klarna ni el portafolio de modelos de DBS. Esas cifras son de otro producto.};
 \end{tikzpicture}
 \end{frame}
 
-% ---------- 5 ----------
-\begin{frame}{La oferta cabe en diez meses}
-\vspace{0.25cm}
-\begin{columns}[T]
-\begin{column}{0.49\textwidth}
-\begin{enumerate}
-  \item \textbf{Orquestar} teléfono, WhatsApp, chat y web. El voicebot se queda.
-  \item \textbf{Doce intenciones.} Cinco en el piloto del mes 6. Siete, las que mueven credenciales, después del CISO.
-  \item \textbf{Copiloto} en 850 asesores: transcripción, respuesta sugerida y resumen.
-  \item \textbf{Seguridad} de la SBS 504-2021 y de la Ley 29733. La voz es dato personal.
-\end{enumerate}
-\end{column}
-\begin{column}{0.49\textwidth}
-{\small
-\begin{tabular}{@{}c l@{}}
-\toprule
-\textbf{Mes} & \textbf{Hito} \\
-\midrule
-2 & Arquitectura y seguridad \\
-4 & APIs, sin apagar el voicebot \\
-6 & Piloto de cinco intenciones \\
-8 & Copiloto con 200 asesores \\
-10 & Producción \\
-11 & Cierre y traspaso \\
-\bottomrule
-\end{tabular}}
-\vspace{0.4cm}
-
-{\footnotesize El mes 11 no es ejecución. Los beneficios se miden en años de operación, no el día de la salida.}
-\end{column}
-\end{columns}
-\end{frame}
-
-% ---------- 6 ----------
-\begin{frame}{De dónde sale el dólar}
-\vspace{0.45cm}
-\begin{center}
-\begin{tikzpicture}
-  \node[fill=bcp,text=white,rounded corners=3pt,minimum width=3.55cm,minimum height=1.9cm,align=center] at (0,0) {%
-    {\large\bfseries 850}\\[0.12em]{\footnotesize asesores hoy}};
-  \node[fill=cobre,text=bcp,rounded corners=3pt,minimum width=3.55cm,minimum height=1.9cm,align=center] at (4.15,0) {%
-    {\large\bfseries 382}\\[0.12em]{\footnotesize hacen falta en el año 3}};
-  \node[fill=white,draw=bcp,line width=0.7pt,rounded corners=3pt,minimum width=3.7cm,minimum height=1.9cm,align=center] at (8.35,0) {%
-    {\large\bfseries USD 4{,}49 M}\\[0.12em]{\footnotesize beneficio del año 3}};
-\end{tikzpicture}
-\end{center}
-\vspace{0.55cm}
-Se liberan 468 asesores. Solo el 60\,\% de esa capacidad se reconoce como ahorro. El resto queda como holgura de servicio.
+\begin{frame}{Objetivo SMART del caso}
+\vspace{0.15cm}
+En diez meses, el agente informa y simula en la aplicación y en la web. El mes 11 es cierre y traspaso, no ejecución. Los beneficios se miden en años de operación.
 
 \vspace{0.4em}
-No hay venta cruzada en el flujo ni un ingreso por mejorar el NPS. El costo de la plataforma y del bot sí está restado. El caso no depende de una tasa de conversión que nadie publicó.
+\begin{enumerate}
+\setlength{\itemsep}{0.2em}
+  \item Al tercer año, \textbf{500\,000} clientes mantienen un permiso vigente. Es un supuesto del equipo, cerca del 5\,\% de la base digital. No es un pronóstico del banco.
+  \item El agente no transfiere ni desembolsa. Confirma la persona. Ejecuta el sistema del producto.
+  \item Si la posición no está vigente, no afirma un saldo ni lo completa con el histórico.
+  \item Yape queda como propuesta a su dueño. No entra en la meta ni en el beneficio.
+\end{enumerate}
+\vspace{0.3cm}
+{\small La frase del charter es deliberada: informa y simula. No asesora, no coloca y no mueve dinero. No hay una norma SBS de asesoría automatizada, y recomendar valores queda fuera por la Ley del Mercado de Valores.}
 \end{frame}
 
-% ---------- 7 ----------
-\begin{frame}{El caso base, sin adornos}
-\vspace{0.15cm}
+\begin{frame}{Cómo se engancha, en el diseño del caso}
+\vspace{0.12cm}
 \begin{center}
-\small
-\begin{tabular}{lrrrrrr}
-\toprule
- & \textbf{Año 0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
-\midrule
-Beneficio & 0{,}00 & 0{,}76 & 2{,}60 & 4{,}49 & 4{,}49 & 4{,}49 \\
-OPEX & 0{,}00 & $-0{,}65$ & $-0{,}76$ & $-0{,}89$ & $-0{,}90$ & $-0{,}91$ \\
-Inversión & $-2{,}76$ & 0 & 0 & 0 & 0 & 0 \\
-\midrule
-\textbf{Flujo neto} & $\mathbf{-2{,}76}$ & \textbf{0{,}11} & \textbf{1{,}84} & \textbf{3{,}60} & \textbf{3{,}59} & \textbf{3{,}58} \\
-\bottomrule
-\end{tabular}
+\begin{tikzpicture}
+  \node[fill=bcp,text=white,rounded corners=2pt,minimum width=2.55cm,minimum height=1.55cm,align=center,font=\footnotesize] at (0,0) {Sistemas\\de producto};
+  \node[fill=bcp2,text=white,rounded corners=2pt,minimum width=2.55cm,minimum height=1.55cm,align=center,font=\footnotesize] at (3.15,0) {Posición\\vigente};
+  \node[fill=cobre,text=bcp,rounded corners=2pt,minimum width=2.7cm,minimum height=1.55cm,align=center,font=\footnotesize] at (6.4,0) {Herramientas\\y permiso};
+  \node[fill=white,draw=bcp,line width=0.7pt,rounded corners=2pt,minimum width=2.7cm,minimum height=1.55cm,align=center,font=\footnotesize] at (9.7,0) {App y web\\del cliente};
+\end{tikzpicture}
 \end{center}
-\vspace{0.15cm}
-{\centering\footnotesize Millones de USD.\par}
-\vspace{0.45cm}
+\vspace{0.3cm}
+Cada producto sigue siendo el dueño de sus saldos y obligaciones. El agente consulta una vista por cliente y solo la usa si está al día. El histórico sirve para auditar y mejorar, no para contestar la sesión.
+
+\vspace{0.28em}
+{\small Si la vista no está al día, dice que no está confirmado y no inventa la cifra. No desembolsa. Yape no entra en esta cadena.}
+\end{frame}
+
+\begin{frame}{La solución: habilidades y perfiles}
+\vspace{0.02cm}
+El cliente concede cada habilidad y puede revocarla. El perfil es el paquete. Revocar corta la herramienta en la llamada siguiente.
+
+\vspace{0.28cm}
 \begin{columns}[T]
-\begin{column}{0.32\textwidth}
-\centering
-{\color{bcp}\bfseries TCO}\\
-USD 6{,}86 millones\\
-{\footnotesize inversión más operación}
+\begin{column}{0.33\textwidth}
+{\color{cobre}\bfseries Consulta}
+\begin{itemize}
+\setlength{\itemsep}{0.12em}
+  \item Ver su posición.
+  \item Entender un movimiento.
+\end{itemize}
+\vspace{0.25cm}
+{\footnotesize\color{muted} No simula y no ve ofertas.}
 \end{column}
-\begin{column}{0.32\textwidth}
-\centering
-{\color{bcp}\bfseries Utilidad neta}\\
-USD 9{,}96 millones\\
-{\footnotesize en cinco años, sin descontar}
+\begin{column}{0.33\textwidth}
+{\color{bcp}\bfseries Planificación}
+\begin{itemize}
+\setlength{\itemsep}{0.12em}
+  \item Simular un crédito del banco.
+  \item Proyectar un viaje, u otro plan, contra la deuda.
+\end{itemize}
+\vspace{0.08cm}
+{\footnotesize\color{muted} La cifra sale del simulador del producto, con TCEA.}
 \end{column}
-\begin{column}{0.32\textwidth}
-\centering
-{\color{bcp}\bfseries ROI}\\
-360{,}9\,\%\\
-{\footnotesize (beneficios $-$ TCO) / inversión}
+\begin{column}{0.33\textwidth}
+{\color{cobre}\bfseries Ofertas}
+\begin{itemize}
+\setlength{\itemsep}{0.12em}
+  \item Ver una oferta ya tasada.
+  \item Dejar un encargo listo para confirmar.
+\end{itemize}
+\vspace{0.08cm}
+{\footnotesize\color{muted} Aceptar lo hace la persona, en el canal.}
 \end{column}
 \end{columns}
+\vspace{0.28cm}
+{\small Hay vía humana cuando la atención es automatizada. Eso viene de la Resolución SBS N.° 01741-2026, no de una preferencia de diseño.}
 \end{frame}
 
-% ---------- 8 ----------
-\begin{frame}{Dónde se gana y dónde se pierde}
-\vspace{0.1cm}
+\begin{frame}{Cómo está armado el beneficio}
+\vspace{0.02cm}
+{\small Tres partidas, todas en amarillo en el Excel. Ninguna es un dato publicado del BCP.}
+\vspace{0.2cm}
 \begin{center}
 \small
 \begin{tabular}{lrrr}
 \toprule
-\textbf{Escenario} & \textbf{VAN} & \textbf{TIR} & \textbf{Lectura} \\
+\textbf{Año 3, millones de USD} & \textbf{Beneficio} & & \\
 \midrule
-Base & USD 5{,}68 M & 56\,\% & Se aprueba. \\
-Contención 45\,\% & USD 3{,}91 M & 44\,\% & Sigue en pie. \\
-Captura 40\,\% & USD 1{,}90 M & 30\,\% & Justo, pero positivo. \\
-\color{mal}Captura 25\,\% & \color{mal}$-$USD 0{,}93 M & \color{mal}1{,}3\,\% & \color{mal}No se aprueba. \\
+Créditos que el cliente confirma & 1{,}44 & \multicolumn{2}{l}{\footnotesize 2\,\% de las simulaciones, ticket de S/\,6\,000} \\
+Planes que no cabían en la deuda & 0{,}63 & \multicolumn{2}{l}{\footnotesize pérdida esperada de 3\,\%, supuesto} \\
+Ofertas que el producto ya tasó & 0{,}22 & \multicolumn{2}{l}{\footnotesize solo quien concedió ese perfil} \\
+\midrule
+\textbf{Beneficio del año 3} & \textbf{2{,}29} & & \\
 \bottomrule
 \end{tabular}
 \end{center}
-\vspace{0.45cm}
+\vspace{0.22cm}
+El margen de 6\,\% es del primer año del ticket. No es el NIM del banco. En el año 3 el supuesto equivale a 15\,000 créditos y S/\,90 millones de principal, pequeño frente a la cartera publicada. El primer año de operación todavía no paga su OPEX.
+\end{frame}
+
+\begin{frame}{Qué resulta en el caso base}
+\vspace{0.02cm}
+\begin{center}
+\numcard{Inversión del año 0}{USD 1{,}63 M}{CAPEX, más 10\,\% y 5\,\% sumados.}
+\hspace{0.22cm}
+\numcard{VAN al 12\,\%}{USD 2{,}29 M}{Año 0 sin descontar, como Sapag.}
+\hspace{0.22cm}
+\numcard{Recuperación}{2{,}59 años}{El acumulado cruza cero en el año 3.}
+\end{center}
+\vspace{0.28cm}
+\begin{center}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
+\midrule
+Flujo neto & $-1{,}63$ & $-0{,}02$ & 0{,}59 & 1{,}83 & 1{,}82 & 1{,}81 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.08cm}
+{\centering\footnotesize Millones de USD. TIR 43{,}0\,\%. TCO USD 3{,}85 millones. ROI 268{,}1\,\% = (beneficios $-$ TCO) / inversión.\par}
+\vspace{0.15cm}
+{\small\color{muted} La tasa de 12\,\% es un supuesto del equipo. No está metida dentro de la TIR y no es el costo de capital del BCP.}
+\end{frame}
+
+\begin{frame}{La sensibilidad explica el criterio}
+\vspace{0.0cm}
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Escenario} & \textbf{VAN} & \textbf{TIR} & \textbf{Qué muestra} \\
+\midrule
+Base & USD 2{,}29 M & 43\,\% & El caso se justifica. \\
+Sin pérdida evitada & USD 0{,}78 M & 24\,\% & Sigue sobre el 12\,\%. \\
+Conversión 1\,\% & USD 0{,}56 M & 21\,\% & La palanca puede bajar. \\
+\color{mal}250\,000 clientes & \color{mal}$-$USD 0{,}38 M & \color{mal}5\,\% & \color{mal}Ahí deja de justificarse. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.22cm}
 \begin{tikzpicture}
-  \node[fill=bcp,text=crema,rounded corners=2pt,inner sep=7pt,text width=0.96\textwidth] {%
-    Con la meta de 55\,\%, el VAN llega a cero cerca del \textbf{30\,\% de captura}.\\[0.3em]
-    Bajar un poco la contención no tumba el caso. No convertir las horas liberadas en ahorro, sí.};
+  \node[fill=bcp,text=crema,rounded corners=2pt,inner sep=6pt,text width=0.96\textwidth] {%
+    Con la pérdida evitada, la conversión puede caer hasta cerca del \textbf{0{,}7\,\%} antes de igualar el 12\,\%. Sin ella, el umbral sube a cerca del \textbf{1{,}6\,\%}. La celda de control del Excel tiene que dar cero: el escenario base y la hoja de evaluación son el mismo cálculo.};
 \end{tikzpicture}
 \end{frame}
 
-% ---------- 9 ----------
-\begin{frame}{Quién responde por el resultado}
-\vspace{0.2cm}
+\begin{frame}{Charter e interesados}
+\vspace{0.05cm}
 \begin{columns}[T]
 \begin{column}{0.48\textwidth}
-{\color{cobre}\bfseries Una sola firma del beneficio}
+{\color{cobre}\bfseries En el charter}
 \begin{itemize}
-  \item \textbf{Experiencia de Cliente} patrocina el beneficio: la contención y la captura.
-  \item \textbf{El CIO} patrocina la arquitectura. No comparte esa meta.
-  \item \textbf{Finanzas} aprueba el desembolso y la contingencia de USD 240\,000.
-  \item El director del proyecto puede rechazar un entregable. No puede prometer el 55\,\%.
+\setlength{\itemsep}{0.14em}
+  \item Un solo dueño del beneficio: banca personas digital. El CIO patrocina el enchufe, no la meta de permisos.
+  \item Presupuesto del charter = inversión del flujo: USD 1{,}63 millones.
+  \item Hitos en los meses 2, 4, 6, 8, 10 y 11.
+  \item Fuera: desembolsos del agente, asesoría de inversión, reemplazar a Clara y construir Yape.
 \end{itemize}
 \end{column}
 \begin{column}{0.50\textwidth}
-{\color{bcp}\bfseries A quién no se le puede solo informar}
+{\color{bcp}\bfseries En la matriz}
 \begin{itemize}
-  \item Los \textbf{850 asesores}. Poder formal bajo, impacto alto. De ellos sale la captura.
-  \item El \textbf{gerente del contact center}. Turnos, piloto y tiempo medio.
-  \item El \textbf{CISO}, antes de tocar credenciales.
-  \item La \textbf{SBS} se cumple. No se negocia el VAN con el regulador.
+\setlength{\itemsep}{0.14em}
+  \item Poder, interés e impacto, como en el PMBOK 7.
+  \item Conducta de mercado y riesgo de crédito se gestionan de cerca: definen la frontera del agente.
+  \item Yape se mantiene satisfecho. Poder alto, y en este alcance el interés es bajo.
+  \item El cliente se involucra. Sin su permiso no hay sesión ni beneficio.
 \end{itemize}
 \end{column}
 \end{columns}
+\vspace{0.28cm}
+{\small El director del proyecto puede frenar una salida que afirme un saldo sin vista vigente. No puede prometer la conversión del 2\,\%: esa cifra es un supuesto, no un compromiso.}
 \end{frame}
 
-% ---------- 10 ----------
-\begin{frame}{Lo que se pide aprobar}
-\vspace{0.35cm}
+\begin{frame}{Cómo queda el expediente}
+\vspace{0.15cm}
 \begin{enumerate}
-  \item \textbf{USD 2{,}76 millones} en el año 0, con la contingencia gastada en el caso base.
-  \item Salida a producción en \textbf{10 meses} y cierre en el mes 11.
-  \item Meta de operación al \textbf{tercer año}: 55\,\% de contención, 3{,}5 minutos y captura del 60\,\%.
-  \item Condición explícita: si la captura cae al \textbf{25\,\%}, el caso se detiene. El VAN sería negativo.
-  \item Yape, la banca corporativa y el voicebot actual \textbf{quedan fuera} de lo que se construye.
+\setlength{\itemsep}{0.18em}
+  \item El problema, el objetivo, el alcance y los interesados describen el mismo agente.
+  \item La inversión del charter y la del flujo son la misma: \textbf{USD 1{,}63 millones}.
+  \item En el caso base la inversión se justifica: VAN de USD 2{,}29 millones, TIR de 43{,}0\,\% y recuperación en 2{,}59 años.
+  \item También se justifica si no se cuenta la pérdida evitada. Deja de justificarse si los permisos vigentes se quedan en \textbf{250\,000}.
+  \item Lo que no tiene fuente está en amarillo. Cambiar esa celda mueve el VAN.
 \end{enumerate}
-\vspace{0.55cm}
+\vspace{0.3cm}
 \begin{center}
-{\color{bcp}\large\bfseries Se aprueba un caso que se puede rehacer en clase, no una promesa.}
+{\color{bcp} El caso se puede rehacer en clase. Esa es la prueba de que las piezas cierran.}
 \end{center}
 \end{frame}
 
-% ---------- 11 ----------
 \begin{frame}{De dónde sale cada dato}
-\vspace{0.05cm}
+\vspace{0.0cm}
 {\footnotesize
 \begin{itemize}
-\setlength{\itemsep}{0.16em}
-  \item Clientes, Banca Móvil, agencias, voicebot de 2024 y NPS: \textit{Memoria integrada 2024}, BCP.
-  \item 30\,\% de atenciones, abandono y tiempo de direccionamiento: Campbell, en Mestanza (2024), \textit{El Comercio}.
-  \item 1\,200 posiciones y la referencia de 5 a 3{,}5 minutos: Tuesta (2024), entrevista al gerente general de IBM Perú. No es meta del banco.
-  \item Una de cada cuatro llamadas y las primeras consultas de Clara: T21 (2024).
-  \item Yape, 13{,}7 millones de usuarios activos mensuales, y ROE de 16{,}5\,\%: Credicorp, Form 6-K, 14 de febrero de 2025.
-  \item Ciberseguridad: Resolución SBS N.º 504-2021. Conducta de mercado y reclamos: Resolución SBS N.º 3274-2017. Datos personales: Ley N.º 29733.
+\setlength{\itemsep}{0.1em}
+  \item Clientes de BCP Perú, peso digital y usuarios de Yape: Credicorp, informe 2024 y 6-K del cuarto trimestre.
+  \item Clara y Salvador: fichas públicas del BCP.
+  \item AIR, Mago, Erica y Plin WhatsApp: comunicados de Revolut, Mercado Libre, Bank of America e Interbank.
+  \item Conducta de mercado y vía humana: Resoluciones SBS N.° 3274-2017, texto al 2 de julio de 2026, y N.° 01741-2026.
+  \item Seguridad y datos: Resolución SBS N.° 504-2021 y Ley N.° 29733.
+  \item Valores, fuera del alcance: Decreto Supremo N.° 020-2023-EF.
+  \item Compuerta del agente, sin ejecución automática: FINOS y MAS SAFR.
   \item VAN, TIR y payback: Sapag Chain (2011). Interesados: PMBOK, 7.ª edición.
 \end{itemize}}
-\vspace{0.12cm}
-{\scriptsize\color{muted} Volumen de llamadas, sueldo, tipo de cambio, tasa del 12\,\% y captura son supuestos del equipo. Están en amarillo en el Excel de esta versión.}
+\vspace{0.06cm}
+{\scriptsize\color{muted} Conversión, margen, pérdida esperada, sesiones y permisos vigentes son supuestos del equipo. El detalle y las fórmulas están en el informe y en el Excel de la versión 2.}
 \end{frame}
 
 \end{document}
