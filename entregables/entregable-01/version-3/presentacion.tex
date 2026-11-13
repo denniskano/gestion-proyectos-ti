@@ -1,0 +1,680 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xurl}
+
+\definecolor{bcp}{HTML}{0B2545}
+\definecolor{bcp2}{HTML}{163A5F}
+\definecolor{cobre}{HTML}{E07A2F}
+\definecolor{crema}{HTML}{F4F0E8}
+\definecolor{tinta}{HTML}{1B242C}
+\definecolor{muted}{HTML}{5C6B78}
+\definecolor{mal}{HTML}{9C2F2F}
+\definecolor{card}{HTML}{FFFFFF}
+
+\setbeamercolor{normal text}{fg=tinta,bg=crema}
+\setbeamercolor{frametitle}{fg=white,bg=bcp}
+\setbeamercolor{structure}{fg=bcp}
+\setbeamercolor{item}{fg=cobre}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\small\color{cobre}\textbullet}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=3.1ex,dp=1.3ex,leftskip=1.1em,rightskip=1.1em]{frametitle}%
+      \usebeamerfont{author in head/foot}\color{crema}%
+      MGT209 · Entregable E01 · Versión 3%
+      \hfill Agente financiero personal · Banca Personas BCP\hspace{1.2em}\insertframenumber%
+    \end{beamercolorbox}}%
+}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.45em,dp=0.4em,leftskip=1.1em,rightskip=1.1em]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+  \nointerlineskip
+  {\color{cobre}\rule{\paperwidth}{2.2pt}}%
+}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\renewcommand{\arraystretch}{1.25}
+
+\newcommand{\numcard}[3]{%
+  \begin{tikzpicture}
+    \node[fill=card,draw=bcp,line width=0.6pt,rounded corners=2pt,
+          text width=2.75cm,minimum height=2.0cm,inner sep=6pt,align=center] {%
+      {\fontsize{8}{9}\selectfont\color{muted}#1}\\[0.22em]
+      {\large\bfseries\color{bcp}#2}\\[0.18em]
+      {\fontsize{8}{9.5}\selectfont\color{tinta}#3}};
+  \end{tikzpicture}%
+}
+
+\newcommand{\nota}[1]{%
+  \begin{tikzpicture}
+    \node[fill=bcp,text=crema,rounded corners=2pt,inner sep=7pt,text width=0.95\textwidth] {\small #1};
+  \end{tikzpicture}}
+
+% Divisor de pieza
+\newcommand{\divisor}[3]{%
+  {\setbeamercolor{background canvas}{bg=bcp}
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \vspace{1.6cm}
+    {\color{cobre}\rule{2.1cm}{2.2pt}}\\[0.6em]
+    {\color{crema}\normalsize #1}\\[0.4em]
+    {\color{white}\fontsize{28}{32}\selectfont\bfseries #2}\\[0.8em]
+    {\color{crema}\large #3}
+  \end{frame}}%
+}
+
+\begin{document}
+
+% ── Portada ──────────────────────────────────────────────────────────────────
+{
+\setbeamercolor{background canvas}{bg=bcp}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vspace{0.1cm}
+{\color{crema}\footnotesize Universidad Nacional de Ucayali · Escuela de Posgrado}\\[0.1em]
+{\color{crema}\footnotesize Maestría en Ingeniería de Sistemas con mención en Gestión de Tecnologías de la Información}\\[0.5em]
+{\color{cobre}\rule{2.1cm}{2.2pt}}\\[0.35em]
+{\color{crema}\normalsize MGT209 · Gestión de Proyectos en TI · Entregable E01}\\[0.15em]
+{\color{white}\fontsize{24}{28}\selectfont\bfseries Caso de negocio y Project Charter}\\[0.2em]
+{\color{crema}\large Agente financiero personal de Banca Personas del BCP}\\[0.5em]
+\begin{tikzpicture}
+  \node[fill=bcp2,text=white,rounded corners=2pt,inner sep=8pt,text width=12.3cm,align=left] {%
+    Ficha ejecutiva · Evaluación económica · Project Charter · Matriz de interesados\\[0.28em]
+    El agente \textbf{informa y simula} con las facultades que el cliente concede. No asesora, no coloca y no mueve dinero.};
+\end{tikzpicture}
+\vspace{0.35cm}
+
+{\color{crema}\footnotesize Franco Stywar Antony Vargas Chino \textperiodcentered\ Albert Christian Hidalgo Sánchez \textperiodcentered\ Sergio Perez Ruiz}\\[0.15em]
+{\color{crema}\footnotesize Carlos E. Ruiz Perez \textperiodcentered\ Dennis Jack Paitan Cano}\\[0.3em]
+{\color{crema}\scriptsize Pucallpa, noviembre de 2026}
+\end{frame}
+}
+
+% ── Resumen ──────────────────────────────────────────────────────────────────
+\begin{frame}{Resumen ejecutivo}
+\vspace{0.15cm}
+Un agente financiero personal para Banca Personas del BCP que \textbf{informa y simula} sobre la posición vigente del cliente, en Banca Móvil y web, con permisos que el cliente concede y revoca.
+
+\vspace{0.45cm}
+\begin{center}
+\numcard{Inversión año 0}{USD 1,63 M}{Presupuesto del charter.}
+\hspace{0.15cm}
+\numcard{VAN al 12\,\%}{USD 2,29 M}{Horizonte de 5 años.}
+\hspace{0.15cm}
+\numcard{TIR}{43,0\,\%}{Frente a una tasa del 12\,\%.}
+\hspace{0.15cm}
+\numcard{Recuperación}{2,59 años}{Cruza cero en el año 3.}
+\end{center}
+\vspace{0.4cm}
+{\small \textbf{Veredicto:} la inversión se justifica. El supuesto crítico es la adopción: con 250\,000 permisos vigentes (la mitad de la meta) el VAN se vuelve negativo.}
+\end{frame}
+
+% ── Agenda ───────────────────────────────────────────────────────────────────
+\begin{frame}{Agenda: las cuatro piezas del E01}
+\vspace{0.15cm}
+\begin{center}
+\small
+\begin{tabular}{p{0.6cm}p{4.0cm}p{7.8cm}}
+\toprule
+\textbf{N.°} & \textbf{Pieza solicitada} & \textbf{Contenido} \\
+\midrule
+1 & Ficha ejecutiva & Problema, objetivo SMART, solución propuesta y beneficios. \\
+2 & Evaluación económica & Inversión, costos, beneficios, VAN, TIR, ROI, TCO y sensibilidad. \\
+3 & Project Charter & Gobernanza, alcance, hitos, presupuesto, riesgos y aprobaciones. \\
+4 & Matriz de interesados & Poder/interés y compromiso actual frente a deseado. \\
+\rowcolor{white} -- & Coherencia del caso & Trazabilidad objetivo--beneficio--interesado--alcance. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+{\small \textbf{Criterio de revisión:} la inversión se justifica; objetivos, beneficios, interesados y alcance inicial son coherentes.}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\divisor{Pieza 1 de 4}{Ficha ejecutiva}{Problema · Objetivo SMART · Solución propuesta · Beneficios}
+
+\begin{frame}{Problema}
+\vspace{0.1cm}
+El cliente ya tiene aplicación, web y Yape, pero no un agente propio, disponible a cualquier hora, que use su posición real y solo las facultades que él le dio.
+
+\vspace{0.35em}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+{\color{bcp}\bfseries Contexto publicado}
+\begin{itemize}
+\setlength{\itemsep}{0.2em}
+  \item BCP Perú: más de 13,7 millones de clientes; 76\,\% digital.
+  \item Yape: 13,7 millones de usuarios activos al mes.
+  \item Describen al banco; no son usuarios del agente.
+\end{itemize}
+\end{column}
+\begin{column}{0.50\textwidth}
+{\color{cobre}\bfseries Oferta actual insuficiente}
+\begin{itemize}
+\setlength{\itemsep}{0.2em}
+  \item Clara (WhatsApp) informa, pero no simula.
+  \item Salvador orienta; no opera ni aprueba.
+  \item Ninguno proyecta una decisión antes de tomarla.
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{0.15cm}
+\nota{\textbf{Enunciado:} el cliente digital no cuenta con un asistente que, con su consentimiento, informe su posición vigente y le permita simular créditos, planes y ofertas antes de decidir. {\scriptsize(Credicorp, 2025a, 2025b; BCP, s.\,f.-a, s.\,f.-b)}}
+\end{frame}
+
+\begin{frame}{Referentes: por qué no se copia otro banco}
+\vspace{0.05cm}
+\begin{itemize}
+\setlength{\itemsep}{0.3em}
+  \item \textbf{Revolut AIR} actúa sobre la cuenta del cliente y pide biometría para lo sensible.
+  \item \textbf{Mago (Mercado Pago)} simula y paga solo si el titular confirma.
+  \item \textbf{Erica (Bank of America)} no usa IA generativa ni da consejo de inversión.
+  \item \textbf{Plin por WhatsApp} ejecuta pagos con clave y tope; este caso no copia esa ejecución.
+\end{itemize}
+\vspace{0.3cm}
+\begin{tikzpicture}
+  \node[fill=crema,draw=cobre,line width=0.8pt,rounded corners=2pt,inner sep=7pt,text width=0.95\textwidth] {\small
+    Ninguno publica un VAN. Tampoco se importan los ahorros de Klarna ni el portafolio de modelos de DBS: son otros productos. Por eso el Excel trabaja con supuestos propios y declarados.};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Objetivo SMART}
+\vspace{0.05cm}
+{\small\textbf{Objetivo:} poner en producción en 10 meses, con una inversión $\leq$ USD 1,633 M, un agente que informa y simula en Banca Móvil y web con tres perfiles de permiso, y traspasarlo a operación en el mes 11 con cero operaciones ejecutadas por el agente.}
+\vspace{0.25cm}
+\begin{center}
+\footnotesize
+\begin{tabular}{p{2.3cm}p{10.6cm}}
+\toprule
+\textbf{S} Específico & Agente que informa y simula; 2 canales; 6 habilidades en 3 perfiles. \\
+\textbf{M} Medible & 3 perfiles en producción; 12 pruebas aprobadas; gasto $\leq$ USD 1,633 M; 0 operaciones ejecutadas. \\
+\textbf{A} Alcanzable & No reemplaza sistemas: consume la posición existente y la sesión de los canales. \\
+\textbf{R} Relevante & Estrategia digital (76\,\% de clientes digitales); VAN de USD 2,29 M. \\
+\textbf{T} Temporal & Producción en el mes 10 (H5); cierre y traspaso en el mes 11 (H6). \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Éxito del proyecto frente a objetivos de negocio}
+\vspace{0.1cm}
+{\small Se separa lo que termina en el cierre de lo que persiste como beneficio (PMI, 2021).}
+\vspace{0.3em}
+\begin{columns}[T]
+\begin{column}{0.49\textwidth}
+{\color{cobre}\bfseries Criterios de éxito (mes 11)}
+\begin{itemize}
+\setlength{\itemsep}{0.2em}
+  \item H5 cumplido a tiempo (mes 10).
+  \item Arnés de 12 pruebas aprobado.
+  \item Presupuesto de USD 1,633 M respetado.
+  \item Firmas de Conducta, CISO y Riesgo antes de cada despliegue.
+\end{itemize}
+\end{column}
+\begin{column}{0.49\textwidth}
+{\color{bcp}\bfseries Objetivos de negocio}
+\begin{itemize}
+\setlength{\itemsep}{0.2em}
+  \item \textbf{500\,000} permisos vigentes al año 3.
+  \item VAN al año 5 $\geq$ \textbf{USD 2 M} al 12\,\%.
+  \item \textbf{Cero} operaciones ejecutadas por el agente.
+  \item \textbf{Cero} saldos sin vista vigente.
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{0.35cm}
+{\small\color{muted} Recomendar valores queda fuera por la Ley del Mercado de Valores (MEF, 2023).}
+\end{frame}
+
+\begin{frame}{Solución: análisis de alternativas}
+\vspace{0.1cm}
+{\small Se compararon cuatro opciones, incluida la de no hacer nada. Criterio: cumplir el objetivo SMART sin romper el marco SBS ni la Ley 29733.}
+\vspace{0.3cm}
+\begin{center}
+\footnotesize
+\begin{tabular}{lp{2.6cm}p{2.3cm}lp{5.4cm}}
+\toprule
+\textbf{Alt.} & \textbf{Opción} & \textbf{Inversión} & \textbf{Plazo} & \textbf{Valoración} \\
+\midrule
+A0 & No hacer nada & USD 0 & -- & No atiende la brecha. \\
+A1 & Licenciar terceros & USD 900 mil + tarifa & 6 m & Dependencia; sin permisos granulares revocables. \\
+\rowcolor{white} A2 & \textbf{Construcción propia} & \textbf{USD 1,63 M} & \textbf{10 m} & \textbf{Datos dentro del banco; vía humana (SBS 01741-2026).} \\
+A3 & Híbrida & USD 1,1 M + tarifa & 8 m & Duplica la superficie de cumplimiento. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.25cm}
+{\small\color{muted} Se recomienda A2: es la única que mantiene los datos dentro del banco y cumple la vía humana exigida.}
+\end{frame}
+
+\begin{frame}{Solución: cómo se conecta al banco}
+\vspace{0.12cm}
+\begin{center}
+\begin{tikzpicture}
+  \node[fill=bcp,text=white,rounded corners=2pt,minimum width=2.55cm,minimum height=1.55cm,align=center,font=\footnotesize] (a) at (0,0) {Sistemas\\de producto};
+  \node[fill=bcp2,text=white,rounded corners=2pt,minimum width=2.55cm,minimum height=1.55cm,align=center,font=\footnotesize] (b) at (3.4,0) {Posición\\vigente};
+  \node[fill=cobre,text=bcp,rounded corners=2pt,minimum width=2.7cm,minimum height=1.55cm,align=center,font=\footnotesize] (c) at (6.9,0) {Pasarela de\\herramientas};
+  \node[fill=white,draw=bcp,line width=0.7pt,rounded corners=2pt,minimum width=2.7cm,minimum height=1.55cm,align=center,font=\footnotesize] (d) at (10.4,0) {App y web\\del cliente};
+  \draw[->,thick,bcp] (a) -- (b); \draw[->,thick,bcp] (b) -- (c); \draw[<->,thick,bcp] (c) -- (d);
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+\begin{itemize}
+\setlength{\itemsep}{0.25em}
+  \item Cada producto sigue siendo el dueño de sus saldos y obligaciones.
+  \item El agente usa la vista solo si está al día; si no, dice que el dato no está confirmado.
+  \item Simular y ejecutar son contratos distintos; el umbral de ejecución es \textbf{cero} (FINOS, s.\,f.; MAS, 2026).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solución: habilidades y perfiles de permiso}
+\vspace{0.02cm}
+El cliente concede cada habilidad y puede revocarla (Ley 29733). Revocar corta la herramienta en la llamada siguiente.
+
+\vspace{0.3cm}
+\begin{columns}[T]
+\begin{column}{0.33\textwidth}
+{\color{cobre}\bfseries Consulta}
+\begin{itemize}
+\setlength{\itemsep}{0.15em}
+  \item Ver su posición.
+  \item Explicar un movimiento.
+\end{itemize}
+\end{column}
+\begin{column}{0.33\textwidth}
+{\color{bcp}\bfseries Planificación}
+\begin{itemize}
+\setlength{\itemsep}{0.15em}
+  \item Simular un crédito (cuota, TCEA, total).
+  \item Proyectar un plan contra la deuda.
+\end{itemize}
+\end{column}
+\begin{column}{0.33\textwidth}
+{\color{cobre}\bfseries Ofertas con confirmación}
+\begin{itemize}
+\setlength{\itemsep}{0.15em}
+  \item Ver una oferta ya calculada.
+  \item Preparar un encargo para confirmar.
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{0.4cm}
+\nota{Aceptar, desembolsar o mover dinero lo confirma la persona y lo ejecuta el producto. Siempre hay vía humana (SBS, 2026).}
+\end{frame}
+
+\begin{frame}{Beneficios}
+\vspace{0.02cm}
+\begin{center}
+\small
+\begin{tabular}{lrl}
+\toprule
+\textbf{Partida cuantificada (año 3)} & \textbf{USD M/año} & \textbf{Supuesto principal} \\
+\midrule
+Crédito que el cliente confirma & 1,44 & 2\,\% de simulaciones; ticket S/\,6\,000; margen 6\,\% \\
+Pérdida evitada & 0,63 & pérdida esperada del 3\,\% \\
+Ofertas aceptadas & 0,22 & USD 18 por oferta \\
+\midrule
+\textbf{Total} & \textbf{2,29} & antes de OPEX \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\begin{columns}[T]
+\begin{column}{0.49\textwidth}
+{\color{bcp}\bfseries No cuantificados}\\[0.2em]
+{\small Experiencia y educación financiera; trazabilidad; cumplimiento demostrable; posicionamiento.}
+\end{column}
+\begin{column}{0.49\textwidth}
+{\color{mal}\bfseries No se cuentan}\\[0.2em]
+{\small Ahorro de Clara, NPS, usuarios de Yape, asesoría de inversión.}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\divisor{Pieza 2 de 4}{Evaluación económica}{Inversión · Costos · Beneficios · VAN, TIR, ROI y TCO}
+
+\begin{frame}{Inversión y costos operativos}
+\vspace{0.02cm}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+{\color{bcp}\bfseries Inversión del año 0 (USD)}
+\vspace{0.1cm}
+
+\scriptsize
+\begin{tabular}{p{4.3cm}r}
+\toprule
+Vista de posición del cliente & 480\,000 \\
+Pasarela y consentimiento & 360\,000 \\
+Adaptadores app y web & 280\,000 \\
+Descubrimiento con Yape & 80\,000 \\
+Seguridad, conducta y datos & 140\,000 \\
+Habilitación & 80\,000 \\
+\midrule
+\textbf{CAPEX base} & \textbf{1\,420\,000} \\
+Contingencia 10\,\% + gestión 5\,\% & 213\,000 \\
+\textbf{Inversión total} & \textbf{1\,633\,000} \\
+\bottomrule
+\end{tabular}
+\end{column}
+\begin{column}{0.46\textwidth}
+{\color{cobre}\bfseries OPEX anual (USD)}
+\vspace{0.1cm}
+
+\scriptsize
+\begin{tabular}{p{3.3cm}r}
+\toprule
+Tarifa de plataforma (fija) & 80\,000 \\
+Equipo (+3\,\% anual) & 260\,000 \\
+Soporte y escape (+3\,\% anual) & 40\,000 \\
+Inferencia por sesión & 0,025 \\
+\midrule
+\textbf{OPEX año 1} & \textbf{390\,000} \\
+\textbf{OPEX año 3} & \textbf{460\,770} \\
+\textbf{OPEX 5 años} & \textbf{2\,217\,741} \\
+\bottomrule
+\end{tabular}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Flujo de caja e indicadores}
+\vspace{0.02cm}
+\begin{center}
+\numcard{VAN al 12\,\%}{USD 2,29 M}{Año 0 sin descontar.}
+\hspace{0.12cm}
+\numcard{TIR}{43,0\,\%}{Sobre seis flujos.}
+\hspace{0.12cm}
+\numcard{TCO 5 años}{USD 3,85 M}{Inversión + OPEX.}
+\hspace{0.12cm}
+\numcard{ROI a 5 años}{268,1\,\%}{Sobre la inversión.}
+\end{center}
+\vspace{0.05cm}
+\begin{center}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Millones de USD} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
+\midrule
+Beneficios & -- & 0,37 & 1,01 & 2,29 & 2,29 & 2,29 \\
+OPEX e inversión & $-1{,}63$ & $-0{,}39$ & $-0{,}42$ & $-0{,}46$ & $-0{,}47$ & $-0{,}48$ \\
+\textbf{Flujo neto} & $\mathbf{-1{,}63}$ & $\mathbf{-0{,}02}$ & \textbf{0,59} & \textbf{1,83} & \textbf{1,82} & \textbf{1,81} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+{\centering\footnotesize\color{muted} Recuperación simple: 2,59 años. Método: Sapag Chain (2011). Tasa del 12\,\%: supuesto del equipo.\par}
+\end{frame}
+
+\begin{frame}{Sensibilidad: dónde se cae la inversión}
+\vspace{0.0cm}
+\begin{center}
+\small
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Escenario} & \textbf{VAN} & \textbf{TIR} & \textbf{Lectura} \\
+\midrule
+Base & USD 2,29 M & 43,0\,\% & Se justifica. \\
+Conversión 1,5\,\% & USD 1,43 M & 32,7\,\% & Se justifica. \\
+Conversión 1,0\,\% & USD 0,56 M & 20,8\,\% & Se justifica con menos holgura. \\
+Sin pérdida evitada & USD 0,78 M & 24,0\,\% & Sigue sobre el 12\,\%. \\
+\color{mal}250\,000 permisos & \color{mal}$-$USD 0,38 M & \color{mal}5,1\,\% & \color{mal}Deja de justificarse. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\nota{Con pérdida evitada, la conversión puede caer hasta cerca del \textbf{0,7\,\%}; sin ella, el umbral es \textbf{1,6\,\%}. El supuesto crítico es la \textbf{adopción}: se gestiona como riesgo R04.}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\divisor{Pieza 3 de 4}{Project Charter}{Gobernanza · Alcance · Hitos · Riesgos · Aprobaciones}
+
+\begin{frame}{Charter (1/2): gobernanza y autoridad}
+\vspace{0.05cm}
+\begin{center}
+\footnotesize
+\begin{tabular}{p{3.2cm}p{9.8cm}}
+\toprule
+\textbf{Campo} & \textbf{Contenido} \\
+\midrule
+Proyecto & Agente financiero personal de Banca Personas. \\
+Propósito & Agente 24/7, limitado a lo autorizado, sobre la posición vigente. \\
+Patrocinador & Banca Personas Digital: dueño del beneficio. \\
+Copatrocinio técnico & CIO: conexión con los sistemas existentes. \\
+Aprobador presupuestal & Gerencia de Finanzas: USD 1,633 M y contingencia. \\
+Comité de dirección & Patrocinador, CIO, CISO, Conducta, Riesgo y director. Mensual. \\
+Director del proyecto & \textbf{Puede:} detener salidas sin vista vigente; usar hasta 10\,\% de contingencia; reasignar dentro de la EDT. \textbf{No puede:} comprometer la conversión, cambiar el alcance regulatorio ni comprometer a Yape. \\
+Duración y presupuesto & 11 meses; \textbf{USD 1,633 M}, idéntico al año 0 del flujo. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Charter (2/2): alcance, requisitos y aprobación}
+\vspace{0.02cm}
+\begin{columns}[T]
+\begin{column}{0.49\textwidth}
+{\color{bcp}\bfseries Dentro del alcance}
+\begin{itemize}\footnotesize
+\setlength{\itemsep}{0.1em}
+  \item Vista de posición (cuentas, tarjetas, créditos).
+  \item Pasarela y consentimiento: 6 habilidades, 3 perfiles.
+  \item Adaptadores de Banca Móvil y web; vía humana.
+  \item Descubrimiento con Yape, sin construir.
+\end{itemize}
+{\color{mal}\bfseries Fuera del alcance}
+\begin{itemize}\footnotesize
+\setlength{\itemsep}{0.1em}
+  \item Asesoría de inversión; operaciones del agente.
+  \item Rediseño de app, web o Yape; beneficio de Yape.
+  \item Entrenar el modelo con conversaciones.
+\end{itemize}
+\end{column}
+\begin{column}{0.49\textwidth}
+{\color{cobre}\bfseries Requisitos de alto nivel}
+\begin{itemize}\footnotesize
+\setlength{\itemsep}{0.1em}
+  \item Toda cifra proviene de una vista vigente.
+  \item Consentimiento expreso, diferenciado y revocable.
+  \item Simulador del producto con TCEA.
+  \item Cero ejecución; vía humana siempre.
+\end{itemize}
+{\color{bcp}\bfseries Aprobaciones}
+\begin{itemize}\footnotesize
+\setlength{\itemsep}{0.1em}
+  \item Charter: patrocinador, CIO, CFO y director.
+  \item Despliegue: Conducta, CISO y Riesgo.
+  \item Salida: criterios de éxito, traspaso y lecciones aprendidas.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hitos de alto nivel}
+\vspace{0.1cm}
+\begin{center}
+\small
+\begin{tabular}{llp{9.5cm}}
+\toprule
+\textbf{Mes} & \textbf{Hito} & \textbf{Entregable verificable} \\
+\midrule
+M1  & H0 & Inicio formal y plan de dirección aprobado. \\
+M2  & H1 & Arquitectura, análisis de amenazas y diseño del consentimiento. \\
+M4  & H2 & Vista de posición en ambiente de prueba. \\
+M6  & H3 & Piloto del perfil Consulta (5\,000 clientes). \\
+M8  & H4 & Perfil Planificación en app y web. \\
+M10 & H5 & Perfil Ofertas en producción, con vía humana. \\
+M11 & H6 & Cierre, traspaso y decisión registrada sobre Yape. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.25cm}
+{\small La dependencia más tensa es H2: requiere al CIO y a cada dueño de producto. El cronograma detallado y la EDT se presentan en el E02.}
+\end{frame}
+
+\begin{frame}{Riesgos de alto nivel (P $\times$ I)}
+\vspace{0.05cm}
+{\small Escala 1--5. Severidad $\geq 12$: revisión en cada comité mensual (filas resaltadas).}
+\vspace{0.2cm}
+\begin{center}
+\scriptsize
+\begin{tabular}{p{0.6cm}p{4.6cm}cccp{4.9cm}}
+\toprule
+\textbf{Id} & \textbf{Riesgo} & \textbf{P} & \textbf{I} & \textbf{P$\times$I} & \textbf{Respuesta} \\
+\midrule
+\rowcolor{white} R01 & Respuesta con una vista vencida & 3 & 5 & \textbf{15} & Mitigar: marca de vigencia y pruebas forzadas. \\
+\rowcolor{white} R03 & Conversión bajo el umbral (0,7\,\%) & 3 & 5 & \textbf{15} & Monitorear: revisión al mes 14; plan B. \\
+\rowcolor{white} R04 & Permisos vigentes $<$ 250\,000 al año 3 & 3 & 5 & \textbf{15} & Mitigar: campaña con Marketing. \\
+\rowcolor{white} R07 & Retraso del CIO en la vista (H2) & 3 & 5 & \textbf{15} & Mitigar: OKR compartido; escalamiento. \\
+R02 & Simulación leída como aprobación & 2 & 5 & 10 & Mitigar: plantillas auditadas. \\
+R06 & Dependencia del proveedor del modelo & 3 & 3 & 9 & Mitigar: capa independiente; portabilidad. \\
+R05 & Cambio regulatorio o devaluación & 2 & 4 & 8 & Aceptar: enlace normativo; holgura 1 mes. \\
+R08 & Alcance que se desplaza hacia Yape & 2 & 4 & 8 & Evitar: exclusión explícita en el charter. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\divisor{Pieza 4 de 4}{Matriz de interesados clave}{Poder $\times$ interés · Compromiso actual frente a deseado}
+
+\begin{frame}{Rejilla poder/interés}
+\vspace{-0.1cm}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \fill[white] (0,2.6) rectangle (6,5.2);
+  \fill[cobre!25] (6,2.6) rectangle (12,5.2);
+  \fill[white!70!crema] (0,0) rectangle (6,2.6);
+  \fill[bcp!10] (6,0) rectangle (12,2.6);
+  \draw[bcp,line width=0.6pt] (0,0) rectangle (12,5.2);
+  \draw[bcp] (6,0) -- (6,5.2); \draw[bcp] (0,2.6) -- (12,2.6);
+  \node[anchor=north west,font=\scriptsize\bfseries,text=bcp] at (0.1,5.15) {Mantener satisfecho};
+  \node[anchor=north west,font=\scriptsize\bfseries,text=bcp] at (6.1,5.15) {Gestionar de cerca};
+  \node[anchor=north west,font=\scriptsize\bfseries,text=bcp] at (0.1,2.55) {Monitorear};
+  \node[anchor=north west,font=\scriptsize\bfseries,text=bcp] at (6.1,2.55) {Mantener informado};
+  \node[align=left,anchor=north west,text width=5.6cm] at (0.2,4.65) {CISO · Gerencia de Finanzas\\SBS (regulador) · Dueño de Yape};
+  \node[align=left,anchor=north west,text width=5.6cm] at (6.2,4.65) {Banca Personas Digital (patrocinador)\\CIO y datos · Riesgo de Crédito\\Conducta de Mercado · Proveedor del modelo};
+  \node[align=left,anchor=north west,text width=5.6cm] at (0.2,2.05) {SMV y sociedad agente del grupo};
+  \node[align=left,anchor=north west,text width=5.6cm] at (6.2,2.05) {Clientes de Banca Personas\\Dueño de Clara};
+  \draw[->,thick,muted] (0,-0.25) -- (12,-0.25) node[midway,below,text=muted] {Interés};
+  \draw[->,thick,muted] (-0.25,0) -- (-0.25,5.2) node[midway,above,rotate=90,text=muted] {Poder};
+\end{tikzpicture}
+\end{center}
+\vspace{-0.1cm}
+{\scriptsize\color{muted} Matriz poder/interés (PMI, 2017; Mendelow, 1991). Detalle de rol y acción por interesado en el informe, sección 4.}
+\end{frame}
+
+\begin{frame}{Compromiso de los interesados: actual frente a deseado}
+\vspace{0.02cm}
+\begin{center}
+\footnotesize
+\begin{tabular}{p{3.3cm}ccp{7.3cm}}
+\toprule
+\textbf{Interesado} & \textbf{Actual} & \textbf{Deseado} & \textbf{Acción para cerrar la brecha} \\
+\midrule
+Banca Personas Digital & P & \textbf{L} & Patrocinio visible en el comité. \\
+CIO & N & \textbf{P} & OKR compartido sobre la vista; demostración quincenal. \\
+Riesgo de Crédito & N & \textbf{P} & Taller para validar la pérdida evitada. \\
+Conducta de Mercado & R & \textbf{P} & Revisión temprana de plantillas; vía humana en el mes 3. \\
+Proveedor del modelo & N & \textbf{P} & Cláusulas de no entrenamiento y portabilidad. \\
+CISO & N & \textbf{P} & Análisis de amenazas en el mes 2. \\
+Dueño de Yape & D & N & Reunión informativa (M1) y propuesta al cierre (M11). \\
+Clientes & D & P & Incorporación progresiva y mensajes claros. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.15cm}
+{\footnotesize\color{muted} D desconocedor · R reticente · N neutral · P partidario · L líder (PMI, 2017).}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{frame}{Coherencia: trazabilidad del caso}
+\vspace{0.02cm}
+\begin{center}
+\scriptsize
+\begin{tabular}{p{3.1cm}p{3.1cm}p{2.7cm}p{3.7cm}}
+\toprule
+\textbf{Objetivo de negocio} & \textbf{Beneficio} & \textbf{Dueño} & \textbf{Alcance (paquete)} \\
+\midrule
+500\,000 permisos vigentes & Habilita las 3 partidas & Banca Personas & Perfiles y canales (1.2, 1.3) \\
+VAN $\geq$ USD 2 M & Crédito: 1,44 M/año & Banca Personas & Simular un crédito (1.1, 1.2) \\
+VAN $\geq$ USD 2 M & Pérdida evitada: 0,63 M/año & Riesgo de Crédito & Proyectar un plan (1.1, 1.2) \\
+VAN $\geq$ USD 2 M & Ofertas: 0,22 M/año & Banca Personas & Perfil Ofertas (1.2) \\
+Cero operaciones & Cumplimiento & Conducta de Mercado & Pasarela umbral cero (1.2, 1.5) \\
+Cero saldos sin vista & Confianza & CISO y CIO & Vista con vigencia (1.1) \\
+Yape como propuesta & Sin beneficio & Dueño de Yape & Solo descubrimiento (1.4) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+{\small Cada beneficio del flujo tiene un dueño en la matriz de interesados y un paquete de trabajo en el alcance del charter.}
+\end{frame}
+
+\begin{frame}{Conclusión: criterio de revisión cumplido}
+\vspace{0.1cm}
+\begin{center}
+\small
+\begin{tabular}{p{0.4cm}p{12.6cm}}
+\toprule
+1 & \textbf{La inversión se justifica:} VAN USD 2,29 M, TIR 43\,\%, recuperación en 2,59 años; resiste sin la pérdida evitada (TIR 24\,\%). \\[0.3em]
+2 & \textbf{Objetivo y presupuesto coherentes:} el SMART limita la inversión a USD 1,633 M, la misma cifra del año 0 y del charter. \\[0.3em]
+3 & \textbf{Beneficios coherentes:} las 3 partidas de la ficha son las filas del flujo y del registro de beneficios. \\[0.3em]
+4 & \textbf{Interesados y alcance coherentes:} el patrocinador es el dueño del beneficio; el alcance es la solución propuesta; Yape queda fuera del alcance y del beneficio. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.35cm}
+\begin{center}
+{\color{bcp} La línea base detallada (EDT, cronograma y presupuesto por paquete) se desarrolla en el \textbf{Entregable E02}.}
+\end{center}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{frame}{Referencias (1/2)}
+\vspace{-0.05cm}
+\tiny
+\setlength{\parskip}{0.35em}
+\raggedright
+\hangindent=1.2em Banco de Crédito del Perú. (s.\,f.-a). \textit{Consúltale a Clara}. \url{https://www.viabcp.com/canales/preguntale-a-clara}\par
+\hangindent=1.2em Banco de Crédito del Perú. (s.\,f.-b). \textit{Asesor IA de negocio}. \url{https://www.viabcp.com/contigo-emprendedor-bcp/asesor-ia-ce-whatsapp}\par
+\hangindent=1.2em Bank of America. (s.\,f.). \textit{Erica, your virtual financial assistant}. \url{https://info.bankofamerica.com/en/digital-banking/erica}\par
+\hangindent=1.2em Congreso de la República del Perú. (2011). \textit{Ley N.° 29733, Ley de Protección de Datos Personales}. \url{https://www.leyes.congreso.gob.pe/Documentos/Leyes/29733.pdf}\par
+\hangindent=1.2em Credicorp Ltd. (2025a). \textit{Annual and sustainability report 2024}. \url{https://credicorp.gcs-web.com/system/files-encrypted/nasdaq_kms/assets/2025/02/28/17-34-02/Annual\%20and\%20Sustainability\%20Report\%202024\%20-\%20ENG_.pdf}\par
+\hangindent=1.2em Credicorp Ltd. (2025b). \textit{Results for the quarter ended December 31, 2024} (Form 6-K, Exhibit 99.1). \url{https://www.sec.gov/Archives/edgar/data/1001290/000114036125004694/ef20043470_ex99-1.htm}\par
+\hangindent=1.2em DBS. (2025). \textit{Annual report 2024: Innovating impactful solutions}. \url{https://www.dbs.com/annualreports/2024/innovating-impactful-solutions-for-customers.html}\par
+\hangindent=1.2em Doran, G. T. (1981). There's a S.M.A.R.T. way to write management's goals and objectives. \textit{Management Review, 70}(11), 35--36.\par
+\hangindent=1.2em FINOS. (s.\,f.). \textit{MI-24: Human-in-the-loop action approval gate}. \url{https://air-governance-framework.finos.org/mitigations/mi-24_human-in-the-loop-action-approval-gate.html}\par
+\hangindent=1.2em Interbank. (2025, 31 de octubre). \textit{Plin WhatsApp}. \url{https://interbank.pe/blog/sala-de-prensa/plin-whatsapp-interbank-revolucion-pagos-peru}\par
+\hangindent=1.2em Klarna. (2024, 27 de febrero). \textit{AI assistant handles two-thirds of customer service chats in its first month}. \url{https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/}\par
+\hangindent=1.2em Mendelow, A. (1991). Stakeholder mapping. En \textit{Proceedings of the 2nd International Conference on Information Systems}. Cambridge, MA.\par
+\end{frame}
+
+\begin{frame}{Referencias (2/2)}
+\vspace{-0.05cm}
+\tiny
+\setlength{\parskip}{0.35em}
+\raggedright
+\hangindent=1.2em Mercado Libre. (2026, 13 de agosto). \textit{Mercado Pago lanza Mago}. \url{https://news.mercadolivre.com/pt/mercado-pago-lanca-mago-assistente-financeiro}\par
+\hangindent=1.2em Ministerio de Economía y Finanzas. (2023). \textit{Decreto Supremo N.° 020-2023-EF, Texto Único Ordenado de la Ley del Mercado de Valores}. \url{https://www.smv.gob.pe/ServicioConsultaNormas/uploads/TUO_LMV_DECRETO_SUPREMO_N_020_2023_EF.pdf}\par
+\hangindent=1.2em Monetary Authority of Singapore. (2026). \textit{Safeguards for agentic finance at runtime} (SAFR v1.1). \url{https://www.mas.gov.sg/-/media/mas-media-library/development/fintech/ai-safr/safr-v1-1.pdf}\par
+\hangindent=1.2em Project Management Institute. (2017). \textit{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (6.ª ed.). Project Management Institute.\par
+\hangindent=1.2em Project Management Institute. (2021). \textit{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK) y El estándar para la dirección de proyectos} (7.ª ed.). Project Management Institute.\par
+\hangindent=1.2em Revolut. (2026, 9 de abril). \textit{AIR: AI by Revolut}. \url{https://www.revolut.com/blog/post/air-ai-by-revolut/}\par
+\hangindent=1.2em Sapag Chain, N. (2011). \textit{Proyectos de inversión: Formulación y evaluación} (2.ª ed.). Pearson Educación.\par
+\hangindent=1.2em Superintendencia de Banca, Seguros y AFP. (2017/2026). \textit{Resolución SBS N.° 3274-2017, Reglamento de gestión de conducta de mercado del sistema financiero} (texto consolidado al 2 de julio de 2026). \url{https://intranet2.sbs.gob.pe/dv_int_cn/1731/v12.0/Adjuntos/3274-2017\%20R\%2002.07.26.pdf}\par
+\hangindent=1.2em Superintendencia de Banca, Seguros y AFP. (2021). \textit{Resolución SBS N.° 504-2021, Reglamento para la gestión de la seguridad de la información y la ciberseguridad}. \url{https://busquedas.elperuano.pe/dispositivo/NL/1929393-1}\par
+\hangindent=1.2em Superintendencia de Banca, Seguros y AFP. (2026). \textit{Resolución SBS N.° 01741-2026}. \url{https://intranet2.sbs.gob.pe/dv_int_cn/2589/v1.0/Adjuntos/R\%2001741-2026.pdf}\par
+\hangindent=1.2em Yape. (s.\,f.). \textit{Yape Empresa}. \url{https://www.yape.com.pe/productos/yape-empresa}\par
+\end{frame}
+
+\end{document}

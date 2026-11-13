@@ -1,0 +1,906 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage[top=2.6cm,bottom=2.5cm,left=2.6cm,right=2.6cm,headheight=26pt]{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{caption}
+\usepackage{colortbl}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% ── Colores ───────────────────────────────────────────────────────────────────
+\definecolor{bcp}{HTML}{0B2545}
+\definecolor{cobre}{HTML}{C65D12}
+\definecolor{tinta}{HTML}{1C2833}
+\definecolor{suave}{HTML}{F3EFE7}
+
+% ── Interlineado y párrafos: lectura holgada ─────────────────────────────────
+\setstretch{1.2}
+\setlength{\parskip}{0.65em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+\captionsetup{font=small,labelfont={bf,color=bcp},skip=6pt,justification=centering}
+\captionsetup[table]{position=top}
+
+% ── Encabezado y pie ─────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{bcp}{\small MGT209 · Entregable E01 · Versión 3}}
+\fancyhead[R]{\textcolor{bcp}{\small Caso de negocio y Project Charter}}
+\fancyfoot[L]{\textcolor{tinta}{\footnotesize Agente financiero personal · Banca Personas BCP}}
+\fancyfoot[R]{\textcolor{tinta}{\footnotesize\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{cobre}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[R]{\textcolor{tinta}{\footnotesize\thepage}}\renewcommand{\headrulewidth}{0pt}}
+
+% ── Títulos ──────────────────────────────────────────────────────────────────
+\titleformat{\section}{\Large\bfseries\color{bcp}}{\thesection.}{0.6em}{}[\vspace{-0.2em}{\color{cobre}\titlerule[0.8pt]}]
+\titleformat{\subsection}{\large\bfseries\color{bcp}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{tinta}}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{0.4em}{1.1em}
+\titlespacing*{\subsection}{0pt}{1.5em}{0.6em}
+\titlespacing*{\subsubsection}{0pt}{1.2em}{0.4em}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.35em,topsep=0.4em}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=0.35em,topsep=0.4em}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{0.55em}
+
+\hypersetup{pdftitle={E01 Caso de negocio y Project Charter. Agente financiero personal},pdfauthor={Franco Stywar Antony Vargas Chino; Albert Christian Hidalgo Sánchez; Sergio Perez Ruiz; Carlos E. Ruiz Perez; Dennis Jack Paitan Cano}}
+
+\newcommand{\usd}[1]{USD~#1}
+\newcommand{\pen}[1]{S/~#1}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+% Caja de mensaje clave
+\newcommand{\clave}[1]{%
+  \par\smallskip\noindent\colorbox{suave}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\setstretch{1.15}\small #1}}\par\smallskip}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Portada ──────────────────────────────────────────────────────────────────
+\begin{titlepage}
+\centering
+\vspace*{0.6cm}
+{\color{bcp}\large\bfseries UNIVERSIDAD NACIONAL DE UCAYALI}\\[0.4em]
+{\color{bcp}\normalsize Escuela de Posgrado}\\[0.2em]
+{\color{bcp}\normalsize Maestría en Ingeniería de Sistemas}\\[0.15em]
+{\color{bcp}\normalsize con mención en Gestión de Tecnologías de la Información}\\[2.0cm]
+
+{\color{cobre}\bfseries MGT209 · Gestión de Proyectos en TI}\\[0.3em]
+{\color{cobre}Entregable E01}\\[1.4cm]
+
+{\color{bcp}\rule{0.7\textwidth}{0.8pt}}\\[0.9em]
+{\color{bcp}\fontsize{24}{30}\selectfont\bfseries Caso de negocio y\\[0.2em] constitución del proyecto}\\[0.9em]
+{\Large Agente financiero personal\\[0.2em] de Banca Personas del BCP}\\[0.7em]
+{\color{bcp}\rule{0.7\textwidth}{0.8pt}}\\[0.9em]
+{\itshape Informa y simula. No asesora, no coloca y no mueve dinero.}\\[2.4cm]
+
+{\color{bcp}\bfseries Integrantes}\\[0.5em]
+Franco Stywar Antony Vargas Chino\\
+Albert Christian Hidalgo Sánchez\\
+Sergio Perez Ruiz\\
+Carlos E. Ruiz Perez\\
+Dennis Jack Paitan Cano\\[2.0cm]
+
+\vfill
+{Pucallpa, noviembre de 2026}
+\end{titlepage}
+
+% ── Índices ──────────────────────────────────────────────────────────────────
+\pagenumbering{roman}
+\setcounter{page}{2}
+{\setstretch{1.1}
+\tableofcontents
+\vspace{1.2em}
+\listoftables}
+\clearpage
+
+% ── Resumen ejecutivo ────────────────────────────────────────────────────────
+\section*{Resumen ejecutivo}
+\addcontentsline{toc}{section}{Resumen ejecutivo}
+
+Este documento constituye el Entregable~E01 del curso y reúne las cuatro piezas solicitadas: la ficha ejecutiva del caso de negocio, la evaluación económica básica (respaldada por la hoja de cálculo \path{E01_Evaluacion_Economica_BCP_Agente.xlsx}), el \textit{Project Charter} y la matriz de interesados clave.
+
+El proyecto propone un \textbf{agente financiero personal} para Banca Personas del Banco de Crédito del Perú (BCP), disponible en Banca Móvil y en la web. El agente \textbf{informa y simula} sobre la posición vigente del cliente y solo con las facultades que el propio cliente le concede y puede revocar. No asesora en inversiones, no coloca productos por sí mismo y no mueve dinero: toda operación con efecto patrimonial la confirma la persona en el canal y la ejecuta el sistema del producto.
+
+\begin{table}[H]
+\centering
+\caption{Indicadores principales del caso base.}
+\begin{tabularx}{0.85\textwidth}{@{}X r@{}}
+\toprule
+\textbf{Indicador} & \textbf{Valor} \\
+\midrule
+Inversión del año 0 (CAPEX + contingencia + gestión) & \usd{1\,633\,000} \\
+Valor actual neto (VAN) al 12\,\% & \usd{2\,292\,923} \\
+Tasa interna de retorno (TIR) & 43,0\,\% \\
+Periodo de recuperación simple & 2,59 años \\
+Costo total de propiedad (TCO) a 5 años & \usd{3\,850\,741} \\
+ROI sobre la inversión a 5 años & 268,1\,\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\clave{\textbf{Conclusión.} La inversión se justifica en el caso base y también si se excluye la partida de pérdida evitada (TIR~24,0\,\%). Deja de justificarse si los clientes con permiso vigente se quedan en la mitad de la meta (250\,000), lo que convierte la adopción en el supuesto crítico a vigilar. La línea base detallada de alcance, cronograma y costo se desarrolla en el Entregable~E02.}
+
+\clearpage
+\pagenumbering{arabic}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Ficha ejecutiva}\label{sec:ficha}
+
+La ficha ejecutiva resume el caso de negocio en cuatro elementos: el problema u oportunidad que lo origina, el objetivo SMART, la solución propuesta y los beneficios esperados. En la terminología del PMBOK, el caso de negocio es el documento que justifica económicamente el proyecto y sirve de entrada para el acta de constitución (Project Management Institute [PMI], 2017, 2021).
+
+% ──────────────────────────────────────────────────────────────────────────────
+\subsection{Problema}\label{sec:problema}
+
+\subsubsection{Contexto}
+
+El cliente de banca personas del BCP ya cuenta con aplicación móvil, banca por internet y Yape. Sin embargo, no dispone de un agente propio, activo a cualquier hora, que trabaje sobre su posición financiera real y únicamente con las facultades que él mismo le otorgó.
+
+Según Credicorp, BCP~Perú cerró 2024 con más de 13,7~millones de clientes, de los cuales el 76\,\% opera en canales digitales; Yape registró 13,7~millones de usuarios activos mensuales, definidos como quienes realizaron al menos una transacción de salida en treinta días (Credicorp, 2025a, 2025b). Estas cifras describen la escala del banco; no se utilizan como usuarios del agente propuesto.
+
+\subsubsection{Brecha frente a la oferta actual}
+
+Las soluciones existentes no cubren la necesidad descrita:
+
+\begin{itemize}
+  \item \textbf{Clara} (WhatsApp) informa saldos, préstamos y fechas de pago, pero no simula ni proyecta planes (Banco de Crédito del Perú [BCP], s.\,f.-a).
+  \item \textbf{Salvador} orienta a emprendedores; el propio banco declara que no opera, no vende y no aprueba (BCP, s.\,f.-b).
+\end{itemize}
+
+En otros mercados el patrón se repite con mayor escala. Erica, de Bank of America, no utiliza IA generativa ni da consejo de inversión (Bank of America, s.\,f.); AIR, de Revolut, actúa sobre la cuenta del propio cliente y exige biometría para operaciones sensibles (Revolut, 2026); Mago, de Mercado Pago, simula y paga solo con confirmación del titular (Mercado Libre, 2026). En el Perú, Plin por WhatsApp ejecuta pagos con clave y con un tope (Interbank, 2025); este proyecto deliberadamente no replica esa capacidad de ejecución.
+
+Ninguno de estos referentes publica un VAN. Tampoco son trasladables los ahorros de atención reportados por Klarna (2024) ni el portafolio de modelos analíticos de DBS (2025), porque corresponden a productos distintos. Por ello, la evaluación económica de este caso se construye con supuestos propios y declarados.
+
+\subsubsection{Enunciado del problema}
+
+\clave{Los clientes digitales de Banca Personas no cuentan con un asistente que, de forma segura y con su consentimiento explícito, les informe sobre su posición vigente y les permita simular decisiones financieras (créditos, planes de gasto y ofertas) antes de tomarlas. Esto limita la conversión de simulaciones en productos y expone al cliente a decisiones de endeudamiento sin una proyección previa.}
+
+Los sistemas de los productos no se reemplazan: cada uno sigue siendo el dueño de sus saldos, obligaciones y movimientos. El agente consulta una vista por cliente, con una marca que indica si el dato está vigente. Si la vista no está al día, el agente no responde con el histórico ni completa el vacío con una estimación. Esa es la falla de diseño que el proyecto se compromete a evitar.
+
+\subsubsection{Análisis FODA}
+
+\begin{table}[H]
+\centering
+\caption{Análisis FODA del caso de negocio.}
+\small
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+\toprule
+\textbf{Fortalezas} & \textbf{Oportunidades} \\
+\midrule
+Base de 13,7~millones de clientes, 76\,\% digital. Capacidad interna de datos y canales conversacionales (Clara, Salvador). Marca de confianza para operar con permisos del cliente. &
+Ningún banco peruano ofrece un agente propio con capacidades concedidas por el cliente. Marco regulatorio de la SBS maduro y explícito. Costo decreciente de la inferencia de modelos. \\
+\midrule
+\textbf{Debilidades} & \textbf{Amenazas} \\
+\midrule
+Dependencia del área de TI (CIO) para la vista de posición vigente. Alto riesgo reputacional si el agente afirma un saldo desactualizado. Sin línea base histórica interna de conversión. &
+Cambio regulatorio de la SBS durante el proyecto. Dependencia del proveedor del modelo (\textit{vendor lock-in}). Imitación por competidores antes del año~3. Dependencia de la voluntad del dueño de Yape para fases posteriores. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ──────────────────────────────────────────────────────────────────────────────
+\subsection{Objetivo SMART}\label{sec:smart}
+
+Siguiendo el criterio SMART (específico, medible, alcanzable, relevante y con plazo definido) propuesto por Doran (1981), el objetivo general del proyecto se formula así:
+
+\clave{\textbf{Objetivo general.} Poner en producción, en un plazo de diez meses desde el inicio y con una inversión que no supere \usd{1\,633\,000}, un agente financiero personal en Banca Móvil y en la web del BCP que informa y simula sobre la posición vigente del cliente mediante tres perfiles de permisos que el cliente concede y revoca, y traspasarlo a operación al cierre del mes~11, con cero operaciones ejecutadas por el agente.}
+
+\begin{table}[H]
+\centering
+\caption{Descomposición del objetivo según el criterio SMART.}
+\small
+\begin{tabularx}{\textwidth}{@{}p{2.6cm} X@{}}
+\toprule
+\textbf{Criterio} & \textbf{Cómo lo cumple el objetivo} \\
+\midrule
+\textbf{Específico} & Un agente que informa y simula, en dos canales (Banca Móvil y web), con seis habilidades agrupadas en tres perfiles: Consulta, Planificación y Ofertas con confirmación. \\
+\textbf{Medible} & Tres perfiles en producción; 12 casos de prueba de comportamiento aprobados sin efectos colaterales ni cifras inventadas; gasto del año~0 $\leq$ \usd{1\,633\,000}; cero operaciones ejecutadas por el agente. \\
+\textbf{Alcanzable} & No reemplaza sistemas: consume la posición que ya guardan los productos y usa la sesión existente de los canales. La entrega es incremental por hitos. \\
+\textbf{Relevante} & Atiende la estrategia digital del banco (76\,\% de clientes digitales) y sustenta un VAN positivo de \usd{2,29}~millones. \\
+\textbf{Temporal} & Producción del tercer perfil en el mes~10 (hito H5) y cierre con traspaso a operación en el mes~11 (hito H6). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Criterios de éxito del proyecto}
+
+Se miden al cierre (mes~11) y determinan si el proyecto cumplió su objetivo:
+
+\begin{enumerate}
+  \item \textbf{Hito H5 cumplido a tiempo (mes~10):} los tres perfiles están en producción, con derivación a una persona funcionando.
+  \item \textbf{Arnés de pruebas aprobado:} los 12 casos de comportamiento pasan sin ningún efecto colateral ni cifra inventada antes del lanzamiento.
+  \item \textbf{Presupuesto respetado:} el gasto del año~0 no excede \usd{1\,633\,000} sin una solicitud de cambio aprobada.
+  \item \textbf{Aprobaciones de control:} firma formal de Conducta de Mercado, CISO y Riesgo de Crédito antes de cada despliegue.
+\end{enumerate}
+
+\subsubsection{Objetivos de negocio}
+
+A diferencia de los criterios de éxito, estos objetivos persisten después del cierre y se miden como beneficios. Son supuestos del equipo, no metas publicadas por el banco:
+
+\begin{itemize}
+  \item 500\,000 clientes con un permiso vigente al año~3 (alrededor del 5\,\% de la base digital estimada en 10,4~millones).
+  \item VAN acumulado al año~5 igual o superior a \usd{2\,000\,000} con una tasa de descuento del 12\,\%.
+  \item Cero transferencias o desembolsos ejecutados por el agente.
+  \item Cero afirmaciones de saldo sin vista de posición vigente (auditoría trimestral de trazas).
+\end{itemize}
+
+Yape queda como propuesta al dueño de ese producto: no forma parte de la meta ni del beneficio.
+
+% ──────────────────────────────────────────────────────────────────────────────
+\subsection{Solución propuesta}\label{sec:solucion}
+
+\subsubsection{Análisis de alternativas}
+
+Como buena práctica del caso de negocio, se compararon cuatro alternativas, incluida la de no hacer nada (PMI, 2021). El criterio de decisión es cumplir el objetivo SMART sin vulnerar las restricciones regulatorias de la SBS ni la Ley~N.°~29733.
+
+\begin{table}[H]
+\centering
+\caption{Análisis de alternativas de solución. Se recomienda la alternativa A2.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X p{2.3cm} l@{}}
+\toprule
+\textbf{Alt.} & \textbf{Descripción y valoración} & \textbf{Inversión} & \textbf{Plazo} \\
+\midrule
+A0 & \textit{No hacer nada.} Mantener Clara y Salvador. No atiende la brecha ni el objetivo estratégico. & \usd{0} & -- \\
+A1 & \textit{Licenciar un asistente de terceros.} Genera dependencia del proveedor y no permite permisos granulares y revocables como exige la Ley~29733. & \usd{900}~mil + tarifa por usuario & 6 meses \\
+\rowcolor{suave} \textbf{A2} & \textbf{Construcción propia (recomendada).} Vista de posición + pasarela de herramientas + perfiles concedidos. Es la única que mantiene los datos dentro del banco y garantiza la vía humana (SBS~01741-2026). & \textbf{\usd{1\,633}~mil} & \textbf{10 meses} \\
+A3 & \textit{Híbrida.} Licenciar la comprensión de lenguaje y construir la pasarela. Duplica la superficie de cumplimiento de la Resolución SBS~504-2021. & \usd{1\,100}~mil + tarifa & 8 meses \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Descripción de la solución}
+
+El agente consulta lo que el banco ya tiene; no reemplaza los sistemas de cuentas, tarjetas ni créditos. Su arquitectura lógica tiene cinco componentes:
+
+\begin{itemize}
+  \item \textbf{Sistemas de producto como registro.} El saldo y la obligación nacen en cada producto y allí permanecen.
+  \item \textbf{Vista de posición vigente.} Por cliente se lee saldo, obligaciones, movimientos recientes, ofertas ya calculadas y una marca de vigencia del dato. Si el dato no está al día, la herramienta responde que no está confirmado.
+  \item \textbf{Histórico.} Sirve para auditar, probar el agente y mejorarlo; no contesta el saldo de la sesión cuando existe la vista vigente.
+  \item \textbf{Pasarela de herramientas.} Catálogo cerrado en el que simular y ejecutar son contratos distintos; cada llamada revalida el permiso del cliente y sin aprobación no hay efecto (FINOS, s.\,f.). La Autoridad Monetaria de Singapur recomienda una salvaguarda entre el agente y los sistemas que permita denegar, escalar, ejecutar dentro de un umbral u observar (Monetary Authority of Singapore [MAS], 2026). En este proyecto el umbral de ejecución es cero.
+  \item \textbf{Canales.} La aplicación y la web invocan al agente con la sesión que el cliente ya tiene; no se rediseñan.
+\end{itemize}
+
+Yape no publica un portal de desarrolladores ni una API para que un tercero opere un asistente (Yape, s.\,f.). Por ello el proyecto solo financia un descubrimiento ---un enlace profundo o una API que el dueño de Yape acepte---, sin escribir en sus sistemas.
+
+El agente, en ningún caso: inventa un saldo; usa el histórico como posición actual; desembolsa o mueve dinero desde su propio texto; presenta una simulación como crédito aprobado; ni ofrece productos de inversión.
+
+\subsubsection{Habilidades y perfiles de permiso}
+
+La \textit{habilidad} es lo que el cliente autoriza y el \textit{perfil} es el paquete de habilidades. Revocar un permiso corta la herramienta en la llamada siguiente. Este diseño responde a la Ley~N.°~29733, que exige un consentimiento previo, informado, expreso, para una finalidad determinada y revocable (Congreso de la República del Perú, 2011).
+
+\begin{table}[H]
+\centering
+\caption{Habilidades del agente: lo que puede y no puede hacer cada una.}
+\small
+\begin{tabularx}{\textwidth}{@{}p{3.1cm} X X@{}}
+\toprule
+\textbf{Habilidad} & \textbf{Puede leer o solicitar} & \textbf{No puede} \\
+\midrule
+Ver mi posición      & Saldo, obligaciones y vigencia del dato & Transferir, ni citar una cifra que la herramienta no devolvió \\
+Explicar movimientos & Extracto proyectado & Reclasificar un cargo o abrir una disputa \\
+Simular un crédito   & Cuota, plazo, TCEA y total, desde el simulador del producto & Desembolsar, reservar línea o llamarlo aprobación \\
+Proyectar un plan    & Obligaciones y simulación de flujo (por ejemplo, un viaje) & Comprar, apartar saldo o comprometer un pago \\
+Mostrar ofertas      & Ofertas ya calculadas por el producto & Aceptarlas o contactar a un tercero \\
+Preparar un encargo  & Borrador de monto, destino y producto & Enviarlo si la confirmación falta o expiró \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Perfiles de permiso que el cliente concede.}
+\small
+\begin{tabularx}{\textwidth}{@{}p{3.6cm} X@{}}
+\toprule
+\textbf{Perfil} & \textbf{Habilidades incluidas} \\
+\midrule
+Consulta & Ver mi posición; explicar movimientos. \\
+Planificación & Consulta + simular un crédito + proyectar un plan. \\
+Ofertas con confirmación & Planificación + mostrar ofertas + preparar un encargo. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Aceptar una oferta, desembolsar o mover dinero lo confirma siempre la persona y lo ejecuta el sistema del producto.
+
+\subsubsection{Marco regulatorio que condiciona la solución}
+
+\begin{itemize}
+  \item La Resolución SBS~N.°~3274-2017 (texto consolidado al 2 de julio de 2026) exige transparencia de tasas y comisiones, hoja resumen y simulador para créditos en cuotas (Superintendencia de Banca, Seguros y AFP [SBS], 2017/2026).
+  \item La Resolución SBS~N.°~01741-2026 exige una vía humana cuando la atención es automatizada y consentimientos diferenciados, sin casillas premarcadas (SBS, 2026).
+  \item La Resolución SBS~N.°~504-2021 pide mínimo privilegio, autenticación, registros y contrato con el proveedor que procese los datos (SBS, 2021). En consecuencia, el modelo no se entrena con las conversaciones del cliente.
+  \item No se encontró una norma SBS sobre asesoría automatizada; por eso el proyecto evita la palabra \textit{asesor}: el agente informa y simula.
+\end{itemize}
+
+% ──────────────────────────────────────────────────────────────────────────────
+\subsection{Beneficios}\label{sec:beneficios}
+
+\subsubsection{Beneficios cuantificados}
+
+Entran al flujo de caja tres partidas, todas con supuesto declarado y un tipo de cambio de 3,75~PEN/USD:
+
+\begin{enumerate}
+  \item \textbf{Margen de crédito confirmado.} Margen del primer año del crédito que el cliente confirma después de una simulación. Caso base: 2\,\% de las simulaciones, ticket de \pen{6\,000} y margen del 6\,\%.
+  \item \textbf{Pérdida evitada.} Cuando la proyección muestra que el plan no cabe y el cliente no toma un crédito que sí habría tomado. Caso base: pérdida esperada del 3\,\% del ticket.
+  \item \textbf{Margen de ofertas aceptadas.} Solo si el cliente concedió el perfil Ofertas y acepta en el canal. Caso base: \usd{18} por oferta.
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\caption{Beneficios anuales en régimen (año~3).}
+\small
+\begin{tabularx}{0.85\textwidth}{@{}X r@{}}
+\toprule
+\textbf{Partida} & \textbf{USD por año} \\
+\midrule
+Margen de crédito confirmado & 1\,440\,000 \\
+Pérdida evitada              &   630\,000 \\
+Margen de ofertas aceptadas  &   216\,000 \\
+\midrule
+\textbf{Total} & \textbf{2\,286\,000} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Beneficios no cuantificados}
+
+Se reconocen, pero no entran al flujo para no inflar el caso: mejor experiencia y educación financiera del cliente; trazabilidad completa de cada respuesta del agente; cumplimiento demostrable de las normas de conducta de mercado; y posicionamiento competitivo frente a la banca digital regional.
+
+\subsubsection{Exclusiones explícitas}
+
+No se cuentan: el ahorro de atención de Clara; ingresos atribuidos a una mejora del NPS; usuarios de Yape; ni asesoría de inversión, dado que recomendar valores corresponde a una sociedad agente autorizada por la SMV (Ministerio de Economía y Finanzas [MEF], 2023).
+
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\section{Evaluación económica}\label{sec:economica}
+
+\subsection{Metodología y supuestos}
+
+Se aplica el método de Sapag Chain (2011): flujo de caja neto a cinco años de operación, VAN con el año~0 sin descontar, TIR sobre los seis flujos y periodo de recuperación simple. Se complementa con el costo total de propiedad (TCO) y el retorno sobre la inversión (ROI), pertinentes en proyectos de TI porque hacen visible el costo de operar la solución y no solo el de construirla.
+
+Las cifras proceden de la hoja \path{E01_Evaluacion_Economica_BCP_Agente.xlsx}, organizada en tres pestañas: \textit{Supuestos}, \textit{Evaluación} y \textit{Sensibilidad}. Las celdas en amarillo son supuestos del equipo que el lector puede modificar.
+
+\begin{table}[H]
+\centering
+\caption{Supuestos principales del modelo económico.}
+\small
+\begin{tabularx}{\textwidth}{@{}X r X@{}}
+\toprule
+\textbf{Supuesto} & \textbf{Valor} & \textbf{Observación} \\
+\midrule
+Tasa de descuento & 12\,\% & Supuesto del equipo; no es el costo de capital del BCP \\
+Tipo de cambio & 3,75 PEN/USD & No es un tipo de cambio oficial \\
+Clientes con permiso vigente (años 1 / 2 / 3--5) & 80 / 220 / 500 mil & Rampa del 16\,\% y 44\,\% de la meta \\
+Sesiones por cliente al año & 5 & Volumen que paga inferencia \\
+Mezcla: simulación de crédito / proyección de plan & 30\,\% / 30\,\% & No se solapan \\
+Conversión de simulación a crédito & 2\,\% & Palanca principal del caso \\
+Ticket medio / margen del primer año & \pen{6\,000} / 6\,\% & No es el margen financiero del banco \\
+Planes que no caben / clientes que igual tomarían crédito & 35\,\% / 5\,\% & Base de la pérdida evitada \\
+Pérdida esperada sobre ticket evitado & 3\,\% & No es la mora publicada del BCP \\
+Clientes con perfil Ofertas / aceptación anual & 30\,\% / 8\,\% & Margen de \usd{18} por oferta \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Inversión}
+
+El CAPEX base asciende a \usd{1\,420\,000}, desglosado por paquete de trabajo. Se añade una reserva de contingencia del 10\,\% (\usd{142\,000}) y una reserva de gestión del 5\,\% (\usd{71\,000}), ambas calculadas sobre el CAPEX base y sumadas, no compuestas. La inversión del año~0, que es también el presupuesto del charter, es de \usd{1\,633\,000}. El caso base supone, de forma conservadora, que la contingencia se gasta.
+
+\begin{table}[H]
+\centering
+\caption{Inversión del año~0 por paquete de trabajo.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X r@{}}
+\toprule
+\textbf{Id} & \textbf{Paquete de trabajo} & \textbf{USD} \\
+\midrule
+1.1 & Vista de posición del cliente (modelo, conectores, marca de vigencia) & 480\,000 \\
+1.2 & Pasarela de herramientas y consentimiento & 360\,000 \\
+1.3 & Adaptadores de Banca Móvil y web & 280\,000 \\
+1.4 & Descubrimiento con Yape (sin construcción) & 80\,000 \\
+1.5 & Seguridad, conducta de mercado y datos & 140\,000 \\
+1.6 & Habilitación de canales y del equipo & 80\,000 \\
+\midrule
+ & \textbf{CAPEX base} & \textbf{1\,420\,000} \\
+ & Reserva de contingencia (10\,\%) & 142\,000 \\
+ & Reserva de gestión (5\,\%) & 71\,000 \\
+\midrule
+ & \textbf{Inversión total del año 0} & \textbf{1\,633\,000} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Costos operativos}
+
+El OPEX anual se compone de una tarifa fija de plataforma del modelo (\usd{80\,000}, no crece con los usuarios), un equipo de producto, datos y conducta (\usd{260\,000}) y soporte con atención humana de escape (\usd{40\,000}). Estas dos últimas partidas crecen un 3\,\% anual. A ello se suma un costo variable de inferencia y trazabilidad de \usd{0,025} por sesión.
+
+\begin{table}[H]
+\centering
+\caption{Costos operativos por año (USD).}
+\small
+\begin{tabularx}{\textwidth}{@{}X rrrrr@{}}
+\toprule
+\textbf{Concepto} & \textbf{Año 1} & \textbf{Año 2} & \textbf{Año 3} & \textbf{Año 4} & \textbf{Año 5} \\
+\midrule
+Tarifa de plataforma & 80\,000 & 80\,000 & 80\,000 & 80\,000 & 80\,000 \\
+Equipo               & 260\,000 & 267\,800 & 275\,834 & 284\,109 & 292\,632 \\
+Soporte y escape humano & 40\,000 & 41\,200 & 42\,436 & 43\,709 & 45\,020 \\
+Inferencia y traza   & 10\,000 & 27\,500 & 62\,500 & 62\,500 & 62\,500 \\
+\midrule
+\textbf{OPEX total}  & \textbf{390\,000} & \textbf{416\,500} & \textbf{460\,770} & \textbf{470\,318} & \textbf{480\,153} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Beneficios y flujo de caja}
+
+\begin{table}[H]
+\centering
+\caption{Beneficios, OPEX y flujo de caja neto (millones de USD).}
+\small
+\begin{tabularx}{\textwidth}{@{}X rrrrrr@{}}
+\toprule
+\textbf{Concepto} & \textbf{Año 0} & \textbf{Año 1} & \textbf{Año 2} & \textbf{Año 3} & \textbf{Año 4} & \textbf{Año 5} \\
+\midrule
+Crédito confirmado & -- & 0,23 & 0,63 & 1,44 & 1,44 & 1,44 \\
+Pérdida evitada    & -- & 0,10 & 0,28 & 0,63 & 0,63 & 0,63 \\
+Ofertas aceptadas  & -- & 0,03 & 0,10 & 0,22 & 0,22 & 0,22 \\
+\midrule
+\textbf{Beneficio total} & -- & \textbf{0,37} & \textbf{1,01} & \textbf{2,29} & \textbf{2,29} & \textbf{2,29} \\
+OPEX               & -- & $-0{,}39$ & $-0{,}42$ & $-0{,}46$ & $-0{,}47$ & $-0{,}48$ \\
+Inversión          & $-1{,}63$ & -- & -- & -- & -- & -- \\
+\midrule
+\textbf{Flujo de caja neto} & $\mathbf{-1{,}63}$ & $\mathbf{-0{,}02}$ & \textbf{0,59} & \textbf{1,83} & \textbf{1,82} & \textbf{1,81} \\
+Flujo acumulado    & $-1{,}63$ & $-1{,}66$ & $-1{,}07$ & 0,76 & 2,57 & 4,38 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+El primer año de operación todavía no cubre su OPEX, por la rampa de adopción. El flujo acumulado cruza cero durante el año~3.
+
+\subsection{Indicadores financieros}
+
+\begin{table}[H]
+\centering
+\caption{Indicadores financieros del caso base (tasa de descuento del 12\,\%).}
+\small
+\begin{tabularx}{\textwidth}{@{}p{3.6cm} r X@{}}
+\toprule
+\textbf{Indicador} & \textbf{Caso base} & \textbf{Interpretación} \\
+\midrule
+\textbf{VAN} & \usd{2\,292\,923} & Positivo: el proyecto rinde más que la tasa exigida. \\
+\textbf{TIR} & 43,0\,\% & Supera ampliamente la tasa de descuento del 12\,\%. \\
+Recuperación simple & 2,59 años & El flujo acumulado cruza cero en el año~3. \\
+Beneficios a 5 años & \usd{8\,229\,600} & Sin descontar; tres partidas con supuesto declarado. \\
+OPEX a 5 años & \usd{2\,217\,741} & Tarifa, equipo, soporte e inferencia. \\
+\textbf{TCO} a 5 años & \usd{3\,850\,741} & Inversión (\usd{1\,633\,000}) más OPEX. \\
+\textbf{ROI} sobre inversión & 268,1\,\% & (Beneficios $-$ TCO) / inversión. El CAPEX no se resta dos veces. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Análisis de sensibilidad}
+
+Cada escenario recalcula usuarios, beneficios y OPEX manteniendo constante la inversión. La fila base coincide con la hoja \textit{Evaluación} (la celda de control del Excel debe dar cero).
+
+\begin{table}[H]
+\centering
+\caption{Análisis de sensibilidad sobre las palancas críticas.}
+\small
+\begin{tabularx}{\textwidth}{@{}X r r r@{}}
+\toprule
+\textbf{Escenario} & \textbf{VAN (USD)} & \textbf{TIR} & \textbf{ROI} \\
+\midrule
+Base (conversión 2\,\%, 500\,000 permisos) & 2\,292\,923 & 43,0\,\% & 268,1\,\% \\
+Conversión 1,5\,\%       & 1\,425\,918 & 32,7\,\% & 188,8\,\% \\
+Conversión 1,0\,\%       & 558\,913    & 20,8\,\% & 109,4\,\% \\
+Conversión 0,8\,\%       & 212\,111    & 15,5\,\% &  77,7\,\% \\
+Sin pérdida evitada      & 775\,664    & 24,0\,\% & 129,3\,\% \\
+\rowcolor{suave} Meta de 250\,000 permisos & $-384\,557$ & 5,1\,\% & 23,1\,\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Con la pérdida evitada, la conversión puede bajar hasta cerca del 0,7\,\% antes de que la TIR iguale el 12\,\%. Sin esa partida, el caso todavía pasa (TIR~24,0\,\%) y el umbral de conversión sube a cerca del 1,6\,\%. Lo que sí invalida el caso es la adopción: con 250\,000 permisos vigentes la TIR cae a 5,1\,\% y el VAN se vuelve negativo.
+
+\subsection{Dictamen de justificación}
+
+\clave{\textbf{La inversión se justifica.} El caso base genera un VAN de \usd{2,29}~millones, una TIR del 43,0\,\% y recupera la inversión en 2,59~años. El resultado es robusto ante una caída de la conversión y ante la exclusión de la pérdida evitada. El supuesto crítico es la adopción: por ello se convierte en un riesgo de alta severidad en el charter (R04) y en un indicador con seguimiento mensual en el registro de beneficios.}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\section{Project Charter}\label{sec:charter}
+
+El acta de constitución autoriza formalmente el proyecto y otorga al director la autoridad para aplicar recursos de la organización (PMI, 2017, 2021). Su contenido sigue los elementos que la Guía del PMBOK indica para este documento: propósito, objetivos medibles y criterios de éxito, requisitos de alto nivel, descripción y límites, riesgos generales, resumen de hitos, presupuesto, interesados, requisitos de aprobación, criterios de salida y director asignado con su nivel de autoridad (PMI, 2017).
+
+\subsection{Información general y gobernanza}\label{sec:gobernanza}
+
+\begin{table}[H]
+\centering
+\caption{Información general y gobernanza del proyecto.}
+\small
+\begin{tabularx}{\textwidth}{@{}p{3.8cm} X@{}}
+\toprule
+\textbf{Campo} & \textbf{Contenido} \\
+\midrule
+Nombre del proyecto & Agente financiero personal de Banca Personas. \\
+Organización & Banco de Crédito del Perú, Banca Personas (caso de estudio académico). \\
+Fecha de autorización & Noviembre de 2026. \\
+Duración & 11 meses: 10 de desarrollo y 1 de cierre y traspaso. \\
+Patrocinador principal & Gerencia de Banca Personas Digital. Único dueño del beneficio: permisos vigentes y confirmación del cliente en el canal. \\
+Copatrocinio técnico & CIO. Patrocina la conexión con los sistemas existentes; no comparte la meta de 500\,000 permisos. \\
+Aprobador presupuestal & Gerencia de Finanzas. Aprueba el desembolso de \usd{1\,633\,000} y el uso de la contingencia. \\
+Comité de dirección & Patrocinador, CIO, CISO, Conducta de Mercado, Riesgo de Crédito y director del proyecto. Sesión mensual. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Director del proyecto y nivel de autoridad}
+
+El director del proyecto se designa antes del hito H0 (mes~1).
+
+\begin{itemize}
+  \item \textbf{Puede:} detener una salida que afirme un saldo sin vista vigente o que presente una simulación como crédito aprobado; disponer hasta el 10\,\% de contingencia sin nueva aprobación; reasignar recursos dentro de la EDT.
+  \item \textbf{No puede:} comprometer la conversión del 2\,\%; modificar el alcance regulatorio; ni comprometer al dueño de Yape.
+\end{itemize}
+
+\subsection{Propósito y justificación}
+
+Que el cliente disponga de un agente disponible las 24 horas, en la aplicación y en la web, limitado a lo que él autorizó y apoyado en la posición vigente que ya guardan los productos, no en texto libre ni en el histórico. La justificación económica es la de la sección~\ref{sec:economica}: VAN de \usd{2,29}~millones y TIR del 43,0\,\%.
+
+\subsection{Objetivos medibles y criterios de éxito}
+
+El objetivo del proyecto y sus criterios de éxito son los definidos en la sección~\ref{sec:smart}: tres perfiles en producción al mes~10, arnés de 12 pruebas aprobado, presupuesto no superado y las tres aprobaciones de control antes de cada despliegue.
+
+\subsection{Requisitos de alto nivel}
+
+\begin{enumerate}[label=RQ\arabic*.]
+  \item Toda cifra mostrada al cliente proviene de una herramienta con vista de posición vigente; si no está vigente, se informa que no está confirmada.
+  \item Cada habilidad requiere consentimiento expreso, diferenciado y revocable; la revocación surte efecto en la llamada siguiente.
+  \item Las simulaciones de crédito usan el simulador del producto y muestran cuota, plazo, TCEA y monto total.
+  \item El agente no ejecuta operaciones: aceptar, desembolsar o transferir requiere confirmación de la persona y ejecución del producto.
+  \item Existe una vía de derivación a una persona en todo momento.
+  \item Toda interacción queda registrada con trazas auditables; el modelo no se entrena con conversaciones de clientes.
+\end{enumerate}
+
+\subsection{Alcance inicial}\label{sec:alcance}
+
+\textbf{Dentro del alcance.} Vista de posición para cuentas, tarjetas y créditos de personas; pasarela de herramientas y consentimiento (seis habilidades agrupadas en tres perfiles); adaptadores de Banca Móvil y web; vía humana (SBS~01741-2026); y descubrimiento con Yape, sin construcción.
+
+\textbf{Fuera del alcance.}
+
+\begin{itemize}
+  \item \textit{Por norma:} asesoría de inversión y recomendación de valores (MEF, 2023); desembolsos, transferencias y pagos ejecutados por el agente (umbral de ejecución cero).
+  \item \textit{Por decisión del caso:} rediseño de la aplicación, la web o Yape; reemplazo de Clara o Salvador; escritura autónoma del agente en los sistemas de producto; beneficio atribuido a usuarios de Yape; entrenamiento del modelo con conversaciones de clientes.
+  \item \textit{Diferido a una fase posterior:} pagos con autenticación reforzada; integración productiva con Yape; ampliación a Banca Empresa.
+\end{itemize}
+
+La EDT detallada y su diccionario se entregan en el Entregable~E02.
+
+\subsection{Resumen de hitos}
+
+\begin{table}[H]
+\centering
+\caption{Hitos de alto nivel. El cronograma detallado se entrega en el E02.}
+\small
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+\textbf{Mes} & \textbf{Hito} & \textbf{Entregable verificable} \\
+\midrule
+M1  & H0 & Inicio formal y plan de dirección del proyecto aprobado. \\
+M2  & H1 & Arquitectura, análisis de amenazas y diseño del consentimiento. \\
+M4  & H2 & Vista de posición en ambiente de prueba (sin modificar sistemas). \\
+M6  & H3 & Piloto del perfil Consulta con 5\,000 clientes. \\
+M8  & H4 & Perfil Planificación en aplicación y web. \\
+M10 & H5 & Perfil Ofertas con confirmación en producción, con vía humana. \\
+M11 & H6 & Cierre, traspaso a operación y decisión registrada sobre Yape. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Los hitos forman una cadena secuencial (H0 $\to$ H1 $\to$ \dots\ $\to$ H6). La dependencia más tensa es H2, que requiere coordinación con el CIO y con cada dueño de producto.
+
+\subsection{Presupuesto resumido}
+
+\begin{table}[H]
+\centering
+\caption{Presupuesto autorizado y costo de ciclo de vida.}
+\small
+\begin{tabularx}{0.85\textwidth}{@{}X r@{}}
+\toprule
+\textbf{Concepto} & \textbf{USD} \\
+\midrule
+CAPEX base (seis paquetes de trabajo) & 1\,420\,000 \\
+Reserva de contingencia (10\,\%) & 142\,000 \\
+Reserva de gestión (5\,\%) & 71\,000 \\
+\midrule
+\textbf{Presupuesto autorizado (año 0)} & \textbf{1\,633\,000} \\
+OPEX acumulado a 5 años (post-proyecto) & 2\,217\,741 \\
+\textbf{TCO a 5 años} & \textbf{3\,850\,741} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+El presupuesto autorizado es idéntico a la inversión del año~0 del flujo de caja. El desembolso se libera por hito.
+
+\subsection{Supuestos y restricciones}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos críticos del caso y riesgo asociado.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X p{2.9cm} l@{}}
+\toprule
+\textbf{Id} & \textbf{Supuesto} & \textbf{Dueño} & \textbf{Riesgo} \\
+\midrule
+S01 & Conversión del 2\,\% de simulación a crédito confirmado & Banca Personas & R03 \\
+S02 & 500\,000 permisos vigentes al año~3 & Banca Personas & R04 \\
+S03 & Ticket medio de \pen{6\,000} y margen del 6\,\% en el primer año & Banca Personas & R03 \\
+S04 & Tipo de cambio de 3,75~PEN/USD y tasa de descuento del 12\,\% & Finanzas & R05 \\
+S05 & Pérdida esperada del 3\,\% sobre tickets evitados & Riesgo de Crédito & R03 \\
+S06 & El equipo del CIO entrega la vista de posición en el mes~4 & CIO & R07 \\
+S07 & El proveedor del modelo acepta no entrenar con datos del cliente & CISO & R06 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Restricciones.}
+
+\begin{itemize}
+  \item \textit{Regulatorias:} Resoluciones SBS~3274-2017, 01741-2026 y 504-2021; Ley~N.°~29733; D.\,S.~N.°~020-2023-EF.
+  \item \textit{Técnicas:} no modificar los sistemas de producto; no entrenar el modelo con conversaciones.
+  \item \textit{De plazo:} 10 meses hasta producción y 11 meses hasta el cierre.
+  \item \textit{Presupuestarias:} \usd{1\,633\,000}, incluidas las reservas de contingencia y de gestión.
+  \item \textit{De recursos:} dependencia del equipo del CIO para la vista de posición.
+\end{itemize}
+
+\subsection{Riesgos de alto nivel}
+
+Escala de probabilidad (P) e impacto (I) de 1 (muy bajo) a 5 (muy alto). Severidad = P~$\times$~I. Umbral de atención: severidad $\geq 9$. Los riesgos con severidad $\geq 12$ se revisan en cada comité mensual.
+
+\begin{table}[H]
+\centering
+\caption{Registro de riesgos de alto nivel.}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l X c c c X@{}}
+\toprule
+\textbf{Id} & \textbf{Riesgo} & \textbf{P} & \textbf{I} & \textbf{P$\times$I} & \textbf{Estrategia y respuesta} \\
+\midrule
+\rowcolor{suave} R01 & El agente responde con una cifra de una vista vencida & 3 & 5 & 15 & Mitigar: marca de vigencia obligatoria y pruebas forzadas. \\
+R02 & Una simulación se presenta como crédito aprobado & 2 & 5 & 10 & Mitigar: plantillas auditadas por Conducta de Mercado. \\
+\rowcolor{suave} R03 & Conversión o margen por debajo del umbral (0,7\,\%) & 3 & 5 & 15 & Monitorear: revisión de beneficios al mes~14 y plan alternativo. \\
+\rowcolor{suave} R04 & Permisos vigentes por debajo de 250\,000 al año~3 & 3 & 5 & 15 & Mitigar: campaña con Marketing y revisión trimestral. \\
+R05 & Cambio regulatorio o devaluación durante el proyecto & 2 & 4 & 8 & Aceptar activamente: enlace con Oficialía Normativa y holgura de 1 mes. \\
+R06 & Dependencia del proveedor del modelo & 3 & 3 & 9 & Mitigar: capa independiente del modelo y cláusula de portabilidad. \\
+\rowcolor{suave} R07 & Retraso del CIO en la vista de posición (H2) & 3 & 5 & 15 & Mitigar: OKR compartido y escalamiento tras 2 semanas. \\
+R08 & Ampliación del alcance hacia Yape para forzar el VAN & 2 & 4 & 8 & Evitar: exclusión explícita en el charter; decisión solo al cierre. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Beneficios esperados y seguimiento}
+
+\begin{table}[H]
+\centering
+\caption{Registro de beneficios con dueño posterior al proyecto.}
+\small
+\begin{tabularx}{\textwidth}{@{}X l l p{3.4cm}@{}}
+\toprule
+\textbf{Beneficio} & \textbf{Meta año 3} & \textbf{Medición} & \textbf{Dueño} \\
+\midrule
+Margen por crédito confirmado & \usd{1,44}~M/año & Trimestral & Banca Personas Digital \\
+Pérdida evitada por planificación & \usd{0,63}~M/año & Semestral & Riesgo de Crédito \\
+Margen por ofertas aceptadas & \usd{0,22}~M/año & Trimestral & Banca Personas Digital \\
+Clientes con permiso vigente & 500\,000 & Mensual & Banca Personas Digital \\
+Afirmaciones de saldo sin vista & 0 incidentes & Trimestral & CISO \\
+Operaciones ejecutadas por el agente & 0 & Continua & Conducta de Mercado \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Requisitos de aprobación y criterios de salida}
+
+\begin{itemize}
+  \item \textbf{Aprobación del charter:} firma del patrocinador, del CIO, del CFO y del director del proyecto. El charter entra en vigor con las cuatro firmas.
+  \item \textbf{Aprobación de cada despliegue en producción:} firma de Conducta de Mercado, CISO y Riesgo de Crédito. Sin las tres no hay despliegue.
+  \item \textbf{Criterios de salida del proyecto (mes~11):} criterios de éxito de la sección~\ref{sec:smart} cumplidos y evidenciados; traspaso a operación firmado con plan de soporte; decisión registrada sobre Yape; lecciones aprendidas documentadas; liberación formal del equipo.
+\end{itemize}
+
+\subsection{Firmas de autorización}
+
+\begin{table}[H]
+\centering
+\caption{Firmas de autorización del Project Charter.}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabularx}{\textwidth}{@{}p{4.6cm} X p{2.6cm}@{}}
+\toprule
+\textbf{Rol} & \textbf{Firma} & \textbf{Fecha} \\
+\midrule
+Patrocinador (Banca Personas Digital) & & \\
+CIO & & \\
+CFO (Gerencia de Finanzas) & & \\
+Director del proyecto & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\section{Matriz de interesados clave}\label{sec:interesados}
+
+La identificación y el análisis de interesados usan la matriz de poder e interés descrita en la Guía del PMBOK (PMI, 2017), basada en la rejilla de Mendelow (1991), y el dominio de desempeño de los interesados de la séptima edición (PMI, 2021). Escala: Alto~(A), Medio~(M), Bajo~(B).
+
+\subsection{Identificación y clasificación}
+
+Las estrategias corresponden a los cuatro cuadrantes de la rejilla: \textit{gestionar de cerca} (poder alto, interés alto), \textit{mantener satisfecho} (poder alto, interés bajo o medio), \textit{mantener informado} (poder bajo o medio, interés alto) y \textit{monitorear} (poder e interés bajos).
+
+\begin{table}[H]
+\centering
+\caption{Matriz de interesados clave por poder e interés.}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}p{3.4cm} c c >{\raggedright\arraybackslash}p{2.9cm} X@{}}
+\toprule
+\textbf{Interesado} & \textbf{Poder} & \textbf{Interés} & \textbf{Estrategia} & \textbf{Rol en el proyecto y acción principal} \\
+\midrule
+Banca Personas Digital (patrocinador) & A & A & Gestionar de cerca & Dueño del beneficio; aprueba hitos y acepta entregables. \\
+CIO y plataforma de datos & A & A & Gestionar de cerca & Dueño de los sistemas; entrega la vista de posición (H2). \\
+Riesgo de Crédito & A & A & Gestionar de cerca & Valida el modelo de simulación y de pérdida evitada antes de H3. \\
+Conducta de Mercado & A & A & Gestionar de cerca & Frontera entre informar y asesorar; valida antes de H5. \\
+Proveedor del modelo & A & A & Gestionar de cerca & Disponibilidad del servicio y prohibición contractual de entrenar con datos. \\
+CISO & A & M & Mantener satisfecho & Mínimo privilegio, trazas y contrato con el proveedor. \\
+Gerencia de Finanzas & A & M & Mantener satisfecho & Autoriza desembolsos y contingencia; informe mensual. \\
+SBS (regulador) & A & M & Mantener satisfecho & Conducta, simulador y vía humana; cumplimiento demostrable. \\
+Dueño de Yape & A & B & Mantener satisfecho & Propuesta formal al cierre (H6). \\
+Clientes de Banca Personas & B & A & Mantener informado & Sin su permiso no hay beneficio; participan en el piloto H3. \\
+Dueño de Clara & M & M & Mantener informado & Evitar solapar el canal WhatsApp y el doble conteo. \\
+SMV y sociedad agente del grupo & M & B & Monitorear & Valores e inversión, fuera del alcance desde el diseño. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Evaluación del compromiso: actual frente a deseado}
+
+Niveles de compromiso según la Guía del PMBOK (PMI, 2017): desconocedor~(D), reticente~(R), neutral~(N), partidario~(P) y líder~(L).
+
+\begin{table}[H]
+\centering
+\caption{Matriz de evaluación del compromiso de los interesados.}
+\small
+\begin{tabularx}{\textwidth}{@{}p{3.8cm} c c X@{}}
+\toprule
+\textbf{Interesado} & \textbf{Actual} & \textbf{Deseado} & \textbf{Acción para cerrar la brecha} \\
+\midrule
+Banca Personas Digital & P & L & Patrocinio visible en reuniones generales y en el comité. \\
+CIO & N & P & OKR compartido sobre la vista de posición; demostración quincenal. \\
+Riesgo de Crédito & N & P & Taller conjunto para validar el modelo de pérdida evitada. \\
+Conducta de Mercado & R & P & Revisión temprana de plantillas; vía humana prototipada en el mes~3. \\
+Proveedor del modelo & N & P & Contrato con cláusulas de no entrenamiento y portabilidad desde el mes~1. \\
+CISO & N & P & Análisis de amenazas en el mes~2 con participación directa. \\
+Gerencia de Finanzas & N & P & Informe mensual de ejecución presupuestal por hito. \\
+SBS & D & N & Consulta informativa a través de Oficialía Normativa antes de H5. \\
+Dueño de Yape & D & N & Reunión informativa en el mes~1 y propuesta de cierre en el mes~11. \\
+Clientes & D & P & Incorporación progresiva; mensajes claros sobre qué puede y no puede hacer el agente. \\
+Dueño de Clara & N & P & Acuerdo de convivencia de canales antes de H3. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\section{Coherencia del caso y conclusiones}\label{sec:coherencia}
+
+El criterio de revisión del entregable exige que la inversión se justifique y que objetivos, beneficios, interesados y alcance inicial sean coherentes. La siguiente matriz de trazabilidad muestra cómo cada objetivo de negocio se conecta con un beneficio, un dueño y un elemento del alcance.
+
+\begin{table}[H]
+\centering
+\caption{Matriz de trazabilidad: objetivo, beneficio, interesado y alcance.}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}X p{2.8cm} p{3.0cm} X@{}}
+\toprule
+\textbf{Objetivo de negocio} & \textbf{Beneficio} & \textbf{Dueño} & \textbf{Elemento del alcance} \\
+\midrule
+500\,000 permisos vigentes al año~3 & Habilita las tres partidas & Banca Personas Digital & Perfiles y consentimiento (1.2); canales (1.3, 1.6) \\
+VAN $\geq$ \usd{2}~M & Crédito confirmado (\usd{1,44}~M/año) & Banca Personas Digital & Habilidad \textit{Simular un crédito} (1.1, 1.2) \\
+VAN $\geq$ \usd{2}~M & Pérdida evitada (\usd{0,63}~M/año) & Riesgo de Crédito & Habilidad \textit{Proyectar un plan} (1.1, 1.2) \\
+VAN $\geq$ \usd{2}~M & Ofertas (\usd{0,22}~M/año) & Banca Personas Digital & Perfil Ofertas con confirmación (1.2) \\
+Cero operaciones del agente & Cumplimiento normativo & Conducta de Mercado & Pasarela con umbral cero (1.2, 1.5) \\
+Cero saldos sin vista vigente & Confianza y trazabilidad & CISO y CIO & Vista de posición con marca de vigencia (1.1) \\
+Yape como propuesta & Sin beneficio contado & Dueño de Yape & Solo descubrimiento (1.4) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Conclusiones}
+
+\begin{enumerate}
+  \item \textbf{La inversión se justifica.} Con \usd{1,63}~millones de inversión, el caso base alcanza un VAN de \usd{2,29}~millones, una TIR del 43,0\,\% y una recuperación en 2,59~años. Resiste la exclusión de la pérdida evitada (TIR~24\,\%) y solo deja de justificarse si la adopción cae a la mitad de la meta.
+  \item \textbf{Objetivo y presupuesto son coherentes.} El objetivo SMART limita la inversión a \usd{1\,633\,000}, que es exactamente la inversión del año~0 del flujo y el presupuesto autorizado del charter.
+  \item \textbf{Beneficios coherentes.} Las tres partidas de la ficha ejecutiva son las mismas filas del flujo de caja y del registro de beneficios del charter, cada una con un dueño posterior al proyecto.
+  \item \textbf{Interesados y alcance coherentes.} El patrocinador es el dueño del beneficio y figura como interesado a gestionar de cerca; el alcance (tres perfiles, seis habilidades) es la solución propuesta; Yape queda fuera del alcance y del beneficio.
+\end{enumerate}
+
+El agente informa y simula sobre la posición vigente del cliente; el cliente concede cada habilidad; y el producto, no el modelo, ejecuta. La línea base detallada de alcance (EDT), cronograma y costo se desarrolla en el Entregable~E02.
+
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+{\setstretch{1.1}\small
+\setlength{\parskip}{0.55em}
+\raggedright
+\begin{list}{}{\setlength{\leftmargin}{1.2em}\setlength{\itemindent}{-1.2em}\setlength{\itemsep}{0.55em}}
+
+\item Banco de Crédito del Perú. (s.\,f.-a). \textit{Consúltale a Clara}. \url{https://www.viabcp.com/canales/preguntale-a-clara}
+
+\item Banco de Crédito del Perú. (s.\,f.-b). \textit{Asesor IA de negocio}. \url{https://www.viabcp.com/contigo-emprendedor-bcp/asesor-ia-ce-whatsapp}
+
+\item Bank of America. (s.\,f.). \textit{Erica, your virtual financial assistant}. \url{https://info.bankofamerica.com/en/digital-banking/erica}
+
+\item Congreso de la República del Perú. (2011). \textit{Ley N.°~29733, Ley de Protección de Datos Personales}. \url{https://www.leyes.congreso.gob.pe/Documentos/Leyes/29733.pdf}
+
+\item Credicorp Ltd. (2025a). \textit{Annual and sustainability report 2024}. \url{https://credicorp.gcs-web.com/system/files-encrypted/nasdaq_kms/assets/2025/02/28/17-34-02/Annual%20and%20Sustainability%20Report%202024%20-%20ENG_.pdf}
+
+\item Credicorp Ltd. (2025b). \textit{Results for the quarter ended December 31, 2024} (Form 6-K, Exhibit 99.1). \url{https://www.sec.gov/Archives/edgar/data/1001290/000114036125004694/ef20043470_ex99-1.htm}
+
+\item DBS. (2025). \textit{Annual report 2024: Innovating impactful solutions}. \url{https://www.dbs.com/annualreports/2024/innovating-impactful-solutions-for-customers.html}
+
+\item Doran, G. T. (1981). There's a S.M.A.R.T. way to write management's goals and objectives. \textit{Management Review, 70}(11), 35--36.
+
+\item FINOS. (s.\,f.). \textit{MI-24: Human-in-the-loop action approval gate}. \url{https://air-governance-framework.finos.org/mitigations/mi-24_human-in-the-loop-action-approval-gate.html}
+
+\item Interbank. (2025, 31 de octubre). \textit{Plin WhatsApp}. \url{https://interbank.pe/blog/sala-de-prensa/plin-whatsapp-interbank-revolucion-pagos-peru}
+
+\item Klarna. (2024, 27 de febrero). \textit{AI assistant handles two-thirds of customer service chats in its first month}. \url{https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/}
+
+\item Mendelow, A. (1991). Stakeholder mapping. En \textit{Proceedings of the 2nd International Conference on Information Systems}. Cambridge, MA.
+
+\item Mercado Libre. (2026, 13 de agosto). \textit{Mercado Pago lanza Mago}. \url{https://news.mercadolivre.com/pt/mercado-pago-lanca-mago-assistente-financeiro}
+
+\item Ministerio de Economía y Finanzas. (2023). \textit{Decreto Supremo N.°~020-2023-EF, Texto Único Ordenado de la Ley del Mercado de Valores}. \url{https://www.smv.gob.pe/ServicioConsultaNormas/uploads/TUO_LMV_DECRETO_SUPREMO_N_020_2023_EF.pdf}
+
+\item Monetary Authority of Singapore. (2026). \textit{Safeguards for agentic finance at runtime} (SAFR v1.1). \url{https://www.mas.gov.sg/-/media/mas-media-library/development/fintech/ai-safr/safr-v1-1.pdf}
+
+\item Project Management Institute. (2017). \textit{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (6.ª ed.). Project Management Institute.
+
+\item Project Management Institute. (2021). \textit{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK) y El estándar para la dirección de proyectos} (7.ª ed.). Project Management Institute.
+
+\item Revolut. (2026, 9 de abril). \textit{AIR: AI by Revolut}. \url{https://www.revolut.com/blog/post/air-ai-by-revolut/}
+
+\item Sapag Chain, N. (2011). \textit{Proyectos de inversión: Formulación y evaluación} (2.ª ed.). Pearson Educación.
+
+\item Superintendencia de Banca, Seguros y AFP. (2017/2026). \textit{Resolución SBS N.°~3274-2017, Reglamento de gestión de conducta de mercado del sistema financiero} (texto consolidado al 2 de julio de 2026). \url{https://intranet2.sbs.gob.pe/dv_int_cn/1731/v12.0/Adjuntos/3274-2017%20R%2002.07.26.pdf}
+
+\item Superintendencia de Banca, Seguros y AFP. (2021). \textit{Resolución SBS N.°~504-2021, Reglamento para la gestión de la seguridad de la información y la ciberseguridad}. \url{https://busquedas.elperuano.pe/dispositivo/NL/1929393-1}
+
+\item Superintendencia de Banca, Seguros y AFP. (2026). \textit{Resolución SBS N.°~01741-2026}. \url{https://intranet2.sbs.gob.pe/dv_int_cn/2589/v1.0/Adjuntos/R%2001741-2026.pdf}
+
+
+\item Yape. (s.\,f.). \textit{Yape Empresa}. \url{https://www.yape.com.pe/productos/yape-empresa}
+\end{list}
+}
+
+\end{document}
