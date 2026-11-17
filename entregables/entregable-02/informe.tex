@@ -1,0 +1,342 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage[top=2.6cm,bottom=2.5cm,left=2.4cm,right=2.4cm,headheight=26pt]{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{colortbl}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bcp}{HTML}{0B2545}
+\definecolor{cobre}{HTML}{C65D12}
+\definecolor{tinta}{HTML}{1C2833}
+\definecolor{suave}{HTML}{F3EFE7}
+
+\setstretch{1.15}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.28}
+\captionsetup{font=small,labelfont={bf,color=bcp},skip=6pt,justification=centering}
+\captionsetup[table]{position=top}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{bcp}{\small MGT209 · Entregable E02}}
+\fancyhead[R]{\textcolor{bcp}{\small Línea base de alcance, cronograma y costo}}
+\fancyfoot[L]{\textcolor{tinta}{\footnotesize Agente financiero personal · Banca Personas BCP}}
+\fancyfoot[R]{\textcolor{tinta}{\footnotesize\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{cobre}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}{\Large\bfseries\color{bcp}}{\thesection.}{0.6em}{}[\vspace{-0.2em}{\color{cobre}\titlerule[0.8pt]}]
+\titleformat{\subsection}{\large\bfseries\color{bcp}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{0.7em}{0.7em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
+\setlist[itemize]{leftmargin=1.3em,itemsep=0.25em,topsep=0.3em}
+\setlist[enumerate]{leftmargin=1.5em,itemsep=0.25em,topsep=0.3em}
+
+\hypersetup{pdftitle={E02 Línea base de alcance, cronograma y costo},pdfauthor={Franco Stywar Antony Vargas Chino; Albert Christian Hidalgo Sánchez; Sergio Perez Ruiz; Carlos E. Ruiz Perez; Dennis Jack Paitan Cano}}
+\newcommand{\usd}[1]{USD~#1}
+\newcommand{\clave}[1]{\par\smallskip\noindent\colorbox{suave}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\setstretch{1.1}\small #1}}\par\smallskip}
+
+\begin{document}
+
+\begin{center}
+\vspace*{0.6cm}
+{\color{bcp}\large\bfseries UNIVERSIDAD NACIONAL DE UCAYALI}\\[0.4em]
+{\color{bcp}\normalsize Escuela de Posgrado}\\[0.2em]
+{\color{bcp}\normalsize Maestría en Ingeniería de Sistemas}\\[0.15em]
+{\color{bcp}\normalsize con mención en Gestión de Tecnologías de la Información}\\[1.8cm]
+{\color{cobre}\bfseries MGT209 · Gestión de Proyectos en TI}\\[0.3em]
+{\color{cobre}Entregable E02}\\[1.2cm]
+{\color{bcp}\rule{0.72\textwidth}{0.8pt}}\\[0.8em]
+{\color{bcp}\fontsize{22}{28}\selectfont\bfseries Línea base de alcance,\\[0.15em] cronograma y costo}\\[0.7em]
+{\Large Agente financiero personal\\[0.15em] de Banca Personas del BCP}\\[0.6em]
+{\color{bcp}\rule{0.72\textwidth}{0.8pt}}\\[0.8em]
+{\itshape El mismo proyecto del E01. Cada entregable de la EDT tiene un plazo y un costo.}\\[2.0cm]
+{\color{bcp}\bfseries Integrantes}\\[0.45em]
+Franco Stywar Antony Vargas Chino\\
+Albert Christian Hidalgo Sánchez\\
+Sergio Perez Ruiz\\
+Carlos E. Ruiz Perez\\
+Dennis Jack Paitan Cano\\[1.6cm]
+\vfill
+{Pucallpa, noviembre de 2026}
+\end{center}
+\thispagestyle{empty}
+\clearpage
+
+\section*{Qué cierra este entregable}
+\addcontentsline{toc}{section}{Qué cierra este entregable}
+
+El E01 autorizó el proyecto: un agente que informa y simula, en Banca Móvil y en la web, con una inversión de \usd{1\,633\,000} y cierre al mes~11. Este entregable baja esa autorización a tres líneas base. El alcance es la lista de requisitos y la EDT con su diccionario. El tiempo es el cronograma, con relaciones, hitos y ruta crítica. El costo es el presupuesto de los mismos paquetes del charter.
+
+\clave{Cada paquete de la EDT se puede seguir hasta una semana y hasta un monto. Esos montos suman el presupuesto autorizado. No hay una cifra nueva.}
+
+El detalle calculable está en \path{E02_Linea_Base_Alcance_Cronograma_Costo.xlsx}. La duración y el costo de cada actividad están en amarillo. Las fechas, la holgura y los totales son fórmulas. Dos celdas de control tienen que dar cero: el CAPEX base menos \usd{1\,420\,000}, y el presupuesto menos \usd{1\,633\,000}.
+
+\section{Requisitos priorizados}
+
+La prioridad usa MoSCoW. \textbf{Must} es lo que el charter exige para dar por cumplido el proyecto. \textbf{Should} entra en la línea base, pero puede retrasarse sin mover la ruta crítica. \textbf{Won't} se escribe para que no vuelva a la EDT: ya está fuera del charter.
+
+\begin{table}[H]
+\centering
+\caption{Requisitos de la línea base. El costo es el del paquete, compartido por los requisitos que caen en él.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l l X l l@{}}
+\toprule
+\textbf{Id} & \textbf{Prioridad} & \textbf{Requisito} & \textbf{EDT} & \textbf{Hito} \\
+\midrule
+RQ01 & Must & Toda cifra sale de una vista vigente. Si no lo está, se dice que no está confirmada. & 1.1 & H2 \\
+RQ02 & Must & Consentimiento expreso, diferenciado y revocable. Revocar corta la llamada siguiente. & 1.2 & H3 \\
+RQ03 & Must & La simulación usa el simulador del producto: cuota, plazo, TCEA y total. & 1.2 & H4 \\
+RQ04 & Must & El agente no ejecuta. Confirma la persona y ejecuta el producto. & 1.2 & H5 \\
+RQ05 & Must & Hay una vía humana en todo momento. & 1.5 & H5 \\
+RQ06 & Must & Cada interacción queda trazada. El modelo no se entrena con la conversación. & 1.5 & H5 \\
+RQ07 & Must & Piloto del perfil Consulta con 5\,000 clientes. & 1.3 & H3 \\
+RQ08 & Must & Planificación queda en la aplicación y en la web. & 1.3 & H4 \\
+RQ09 & Must & Ofertas con confirmación queda en producción, con vía humana. & 1.3 & H5 \\
+RQ10 & Must & Los doce casos de comportamiento pasan, sin efecto de lado, antes del piloto y antes de producción. & 1.5 & H5 \\
+\rowcolor{suave} RQ11 & Should & Descubrimiento con Yape y decisión registrada. No se construye. & 1.4 & H6 \\
+\rowcolor{suave} RQ12 & Should & El personal de canales queda habilitado para el piloto y para la salida. & 1.6 & H5 \\
+RQ13 & Won't & No asesora, no recomienda valores y no reemplaza a Clara ni a Salvador. & --- & --- \\
+RQ14 & Won't & No se rediseña la app, la web ni Yape, y no se escribe en los sistemas de producto. & --- & --- \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+RQ11 es el único requisito de la línea base que no está en la ruta crítica: el descubrimiento puede terminar hasta la semana~40 sin mover el cierre. RQ12 habilita a las personas; la actividad del piloto tiene cuatro semanas de holgura, y la de la salida a producción está en la ruta porque comparte la ventana con las herramientas de Ofertas.
+
+\section{EDT y diccionario}
+
+La EDT tiene un solo entregable mayor y siete paquetes. Los seis primeros de producto son los del presupuesto del charter, con el mismo identificador y el mismo monto. El paquete 1.0 es la dirección del proyecto y se paga con la reserva de gestión. La contingencia no es un paquete: no produce un entregable.
+
+\begin{table}[H]
+\centering
+\caption{Paquetes de la EDT. Los montos salen de la suma de actividades.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X r@{}}
+\toprule
+\textbf{EDT} & \textbf{Paquete} & \textbf{USD} \\
+\midrule
+1.0 & Dirección del proyecto & 71\,000 \\
+1.1 & Vista de posición del cliente & 480\,000 \\
+1.2 & Pasarela de herramientas y consentimiento & 360\,000 \\
+1.3 & Adaptadores de Banca Móvil y web & 280\,000 \\
+1.4 & Descubrimiento con Yape, sin construirlo & 80\,000 \\
+1.5 & Seguridad, conducta de mercado y datos & 140\,000 \\
+1.6 & Habilitación de canales y del equipo & 80\,000 \\
+\midrule
+ & CAPEX base, paquetes 1.1 a 1.6 & 1\,420\,000 \\
+ & Reserva de contingencia, 10\,\% del CAPEX base & 142\,000 \\
+ & \textbf{Presupuesto autorizado} & \textbf{1\,633\,000} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La regla del 100\,\% se cumple dentro del alcance del charter. Lo que el acta dejó fuera no tiene código en la EDT: desembolsos del agente, asesoría, rediseño de canales, reemplazo de Clara o de Salvador, escritura en los sistemas de producto, y entrenar el modelo con conversaciones.
+
+\subsection{Diccionario breve}
+
+\begin{table}[H]
+\centering
+\caption{Diccionario de la EDT. El criterio de aceptación es lo que se revisa en el hito.}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+\textbf{EDT} & \textbf{Entregable y aceptación} & \textbf{Cuándo y quién} \\
+\midrule
+1.0 & Plan de dirección firmado. Al cierre: traspaso, soporte, lecciones y la decisión sobre Yape. & H0, semana~4, y H6, semana~44. Director del proyecto. \\
+1.1 & Vista de prueba para cuentas, tarjetas y créditos, con marca de vigencia. Si el dato no está vigente, la herramienta no afirma el saldo. Los sistemas de producto no se modifican. & H2, semana~16, mes~4. CIO. \\
+1.2 & Seis habilidades, tres perfiles y revocación en la llamada siguiente. Simular no desembolsa. & Consulta en H3, Planificación en H4, Ofertas en H5. Banca Personas Digital. \\
+1.3 & El agente se abre con la sesión que el cliente ya tiene, en la app y en la web. No hay una aplicación nueva. & H3, H4 y H5. Dueño de canales. \\
+1.4 & Informe de enlace profundo o de una API que el dueño de Yape acepte. No se escribe en sus sistemas. & H6. Director del proyecto. \\
+1.5 & Trazas, mínimo privilegio, vía humana y doce casos de comportamiento aprobados, sin efecto de lado. & Antes de H3 y antes de H5. CISO y Conducta de mercado. \\
+1.6 & El personal de canales conoce el límite: informa y simula, no asesora ni coloca. & H3 y H5. Banca Personas Digital. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Los doce casos de prueba no son un octavo paquete. El charter ya los exige como criterio de éxito, y su costo está dentro de los \usd{140\,000} de seguridad y conducta: \usd{60\,000} para diseñarlos, \usd{20\,000} para el piloto y \usd{60\,000} para la salida a producción.
+
+\section{Cronograma}
+
+La unidad es la semana. El mes tiene cuatro semanas. El mes~1 termina en la semana~4 y el mes~11 termina en la semana~44. Así los hitos del charter caen en el mismo mes que el acta: H0 en el mes~1, H1 en el mes~2, H2 en el mes~4, H3 en el mes~6, H4 en el mes~8, H5 en el mes~10 y H6 en el mes~11.
+
+La relación es fin-inicio, salvo donde se indica un paralelo. El inicio temprano de una actividad es el máximo fin de sus predecesoras, más una semana. La holgura total es inicio tardío menos inicio temprano. La ruta crítica es la de holgura cero. El fin tardío del proyecto se ancla al fin temprano, de modo que alargar una actividad crítica mueve el cierre.
+
+\begin{table}[H]
+\centering
+\caption{Actividades, relaciones y holgura. En negrita, la ruta crítica.}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l l X l r r r@{}}
+\toprule
+\textbf{Id} & \textbf{EDT} & \textbf{Actividad} & \textbf{Predecesora} & \textbf{Duración} & \textbf{Fin} & \textbf{Holgura} \\
+\midrule
+\textbf{A01} & 1.0 & Inicio y plan de dirección & --- & 4 & 4 & 0 \\
+\textbf{A02} & 1.0 & Arquitectura, amenazas y consentimiento & A01 & 4 & 8 & 0 \\
+\textbf{A03} & 1.1 & Vista de posición en prueba & A02 & 8 & 16 & 0 \\
+\textbf{A04} & 1.2 & Pasarela y consentimiento de Consulta & A02 & 8 & 16 & 0 \\
+A05 & 1.5 & Diseño de controles y de los doce casos & A02 & 6 & 14 & 4 \\
+A06 & 1.4 & Descubrimiento con Yape & A02 & 8 & 16 & 24 \\
+\textbf{A07} & 1.3 & Adaptador de Consulta & A03, A04 & 6 & 22 & 0 \\
+A08 & 1.6 & Habilitación del piloto & A05 & 4 & 18 & 4 \\
+\textbf{A09} & 1.5 & Pruebas y piloto de Consulta & A07, A08, A05 & 2 & 24 & 0 \\
+\textbf{A10} & 1.2 & Herramientas de Planificación & A09 & 4 & 28 & 0 \\
+\textbf{A11} & 1.3 & Adaptador de Planificación & A10 & 4 & 32 & 0 \\
+\textbf{A12} & 1.2 & Herramientas de Ofertas & A11 & 4 & 36 & 0 \\
+\textbf{A13} & 1.3 & Adaptador de Ofertas & A11 & 4 & 36 & 0 \\
+\textbf{A14} & 1.6 & Habilitación de la salida & A11 & 4 & 36 & 0 \\
+\textbf{A15} & 1.5 & Pruebas de producción y tres firmas & A12, A13, A14 & 4 & 40 & 0 \\
+\textbf{A16} & 1.0 & Cierre, traspaso y decisión sobre Yape & A15, A06 & 4 & 44 & 0 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent La columna Fin es la semana de fin temprano. La dirección durante los once meses es un nivel de esfuerzo de \usd{16\,000}: corre de la semana~1 a la~44 y no entra a la red.
+
+\subsection{Hitos}
+
+\begin{table}[H]
+\centering
+\caption{Los siete hitos del charter, ahora con semana.}
+\small
+\begin{tabularx}{\textwidth}{@{}l c c X@{}}
+\toprule
+\textbf{Hito} & \textbf{Semana} & \textbf{Mes} & \textbf{Queda cerrado cuando} \\
+\midrule
+H0 & 4 & 1 & El plan de dirección está aprobado. \\
+H1 & 8 & 2 & Hay arquitectura, análisis de amenazas y diseño del consentimiento. \\
+H2 & 16 & 4 & La vista de cuentas, tarjetas y créditos responde en prueba. \\
+H3 & 24 & 6 & El piloto de Consulta está en marcha con 5\,000 clientes y los doce casos pasaron. \\
+H4 & 32 & 8 & Planificación está en la aplicación y en la web. \\
+H5 & 40 & 10 & Ofertas con confirmación está en producción y hay vía humana. Conducta de mercado, CISO y Riesgo de crédito firmaron. \\
+H6 & 44 & 11 & Hay traspaso, soporte y una decisión registrada sobre Yape. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Ruta crítica}
+
+La ruta crítica dura 44 semanas y es la cadena que pone los tres perfiles en producción:
+
+\clave{A01, A02, A03 y A04 en paralelo, A07, A09, A10, A11, y en paralelo A12, A13 y A14, luego A15 y A16.}
+
+A03 y A04 terminan juntas en la semana~16. Si la vista de posición o la pasarela se atrasan, el piloto se atrasa. Es la dependencia que el charter ya marcaba como la más tensa, a cargo del CIO. A12, A13 y A14 ocupan la misma ventana, de la semana~33 a la~36. Las tres tienen que terminar para que empiecen las pruebas de producción. Alargar cualquiera de las tres mueve H5 y H6.
+
+Fuera de la ruta quedan tres actividades. El diseño de los doce casos (A05) y la habilitación del piloto (A08) pueden demorarse cuatro semanas. El descubrimiento con Yape (A06) puede demorarse 24 semanas: su única sucesora es el cierre, que de todos modos espera a la semana~41. Por eso Yape es Should y no Must.
+
+\section{Presupuesto, recursos y supuestos}
+
+\subsection{De la actividad al presupuesto}
+
+El costo de un paquete es la suma de sus actividades. No se usa una tarifa por hora: el charter fijó el paquete, y este entregable solo lo reparte. El reparto es un supuesto del equipo, según el peso del entregable. La vista de posición se concentra en una sola actividad porque es un solo entregable de prueba. La pasarela y los adaptadores se reparten entre los tres perfiles, con más peso en Consulta, que abre el camino.
+
+\begin{table}[H]
+\centering
+\caption{Costo por actividad. Suma de 1.1 a 1.6: \usd{1\,420\,000}. Suma de 1.0: \usd{71\,000}.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l l X r@{}}
+\toprule
+\textbf{Id} & \textbf{EDT} & \textbf{Actividad} & \textbf{USD} \\
+\midrule
+A01 & 1.0 & Inicio y plan de dirección & 15\,000 \\
+A02 & 1.0 & Arquitectura, amenazas y consentimiento & 20\,000 \\
+A16 & 1.0 & Cierre, traspaso y decisión sobre Yape & 20\,000 \\
+--- & 1.0 & Dirección durante los 11 meses & 16\,000 \\
+A03 & 1.1 & Vista de posición en prueba & 480\,000 \\
+A04 & 1.2 & Pasarela de Consulta & 200\,000 \\
+A10 & 1.2 & Herramientas de Planificación & 80\,000 \\
+A12 & 1.2 & Herramientas de Ofertas & 80\,000 \\
+A07 & 1.3 & Adaptador de Consulta & 110\,000 \\
+A11 & 1.3 & Adaptador de Planificación & 90\,000 \\
+A13 & 1.3 & Adaptador de Ofertas & 80\,000 \\
+A06 & 1.4 & Descubrimiento con Yape & 80\,000 \\
+A05 & 1.5 & Diseño de controles y de los doce casos & 60\,000 \\
+A09 & 1.5 & Pruebas y piloto de Consulta & 20\,000 \\
+A15 & 1.5 & Pruebas de producción y tres firmas & 60\,000 \\
+A08 & 1.6 & Habilitación del piloto & 30\,000 \\
+A14 & 1.6 & Habilitación de la salida & 50\,000 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La contingencia es \usd{142\,000}, el 10\,\% del CAPEX base. No se asigna a una actividad. Cubre dos riesgos del charter: que el agente responda con una cifra de una vista vencida (R01) y que el CIO atrase la vista de posición (R07). El caso de negocio del E01 supone que esa reserva se gasta. En esta línea base sigue sin dueño hasta que el riesgo ocurra. El director puede disponer de ella hasta el límite que el charter le dio, sin una aprobación nueva.
+
+El presupuesto autorizado es CAPEX base más dirección más contingencia: \(1\,420\,000 + 71\,000 + 142\,000 = 1\,633\,000\).
+
+\subsection{Recursos}
+
+\begin{table}[H]
+\centering
+\caption{Recurso principal de cada paquete. El costo ya está en el paquete.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+\textbf{EDT} & \textbf{Quién hace el trabajo} & \textbf{Qué no hace} \\
+\midrule
+1.0 & Un director de proyecto durante los 11 meses. & No promete la conversión del 2\,\% ni compromete a Yape. \\
+1.1 & Equipo del CIO y dueños de cuentas, tarjetas y créditos. & No modifica esos sistemas. \\
+1.2 & Equipo de herramientas y consentimiento. & No abre el catálogo ni ejecuta un pago. \\
+1.3 & Equipo de canales, sobre la sesión existente. & No rediseña la aplicación ni la web. \\
+1.4 & Un analista de descubrimiento. & No escribe en Yape. \\
+1.5 & Conducta de mercado, CISO y Riesgo de crédito. & No firman un despliegue si un caso falla. \\
+1.6 & Equipo de canales, en formación. & No convierte al personal en colocadores del agente. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Supuestos de esta línea base}
+
+\begin{enumerate}
+  \item El mes tiene cuatro semanas y el proyecto dura 44 semanas, del mes~1 al mes~11 del charter.
+  \item Las relaciones son fin-inicio. Donde hay paralelo, las tres ramas tienen que terminar antes de la siguiente actividad común.
+  \item El costo del paquete es el del charter. El reparto entre actividades es del equipo y está en amarillo.
+  \item La contingencia es el 10\,\% del CAPEX base y no se compone con la reserva de gestión.
+  \item El OPEX de cinco años, \usd{2\,217\,741}, empieza después del cierre. No entra en los \usd{1\,633\,000}.
+  \item No se resta el sueldo de los asesores que hoy llevan cartera. El agente no toma ese trabajo: informa y simula, y la norma exige una vía humana.
+\end{enumerate}
+
+\section{Trazabilidad}
+
+El criterio del curso pide seguir cada entregable de la EDT hasta un plazo y un costo. Esta es la cadena, de una sola lectura.
+
+\begin{table}[H]
+\centering
+\caption{Del paquete al hito y al costo.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X c r@{}}
+\toprule
+\textbf{EDT} & \textbf{Se acepta en} & \textbf{Semana} & \textbf{USD} \\
+\midrule
+1.0 & H0 el plan, H6 el cierre & 4 y 44 & 71\,000 \\
+1.1 & H2, vista en prueba & 16 & 480\,000 \\
+1.2 & H3, H4 y H5, un perfil por hito & 24, 32 y 40 & 360\,000 \\
+1.3 & H3, H4 y H5, el adaptador de cada perfil & 24, 32 y 40 & 280\,000 \\
+1.4 & H6, decisión sobre Yape & 44 & 80\,000 \\
+1.5 & H3 el piloto y H5 la producción & 24 y 40 & 140\,000 \\
+1.6 & H3 el piloto y H5 la salida & 24 y 40 & 80\,000 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Si se cambia la duración de A03, la vista de posición, la fórmula del Excel mueve H2, el piloto y todos los hitos posteriores, y la holgura de Yape cambia. Si se cambia un costo amarillo, la celda de control del CAPEX deja de ser cero: el paquete ya no es el del charter, y el presupuesto autorizado tampoco. Esa es la prueba de que las tres líneas base describen el mismo proyecto.
+
+\end{document}
