@@ -108,7 +108,7 @@ El E01 autorizó el proyecto: un agente que informa y simula, en Banca Móvil y 
 
 \clave{Cada paquete de la EDT se puede seguir hasta una semana y hasta un monto. Esos montos suman el presupuesto autorizado. No hay una cifra nueva.}
 
-El detalle calculable está en \path{E02_Linea_Base_Alcance_Cronograma_Costo.xlsx}. La duración y el costo de cada actividad están en amarillo. Las fechas, la holgura y los totales son fórmulas. Dos celdas de control tienen que dar cero: el CAPEX base menos \usd{1\,420\,000}, y el presupuesto menos \usd{1\,633\,000}.
+El detalle calculable está en \path{E02_Linea_Base_Alcance_Cronograma_Costo.xlsx}. La duración y el costo de cada actividad están en amarillo. Las fechas, la holgura, el gasto por mes y los totales son fórmulas. Dos celdas de control tienen que dar cero: el CAPEX base menos \usd{1\,420\,000}, y el presupuesto menos \usd{1\,633\,000}.
 
 \section{Requisitos priorizados}
 
@@ -201,6 +201,8 @@ La unidad es la semana. El mes tiene cuatro semanas. El mes~1 termina en la sema
 
 La relación es fin-inicio, salvo donde se indica un paralelo. El inicio temprano de una actividad es el máximo fin de sus predecesoras, más una semana. La holgura total es inicio tardío menos inicio temprano. La ruta crítica es la de holgura cero. El fin tardío del proyecto se ancla al fin temprano, de modo que alargar una actividad crítica mueve el cierre.
 
+Esas duraciones son juicio del equipo, por analogía con una integración bancaria de solo lectura. No hay un histórico del BCP para este agente ni una estimación de tres puntos. Por eso la duración, igual que el costo, está en amarillo.
+
 \begin{table}[H]
 \centering
 \caption{Actividades, relaciones y holgura. En negrita, la ruta crítica.}
@@ -262,6 +264,15 @@ La ruta crítica dura 44 semanas y es la cadena que pone los tres perfiles en pr
 A03 y A04 terminan juntas en la semana~16. Si la vista de posición o la pasarela se atrasan, el piloto se atrasa. Es la dependencia que el charter ya marcaba como la más tensa, a cargo del CIO. A12, A13 y A14 ocupan la misma ventana, de la semana~33 a la~36. Las tres tienen que terminar para que empiecen las pruebas de producción. Alargar cualquiera de las tres mueve H5 y H6.
 
 Fuera de la ruta quedan tres actividades. El diseño de los doce casos (A05) y la habilitación del piloto (A08) pueden demorarse cuatro semanas. El descubrimiento con Yape (A06) puede demorarse 24 semanas: su única sucesora es el cierre, que de todos modos espera a la semana~41. Por eso Yape es Should y no Must.
+
+La red usa la precedencia de la tabla. Cada flecha es fin-inicio. Donde hay dos o tres nodos en cobre, cualquiera de esas ramas es ruta crítica: A03 y A04 terminan juntas, y A12, A13 y A14 también. Sumar una sola de esas ramas con el resto de la cadena da 44 semanas. La línea exterior, la que dice que la cadena sigue, no es un atajo: es el paso de A09 a A10.
+
+\begin{figure}[H]
+\centering
+\caption{Red del cronograma. El nodo cobre está en la ruta crítica. El nodo azul tiene holgura, y el número de semanas de esa holgura va en el propio nodo.}
+\label{fig:red}
+\includegraphics[width=\textwidth]{diagrama-ruta-critica.pdf}
+\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -354,7 +365,23 @@ A14 & 1.6 & Habilitación de la salida & 50\,000 \\
 \end{tabularx}
 \end{table}
 
-La contingencia es \usd{142\,000}, el 10\,\% del CAPEX base. No se asigna a una actividad. Cubre dos riesgos del charter: que el agente responda con una cifra de una vista vencida (R01) y que el CIO atrase la vista de posición (R07). El caso de negocio del E01 supone que esa reserva se gasta. En esta línea base sigue sin dueño hasta que el riesgo ocurra. El director puede disponer de ella hasta el límite que el charter le dio, sin una aprobación nueva.
+La contingencia es \usd{142\,000}, el 10\,\% del CAPEX base. No se asigna a una actividad. Cubre dos riesgos que el charter ya calificó con probabilidad~3, impacto~5 y severidad~15. El 10\,\% es la regla del acta: no es la suma de un valor monetario esperado, y los \usd{142\,000} son una sola reserva para los dos.
+
+\begin{table}[H]
+\centering
+\caption{Riesgos del charter que puede cubrir la contingencia. La reserva sigue sin asignar.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X l X@{}}
+\toprule
+\textbf{Id} & \textbf{Riesgo} & \textbf{Paquete} & \textbf{Para qué se usaría} \\
+\midrule
+R01 & El agente responde con una cifra de una vista vencida. & 1.1 y 1.5 & Rehacer la marca de vigencia o repetir las pruebas. \\
+R07 & El CIO atrasa la vista de posición y H2 pasa de la semana~16. & 1.1 & Sostener la vista hasta que responda en prueba. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+El caso de negocio del E01 supone que esa reserva se gasta. En esta línea base sigue sin dueño hasta que el riesgo ocurra. El director puede disponer de ella hasta el límite que el charter le dio, sin una aprobación nueva.
 
 El presupuesto autorizado es CAPEX base más dirección más contingencia: \(1\,420\,000 + 71\,000 + 142\,000 = 1\,633\,000\).
 
@@ -395,6 +422,56 @@ El presupuesto autorizado es CAPEX base más dirección más contingencia: \(1\,
 \end{tikzpicture}
 \end{figure}
 
+\subsection{Gasto por mes}
+
+El gasto de cada actividad se reparte entre las semanas que van de su inicio temprano a su fin temprano. Si el costo no es divisible entre esas semanas, el residuo de dólares queda en las últimas. La contingencia no entra en la tabla: no tiene mes hasta que un riesgo la active. El descubrimiento con Yape aparece en los meses~3 y~4 porque esa es su posición temprana; las 24 semanas de holgura permiten correr esos \usd{80\,000} hasta los meses~9 y~10 sin mover el cierre.
+
+\begin{table}[H]
+\centering
+\caption{Gasto de las actividades en los meses 1 a 6, en USD.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l *{6}{>{\raggedleft\arraybackslash}X}@{}}
+\toprule
+\textbf{EDT} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} \\
+\midrule
+1.0 & 16\,452 & 21\,452 & 1\,452 & 1\,452 & 1\,456 & 1\,456 \\
+1.1 & 0 & 0 & 240\,000 & 240\,000 & 0 & 0 \\
+1.2 & 0 & 0 & 100\,000 & 100\,000 & 0 & 0 \\
+1.3 & 0 & 0 & 0 & 0 & 73\,332 & 36\,668 \\
+1.4 & 0 & 0 & 40\,000 & 40\,000 & 0 & 0 \\
+1.5 & 0 & 0 & 40\,000 & 20\,000 & 0 & 20\,000 \\
+1.6 & 0 & 0 & 0 & 15\,000 & 15\,000 & 0 \\
+\midrule
+Mes & 16\,452 & 21\,452 & 421\,452 & 416\,452 & 89\,788 & 58\,124 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Gasto de las actividades en los meses 7 a 11, en USD. La última columna es el total del paquete.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l *{6}{>{\raggedleft\arraybackslash}X}@{}}
+\toprule
+\textbf{EDT} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{Total} \\
+\midrule
+1.0 & 1\,456 & 1\,456 & 1\,456 & 1\,456 & 21\,456 & 71\,000 \\
+1.1 & 0 & 0 & 0 & 0 & 0 & 480\,000 \\
+1.2 & 80\,000 & 0 & 80\,000 & 0 & 0 & 360\,000 \\
+1.3 & 0 & 90\,000 & 80\,000 & 0 & 0 & 280\,000 \\
+1.4 & 0 & 0 & 0 & 0 & 0 & 80\,000 \\
+1.5 & 0 & 0 & 0 & 60\,000 & 0 & 140\,000 \\
+1.6 & 0 & 0 & 50\,000 & 0 & 0 & 80\,000 \\
+\midrule
+Mes & 81\,456 & 91\,456 & 211\,456 & 61\,456 & 21\,456 & 1\,491\,000 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Al cerrar el mes~4 se ha reconocido \usd{875\,808}, el 58,7\,\% del gasto de las actividades, porque ahí terminan la vista de posición y la pasarela de Consulta. Al mes~11 el acumulado es \usd{1\,491\,000}: el CAPEX base más la dirección. Los \usd{142\,000} de contingencia quedan fuera, y el presupuesto autorizado sigue en \usd{1\,633\,000}. Los \usd{73\,332} y \usd{36\,668} del paquete 1.3 son el adaptador de Consulta, de \usd{110\,000} en seis semanas: cuatro caen en el mes~5 y dos en el mes~6, y los dos dólares que sobran de la división quedan en esas últimas semanas. La dirección de \usd{16\,000} en 44 semanas deja entre \usd{1\,452} y \usd{1\,456} por mes, según el mismo residuo.
+
 \subsection{Recursos}
 
 \begin{table}[H]
@@ -421,8 +498,10 @@ El presupuesto autorizado es CAPEX base más dirección más contingencia: \(1\,
 \begin{enumerate}
   \item El mes tiene cuatro semanas y el proyecto dura 44 semanas, del mes~1 al mes~11 del charter.
   \item Las relaciones son fin-inicio. Donde hay paralelo, las tres ramas tienen que terminar antes de la siguiente actividad común.
+  \item La duración es juicio del equipo, por analogía con una integración bancaria de solo lectura. No hay histórico del BCP ni estimación de tres puntos, y el dato está en amarillo.
   \item El costo del paquete es el del charter. El reparto entre actividades es del equipo y está en amarillo.
-  \item La contingencia es el 10\,\% del CAPEX base y no se compone con la reserva de gestión.
+  \item La contingencia es el 10\,\% del CAPEX base. No se compone con la reserva de gestión y no sale de un valor monetario esperado: cubre R01 y R07, y sigue sin asignar.
+  \item El gasto mensual usa el inicio temprano. El residuo de dólares, cuando el costo no es divisible entre las semanas, queda en las últimas.
   \item El OPEX de cinco años, \usd{2\,217\,741}, empieza después del cierre. No entra en los \usd{1\,633\,000}.
   \item No se resta el sueldo de los asesores que hoy llevan cartera. El agente no toma ese trabajo: informa y simula, y la norma exige una vía humana.
 \end{enumerate}
