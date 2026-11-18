@@ -15,8 +15,11 @@
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
+\usepackage{tocloft}
 \usepackage{caption}
 \usepackage{colortbl}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 
@@ -46,6 +49,12 @@
 \titleformat{\subsection}{\large\bfseries\color{bcp}}{\thesubsection}{0.6em}{}
 \titlespacing*{\section}{0pt}{0.7em}{0.7em}
 \titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{0.5em}
+\setlength{\cftbeforetabskip}{0.35em}
+\setlength{\cftbeforefigskip}{0.35em}
 \setlist[itemize]{leftmargin=1.3em,itemsep=0.25em,topsep=0.3em}
 \setlist[enumerate]{leftmargin=1.5em,itemsep=0.25em,topsep=0.3em}
 
@@ -54,6 +63,7 @@
 \newcommand{\clave}[1]{\par\smallskip\noindent\colorbox{suave}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\setstretch{1.1}\small #1}}\par\smallskip}
 
 \begin{document}
+\pagenumbering{roman}
 
 \begin{center}
 \vspace*{0.6cm}
@@ -79,6 +89,15 @@ Dennis Jack Paitan Cano\\[1.6cm]
 \end{center}
 \thispagestyle{empty}
 \clearpage
+
+{\setstretch{1.08}
+\tableofcontents
+\vspace{1.1em}
+\listoftables
+\vspace{1.1em}
+\listoffigures}
+\clearpage
+\pagenumbering{arabic}
 
 \section*{Qué cierra este entregable}
 \addcontentsline{toc}{section}{Qué cierra este entregable}
@@ -242,6 +261,61 @@ A03 y A04 terminan juntas en la semana~16. Si la vista de posición o la pasarel
 
 Fuera de la ruta quedan tres actividades. El diseño de los doce casos (A05) y la habilitación del piloto (A08) pueden demorarse cuatro semanas. El descubrimiento con Yape (A06) puede demorarse 24 semanas: su única sucesora es el cierre, que de todos modos espera a la semana~41. Por eso Yape es Should y no Must.
 
+\begin{figure}[H]
+\centering
+\caption{Cronograma de 44 semanas. La barra cobre es ruta crítica. La barra azul tiene holgura, y la franja clara mide esa holgura.}
+\label{fig:gantt}
+\begin{tikzpicture}[x=0.242cm,y=0.46cm]
+  \foreach \x in {0,4,8,12,16,20,24,28,32,36,40,44}
+    \draw[black!15] (\x,0.35) -- (\x,16.7);
+  \foreach \m/\lab in {2/1,6/2,10/3,14/4,18/5,22/6,26/7,30/8,34/9,38/10,42/11}
+    \node[font=\scriptsize,text=bcp] at (\m,17.15) {\lab};
+  \node[anchor=east,font=\scriptsize,text=bcp] at (-0.45,17.15) {Mes};
+  % holgura
+  \fill[suave] (14,11.72) rectangle (18,12.28);
+  \fill[suave] (16,10.72) rectangle (40,11.28);
+  \fill[suave] (18,8.72) rectangle (22,9.28);
+  % ruta crítica
+  \fill[cobre] (0,15.72) rectangle (4,16.28);
+  \fill[cobre] (4,14.72) rectangle (8,15.28);
+  \fill[cobre] (8,13.72) rectangle (16,14.28);
+  \fill[cobre] (8,12.72) rectangle (16,13.28);
+  \fill[cobre] (16,9.72) rectangle (22,10.28);
+  \fill[cobre] (22,7.72) rectangle (24,8.28);
+  \fill[cobre] (24,6.72) rectangle (28,7.28);
+  \fill[cobre] (28,5.72) rectangle (32,6.28);
+  \fill[cobre] (32,4.72) rectangle (36,5.28);
+  \fill[cobre] (32,3.72) rectangle (36,4.28);
+  \fill[cobre] (32,2.72) rectangle (36,3.28);
+  \fill[cobre] (36,1.72) rectangle (40,2.28);
+  \fill[cobre] (40,0.72) rectangle (44,1.28);
+  % con holgura
+  \fill[bcp] (8,11.72) rectangle (14,12.28);
+  \fill[bcp] (8,10.72) rectangle (16,11.28);
+  \fill[bcp] (14,8.72) rectangle (18,9.28);
+  \node[anchor=east,font=\scriptsize] at (-0.4,16) {A01 Inicio};
+  \node[anchor=east,font=\scriptsize] at (-0.4,15) {A02 Arquitectura};
+  \node[anchor=east,font=\scriptsize] at (-0.4,14) {A03 Vista de posición};
+  \node[anchor=east,font=\scriptsize] at (-0.4,13) {A04 Pasarela Consulta};
+  \node[anchor=east,font=\scriptsize] at (-0.4,12) {A05 Diseño de pruebas};
+  \node[anchor=east,font=\scriptsize] at (-0.4,11) {A06 Descubrimiento Yape};
+  \node[anchor=east,font=\scriptsize] at (-0.4,10) {A07 Adaptador Consulta};
+  \node[anchor=east,font=\scriptsize] at (-0.4,9) {A08 Habilitación piloto};
+  \node[anchor=east,font=\scriptsize] at (-0.4,8) {A09 Piloto Consulta};
+  \node[anchor=east,font=\scriptsize] at (-0.4,7) {A10 Planificación};
+  \node[anchor=east,font=\scriptsize] at (-0.4,6) {A11 Adaptador Planificación};
+  \node[anchor=east,font=\scriptsize] at (-0.4,5) {A12 Ofertas};
+  \node[anchor=east,font=\scriptsize] at (-0.4,4) {A13 Adaptador Ofertas};
+  \node[anchor=east,font=\scriptsize] at (-0.4,3) {A14 Habilitación salida};
+  \node[anchor=east,font=\scriptsize] at (-0.4,2) {A15 Pruebas de producción};
+  \node[anchor=east,font=\scriptsize] at (-0.4,1) {A16 Cierre};
+  \foreach \x/\h in {4/H0,8/H1,16/H2,24/H3,32/H4,40/H5,44/H6}{
+    \node[diamond,fill=cobre,inner sep=1.15pt] at (\x,0.22) {};
+    \node[anchor=north,font=\scriptsize] at (\x,-0.02) {\h};
+  }
+\end{tikzpicture}
+\end{figure}
+
 \section{Presupuesto, recursos y supuestos}
 
 \subsection{De la actividad al presupuesto}
@@ -281,6 +355,43 @@ A14 & 1.6 & Habilitación de la salida & 50\,000 \\
 La contingencia es \usd{142\,000}, el 10\,\% del CAPEX base. No se asigna a una actividad. Cubre dos riesgos del charter: que el agente responda con una cifra de una vista vencida (R01) y que el CIO atrase la vista de posición (R07). El caso de negocio del E01 supone que esa reserva se gasta. En esta línea base sigue sin dueño hasta que el riesgo ocurra. El director puede disponer de ella hasta el límite que el charter le dio, sin una aprobación nueva.
 
 El presupuesto autorizado es CAPEX base más dirección más contingencia: \(1\,420\,000 + 71\,000 + 142\,000 = 1\,633\,000\).
+
+\begin{figure}[H]
+\centering
+\caption{Presupuesto autorizado, en miles de USD. La contingencia no es un paquete: queda aparte hasta que ocurra el riesgo.}
+\label{fig:presupuesto}
+\begin{tikzpicture}[x=0.021cm,y=0.72cm]
+  \foreach \v in {0,100,200,300,400,480}
+    \draw[black!12] (\v,0.2) -- (\v,8.5);
+  \foreach \v/\lab in {0/0,100/100,200/200,300/300,400/400,480/480}
+    \node[font=\scriptsize,text=bcp,below] at (\v,0.15) {\lab};
+  \fill[bcp] (0,7.25) rectangle (480,7.85);
+  \fill[bcp] (0,6.25) rectangle (360,6.85);
+  \fill[bcp] (0,5.25) rectangle (280,5.85);
+  \fill[cobre] (0,4.25) rectangle (142,4.85);
+  \fill[bcp] (0,3.25) rectangle (140,3.85);
+  \fill[bcp] (0,2.25) rectangle (80,2.85);
+  \fill[bcp] (0,1.25) rectangle (80,1.85);
+  \fill[bcp] (0,0.25) rectangle (71,0.85);
+  \node[anchor=east,font=\scriptsize] at (-8,7.55) {1.1 Vista};
+  \node[anchor=east,font=\scriptsize] at (-8,6.55) {1.2 Pasarela};
+  \node[anchor=east,font=\scriptsize] at (-8,5.55) {1.3 Adaptadores};
+  \node[anchor=east,font=\scriptsize] at (-8,4.55) {Contingencia};
+  \node[anchor=east,font=\scriptsize] at (-8,3.55) {1.5 Seguridad};
+  \node[anchor=east,font=\scriptsize] at (-8,2.55) {1.4 Yape};
+  \node[anchor=east,font=\scriptsize] at (-8,1.55) {1.6 Habilitación};
+  \node[anchor=east,font=\scriptsize] at (-8,0.55) {1.0 Dirección};
+  \node[anchor=west,font=\scriptsize] at (488,7.55) {480};
+  \node[anchor=west,font=\scriptsize] at (368,6.55) {360};
+  \node[anchor=west,font=\scriptsize] at (288,5.55) {280};
+  \node[anchor=west,font=\scriptsize] at (150,4.55) {142};
+  \node[anchor=west,font=\scriptsize] at (148,3.55) {140};
+  \node[anchor=west,font=\scriptsize] at (88,2.55) {80};
+  \node[anchor=west,font=\scriptsize] at (88,1.55) {80};
+  \node[anchor=west,font=\scriptsize] at (79,0.55) {71};
+  \node[font=\scriptsize,text=bcp] at (240,-0.85) {Miles de USD};
+\end{tikzpicture}
+\end{figure}
 
 \subsection{Recursos}
 
