@@ -1,0 +1,525 @@
+\documentclass[11pt]{article}
+
+\usepackage[spanish,es-tabla]{babel}
+\spanishdecimal{.}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage[margin=2.15cm,headheight=24pt]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{pdflscape}
+\usepackage{pgfgantt}
+\usepackage{calc}
+\usepackage{multirow}
+
+\definecolor{bcp}{HTML}{0B2545}
+\definecolor{cobre}{HTML}{C65D12}
+\definecolor{tinta}{HTML}{1C2833}
+\definecolor{critcol}{HTML}{8B1A1A}
+\definecolor{ganttgray}{HTML}{BBBBBB}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{bcp}{\small MGT209 · E02 · Versión 1}}
+\fancyhead[R]{\textcolor{bcp}{\small Banca Personas · BCP}}
+\fancyfoot[L]{\textcolor{tinta}{\footnotesize Línea base de alcance, cronograma y costo}}
+\fancyfoot[R]{\textcolor{tinta}{\footnotesize\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{cobre}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}{\large\bfseries\color{bcp}}{\thesection}{0.7em}{}[\vspace{-0.4em}{\color{cobre}\titlerule}]
+\titleformat{\subsection}{\normalsize\bfseries\color{bcp}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.05em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.75em}{0.25em}
+
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.18em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=1.25em,itemsep=0.18em,topsep=0.25em}
+\setlength{\parskip}{0.32em}
+\setlength{\parindent}{0pt}
+
+\newcommand{\usd}[1]{USD~#1}
+\newcommand{\pen}[1]{S/~#1}
+\newcommand{\mos}[1]{\textbf{\textcolor{bcp}{#1}}}
+
+\hypersetup{
+  pdftitle={E02 Versión 1. Línea base de alcance, cronograma y costo},
+  pdfauthor={Franco Stywar Antony Vargas Chino; Albert Christian Hidalgo Sánchez;
+             Sergio Perez Ruiz; Carlos E. Ruiz Perez; Dennis Jack Paitan Cano}
+}
+
+% ──────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{center}
+{\color{bcp}\small Universidad Nacional de Ucayali \textperiodcentered\ Maestría en Ingeniería de Sistemas}\\[0.3em]
+{\color{cobre}\bfseries\small MGT209 Gestión de Proyectos en TI \textperiodcentered\ Entregable E02 \textperiodcentered\ Versión 1}\\[0.6em]
+{\color{bcp}\LARGE\bfseries Línea base de alcance, cronograma y costo}\\[0.3em]
+{\large Agente financiero personal de Banca Personas del BCP}\\[0.15em]
+{\normalsize Informa y simula. No asesora, no coloca y no mueve dinero.}\\[0.45em]
+{\small Franco Stywar Antony Vargas Chino \textperiodcentered\ Albert Christian Hidalgo Sánchez}\\[0.15em]
+{\small Sergio Perez Ruiz \textperiodcentered\ Carlos E. Ruiz Perez \textperiodcentered\ Dennis Jack Paitan Cano}\\[0.3em]
+{\small Noviembre 2026}
+\end{center}
+
+\vspace{0.2em}
+{\color{cobre}\rule{\textwidth}{0.6pt}}
+
+Este entregable establece la línea base de alcance, cronograma y costo del proyecto «Agente financiero personal de Banca Personas del BCP», cuyo caso de negocio y constitución (Project Charter) se documentaron en el E01 versión~2. Todos los indicadores financieros proceden de la hoja \path{E01_Evaluacion_Economica_BCP_Agente.xlsx}; las celdas en amarillo son supuestos del equipo. El criterio de revisión es que cada entregable de la EDT pueda rastrearse hacia un plazo y un costo razonablemente estimados.
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Lista de requisitos priorizados}
+
+La priorización utiliza el esquema MoSCoW (Must Have, Should Have, Could Have, Won't Have) del marco DSDM \cite{dsdm}. Los \textit{Must Have} definen el alcance mínimo viable que debe estar en producción al Hito~H5 (mes~10, semana~40). Sin cualquiera de ellos el proyecto no cumple las obligaciones del Project Charter ni la normativa SBS vigente. Los \textit{Should Have} aportan valor diferencial pero admiten un plan de recuperación si el cronograma se aprieta. Los \textit{Could Have} se financian solo si la contingencia no se consume. Los \textit{Won't Have} son restricciones explícitas del charter y de la normativa; introducirlos en este alcance invalidaría los supuestos del caso de negocio.
+
+\begin{longtable}{@{}p{1.1cm} p{4.0cm} p{1.9cm} p{1.1cm} p{1.9cm} p{4.3cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Requisito} & \textbf{Categoría} & \textbf{MoSCoW} & \textbf{Perfil} & \textbf{Criterio de aceptación} \\
+\midrule
+\endhead
+\midrule\multicolumn{6}{r}{\small(continúa)}\\
+\endfoot
+\bottomrule
+\endlastfoot
+REQ-01 & Vista de posición vigente: saldo, obligaciones y frescura para cuentas, tarjetas y créditos & Funcional & \mos{M} & Consulta & La herramienta devuelve saldo y marca de frescura; si la vista no está al día, responde «no confirmado» sin citar cifra \\[0.3em]
+REQ-02 & Gestión de consentimientos por habilidad: otorgar, revocar y consultar estado & Funcional & \mos{M} & Todos & Revocar un permiso corta el acceso en la llamada siguiente; no hay habilidad activa sin consentimiento previo \\[0.3em]
+REQ-03 & Escape a atención humana cuando la atención es automatizada (SBS 01741-2026, art.~49) & Regulatorio & \mos{M} & Todos & El cliente puede pedir un agente humano en cualquier momento; el canal registra la solicitud y la deriva en menos de 60~s \\[0.3em]
+REQ-04 & Simulación de crédito: cuota, plazo, TCEA y total desde el simulador del producto & Funcional & \mos{M} & Planificación & La simulación muestra TCEA, plazo, cuotas y total a pagar; incluye advertencia de que es ilustrativa y no es oferta vinculante \\[0.3em]
+REQ-05 & Adaptador Banca Móvil (app) con sesión existente del cliente & Técnico & \mos{M} & Todos & El agente se invoca desde la app sin nuevo inicio de sesión; la latencia es inferior a 3~s en el percentil~95 \\[0.3em]
+REQ-06 & Adaptador Banca por Internet (web) con sesión existente del cliente & Técnico & \mos{M} & Todos & El agente se invoca desde la web sin nuevo inicio de sesión; comportamiento coherente con la app \\[0.3em]
+REQ-07 & Gateway de herramientas con validación de consentimiento en cada llamada & Técnico & \mos{M} & Todos & Ninguna herramienta se ejecuta sin que el gateway valide el consentimiento vigente; el log registra cada llamada \\[0.3em]
+REQ-08 & El agente no afirma saldo ni dato cuando la vista vigente no está fresca & Funcional & \mos{M} & Todos & El arnés pasa los casos 2 y 3 (proyección vencida y herramienta vacía) sin que aparezca ninguna cifra inventada \\[0.3em]
+REQ-09 & Registros de auditoría de cada llamada a herramienta (SBS 504-2021, arts.~17.1.e y~17.3) & Regulatorio & \mos{M} & Todos & Cada llamada al gateway queda en el log con timestamp, cliente, herramienta, parámetros y resultado; retención mínima 5~años \\[0.3em]
+REQ-10 & Contrato con el proveedor del modelo que prohíba entrenar con datos del cliente (SBS 504-2021, art.~22) & Regulatorio & \mos{M} & Todos & El contrato firmado antes del Hito H1 incluye cláusula explícita de no entrenamiento con datos de clientes del BCP \\[0.3em]
+REQ-11 & Proyección de plan de gasto contra obligaciones existentes & Funcional & \mos{S} & Planificación & La herramienta devuelve si el plan cabe dentro del flujo del cliente; no puede comprometer ningún pago futuro \\[0.3em]
+REQ-12 & Explicación de movimientos del extracto proyectado & Funcional & \mos{S} & Consulta & El agente describe el movimiento sin reclasificarlo ni abrir disputas; la explicación se apoya solo en los datos de la herramienta \\[0.3em]
+REQ-13 & Mostrar ofertas ya calculadas por el producto (solo lectura) & Funcional & \mos{S} & Ofertas c/conf. & El agente muestra la oferta con sus condiciones; no puede aceptarla ni contactar a un tercero desde el texto \\[0.3em]
+REQ-14 & Preparar borrador de encargo para confirmación en el canal & Funcional & \mos{S} & Ofertas c/conf. & El borrador incluye monto, destino y producto; el gateway bloquea el envío si la confirmación falta o expiró \\[0.3em]
+REQ-15 & Arnés de 12 casos de comportamiento (conducta y seguridad) & Técnico & \mos{S} & Interno & Todos los casos pasan antes del Hito H5; cualquier regresión en prompt, herramienta o modelo relanza la batería completa \\[0.3em]
+REQ-16 & Descubrimiento de integración con Yape (deep link o API) & Técnico & \mos{C} & Ninguno & Al Hito H6 existe un informe con al menos una propuesta técnica documentada y la decisión registrada del dueño de Yape \\[0.3em]
+REQ-17 & Panel de métricas de permisos vigentes para el sponsor & Técnico & \mos{C} & Interno & El panel muestra permisos activos por habilidad y perfil, con actualización diaria; no requiere nueva infraestructura \\[0.3em]
+REQ-18 & Notificación proactiva cuando una oferta ya calculada está disponible & Funcional & \mos{C} & Ofertas c/conf. & La notificación se envía solo con consentimiento previo de finalidad declarada (Ley~29733, art.~13.5); no ejecuta ni acepta \\[0.3em]
+REQ-19 & Desembolso o transferencia ejecutada por el agente & Funcional & \mos{W} & — & \textit{Fuera de alcance. El charter prohíbe explícitamente cualquier movimiento de dinero desde el texto del agente.} \\[0.3em]
+REQ-20 & Asesoría de inversión o recomendación personalizada de contratar & Regulatorio & \mos{W} & — & \textit{Fuera de alcance. La intermediación de valores corresponde a sociedades agentes autorizadas por la SMV (D.S. 020-2023-EF, arts.~166, 167 y~190.b).} \\[0.3em]
+REQ-21 & Acceso de escritura a datos de Yape o a sus sistemas internos & Técnico & \mos{W} & — & \textit{Fuera de alcance. Yape no publica API de agente. El proyecto solo financia el descubrimiento (REQ-16).} \\[0.3em]
+REQ-22 & Rediseño de la app, de la web o de Yape & Técnico & \mos{W} & — & \textit{Fuera de alcance. Los canales se adaptan; no se rediseñan (REQ-05 y REQ-06).} \\
+\end{longtable}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{EDT / WBS y diccionario de paquetes de trabajo}
+
+La EDT se organiza en cinco componentes de primer nivel, alineados con los hitos del Project Charter y con los bloques de costo del E01. Los paquetes de trabajo hoja (sin hijos) son la unidad de estimación, asignación y control del proyecto.
+
+\subsection{Estructura EDT}
+
+\begin{longtable}{@{}p{1.0cm} p{5.8cm} p{3.1cm} p{3.9cm}@{}}
+\toprule
+\textbf{Código} & \textbf{Componente / Paquete de trabajo} & \textbf{Responsable} & \textbf{Hito de cierre} \\
+\midrule
+\endhead
+\midrule\multicolumn{4}{r}{\small(continúa)}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1   & \textbf{Gestión del proyecto}               & Director de proyecto      & H6 — Cierre (sem~44) \\
+1.1 & \quad Planificación y control               & Director de proyecto      & H6 \\
+1.2 & \quad Gestión de riesgos y cambios          & Director de proyecto      & H6 (continua a lo largo del proyecto) \\
+1.3 & \quad Cierre y traspaso                     & Director de proyecto      & H6 \\[0.4em]
+\midrule
+2   & \textbf{Vista de posición y datos}          & Líder técnico / CIO       & H2 — Vista en prueba (sem~16) \\
+2.1 & \quad Diseño de la vista por cliente (CQRS) & Arquitecto de datos       & H1 (sem~8) \\
+2.2 & \quad Adaptador de cuentas                  & Ing.\ backend             & H2 (sem~16) \\
+2.3 & \quad Adaptador de tarjetas                 & Ing.\ backend             & H2 (sem~16) \\
+2.4 & \quad Adaptador de créditos                 & Ing.\ backend             & H2 (sem~16) \\
+2.5 & \quad Marca de frescura y control de vigencia & Ing.\ backend           & H2 (sem~16) \\[0.4em]
+\midrule
+3   & \textbf{Herramientas, consentimiento y gateway} & Líder técnico        & H5 — Producción (sem~40) \\
+3.1 & \quad Catálogo de herramientas (simular $\neq$ ejecutar) & Ing.\ backend & H5 \\
+3.2 & \quad Motor de consentimiento               & Ing.\ backend             & Diseño: H1 (sem~8); Dev: H3 (sem~24) \\
+3.3 & \quad Gateway de herramientas               & Ing.\ de seguridad        & H3 (sem~24) \\
+3.4 & \quad Vía humana y escalado                 & Ing.\ backend / UX        & H5 (sem~40) \\[0.4em]
+\midrule
+4   & \textbf{Canales}                            & Líder de canal            & H5 — Producción (sem~40) \\
+4.1 & \quad Adaptador Banca Móvil (app)           & Ing.\ mobile              & H5 (sem~40) \\
+4.2 & \quad Adaptador Banca por Internet (web)    & Ing.\ frontend            & H5 (sem~40) \\
+4.3 & \quad Descubrimiento con Yape               & Ing.\ de integración      & H6 (sem~44, holgura total) \\[0.4em]
+\midrule
+5   & \textbf{Seguridad, conducta y datos}        & CISO / Oficial de conducta & H5 — Producción (sem~40) \\
+5.1 & \quad Amenaza y diseño de seguridad         & Ing.\ de seguridad        & H1 (sem~8) \\
+5.2 & \quad Conducta de mercado (SBS 3274-2017 / 01741-2026) & Oficial de conducta & H5 (sem~40) \\
+5.3 & \quad Protección de datos (Ley~29733)       & DPO / Legal               & H3 (sem~24) \\
+5.4 & \quad Arnés de pruebas de comportamiento    & QA / Ing.\ ML             & H5 (sem~40) \\
+5.5 & \quad Capacitación y habilitación           & Director de proyecto      & H6 (sem~44) \\
+\end{longtable}
+
+\subsection{Diccionario de paquetes de trabajo}
+
+A continuación se describen todos los paquetes hoja de la EDT. Las entradas y salidas son coherentes entre paquetes adyacentes: la salida de un paquete es entrada del siguiente en la secuencia del cronograma.
+
+\begin{longtable}{@{}p{0.7cm} p{2.1cm} p{3.3cm} p{2.3cm} p{2.3cm} p{2.9cm}@{}}
+\toprule
+\textbf{Cód.} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Entradas} & \textbf{Salidas} & \textbf{Criterio de aceptación} \\
+\midrule
+\endhead
+\midrule\multicolumn{6}{r}{\small(continúa)}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1.1 & Planificación y control & Plan de proyecto, registro de incidencias, control del cronograma y del presupuesto, informes mensuales al sponsor & Charter E01, EDT, cronograma E02 & Plan base aprobado, informes de avance, registro de cambios & Plan aprobado antes de H0 (sem~2); informes enviados dentro de las 48~h de cada fin de mes \\[0.3em]
+1.2 & Gestión de riesgos y cambios & Identificación continua, análisis y respuesta a riesgos; aprobación de solicitudes de cambio con evaluación de impacto en alcance, costo y plazo & Registro de riesgos inicial (E01~§5), incidencias & Registro de riesgos actualizado, decisiones de cambio documentadas & Ningún cambio de alcance aprobado sin análisis de impacto en cronograma y presupuesto \\[0.3em]
+1.3 & Cierre y traspaso & Verificación de entregables, aceptación formal, lecciones aprendidas, decisión registrada sobre Yape, traspaso al equipo operativo & Entregables de H5, informe Yape (4.3) & Acta de cierre firmada, repositorio de documentación & Acta firmada por banca personas digital y CIO antes de sem~44 \\[0.5em]
+\midrule
+2.1 & Diseño vista CQRS & Especificación del patrón de proyección de eventos por cliente: saldo, obligaciones, movimientos recientes, elegibilidad de oferta y marca de frescura. No se modifican los sistemas de producto & Inventario de APIs de producto (A02) & Especificación de vista, contrato de API (solo lectura) & Revisada y aprobada por el CIO y el arquitecto de datos antes de H1 \\[0.3em]
+2.2 & Adaptador cuentas & Implementación y pruebas del adaptador que lee saldo y movimientos de cuentas desde la vista vigente; devuelve «no confirmado» si la marca de frescura supera el acuerdo de nivel de servicio & Especificación 2.1, API de cuentas & Adaptador probado, suite de pruebas & 100\,\% de los casos del arnés de cuentas pasan en ambiente de prueba antes de H2 \\[0.3em]
+2.3 & Adaptador tarjetas & Implementación y pruebas del adaptador que lee saldo disponible, límite y fecha de pago de tarjetas & Especificación 2.1, API de tarjetas & Adaptador probado, suite de pruebas & 100\,\% de los casos del arnés de tarjetas pasan antes de H2 \\[0.3em]
+2.4 & Adaptador créditos & Implementación y pruebas del adaptador que lee obligaciones de crédito, cuota vigente y días al próximo pago & Especificación 2.1, API de créditos & Adaptador probado, suite de pruebas & 100\,\% de los casos del arnés de créditos pasan antes de H2 \\[0.3em]
+2.5 & Marca de frescura & Lógica que evalúa el event time de cada proyección y compara con el acuerdo de frescura; expone el flag al gateway de herramientas & Adaptadores 2.2–2.4, SLA de frescura & Módulo de frescura integrado con los adaptadores & El arnés pasa los casos~2 (proyección vencida) y~3 (herramienta vacía) sin ninguna cifra en la respuesta \\[0.5em]
+\midrule
+3.1 & Catálogo de herramientas & Definición de las seis herramientas (ver posición, explicar movimientos, simular crédito, proyectar plan, mostrar ofertas, preparar encargo) como contratos tipados; simular y ejecutar son contratos distintos & REQ-01–REQ-15, especificación 2.1 & Especificación del catálogo, contratos de herramienta & Ninguna herramienta tiene efecto de escritura en sistemas de producto; revisado por CISO y oficial de conducta antes de H3 \\[0.3em]
+3.2 & Motor de consentimiento & Gestión del ciclo de vida de cada permiso (otorgar, revocar, estado); consentimiento previo, informado, expreso, por finalidad determinada y revocable (Ley~29733, art.~13.5); sin casillas premarcadas (SBS~01741-2026, art.~49) & REQ-02, REQ-10, marco legal & Motor de consentimiento, registro de permisos, pruebas & Revocar un permiso corta el acceso en la siguiente llamada; ningún consentimiento premarcado \\[0.3em]
+3.3 & Gateway de herramientas & Capa entre el modelo y los sistemas: valida consentimiento, aplica mínimo privilegio, garantiza idempotencia y registra cada llamada (REQ-07, REQ-09); deniega o escala si el permiso falta o expiró & Motor de consentimiento 3.2, catálogo 3.1 & Gateway desplegado, logs de auditoría inmutables & Sin aprobación no hay efecto; cada llamada registrada con timestamp y resultado \\[0.3em]
+3.4 & Vía humana & Mecanismo de escape a un agente humano cuando la atención es automatizada (SBS~01741-2026); el canal registra la solicitud y la escala al equipo de soporte & REQ-03, adaptadores 4.1–4.2 & Flujo de escalado, prueba de usuario & El cliente puede pedir atención humana en cualquier paso de la conversación; el escalado se completa en menos de 60~s \\[0.5em]
+\midrule
+4.1 & Adaptador Banca Móvil & Integración del agente en la app iOS/Android usando la sesión activa del cliente; sin rediseño de la app; el agente se invoca desde un punto de entrada ya existente & REQ-05, gateway 3.3, perfiles definidos & Adaptador mobile probado & Latencia $<3$~s en P95; sin nuevo inicio de sesión; comportamiento idéntico en iOS y Android \\[0.3em]
+4.2 & Adaptador web & Integración del agente en banca por internet usando la sesión activa del cliente; sin rediseño del portal web & REQ-06, gateway 3.3, perfiles definidos & Adaptador web probado & Latencia $<3$~s en P95; sin nuevo inicio de sesión; compatible con los navegadores soportados por el banco \\[0.3em]
+4.3 & Descubrimiento Yape & Investigación técnica sobre la posibilidad de integrar el agente con Yape via deep link o API; entrega informe con propuestas y decisión registrada del dueño del producto & REQ-16, información pública de Yape & Informe de descubrimiento, decisión registrada & Informe entregado antes de H6; no se escribe en ningún sistema de Yape; beneficio del E01 no incluye ningún usuario de Yape \\[0.5em]
+\midrule
+5.1 & Amenaza y seguridad & Modelado de amenazas (STRIDE o equivalente), diseño de mínimo privilegio y trazas, revisión de la arquitectura contra SBS~504-2021 & Especificación de arquitectura & Informe de amenazas, diseño de seguridad, contrato con proveedor & El contrato con el proveedor del modelo está firmado y prohíbe entrenamiento con datos de clientes; aprobado por CISO antes de H1 \\[0.3em]
+5.2 & Conducta de mercado & Validación de que el agente informa y simula sin asesorar ni colocar; revisión de TCEA, hoja resumen, simulador y advertencias (SBS~3274-2017, arts.~42–43); participación del oficial de conducta (art.~9.5) & Catálogo 3.1, flujos de usuario & Informe de validación, lista de verificación regulatoria & El agente no usa la palabra «asesor»; toda cotización incluye advertencia de que es ilustrativa; aprobado antes de H5 \\[0.3em]
+5.3 & Protección de datos & Revisión de finalidades declaradas, consentimientos diferenciados y derechos de revocación (Ley~29733, arts.~5, 6, 13); alineación con el motor de consentimiento & Motor de consentimiento 3.2, catálogo de finalidades & Informe legal, registro de finalidades & Cada finalidad está declarada antes de que se recoja el dato; no hay uso cruzado de datos sin consentimiento adicional; aprobado por DPO antes de H3 \\[0.3em]
+5.4 & Arnés de pruebas & Implementación de los 12 casos de comportamiento del diseño (proyección fresca, vencida, herramienta vacía, intento de desembolso, encargo sin confirmación, etc.); se ejecuta en cada cambio de prompt, herramienta o modelo & Gateway 3.3, catálogo 3.1 & Suite de pruebas automatizada, informe de regresión & Umbral de paso: herramienta correcta + negativa correcta + cero efectos de lado; 12/12 casos antes de H5 \\[0.3em]
+5.5 & Capacitación y habilitación & Capacitación del equipo operativo y de soporte sobre el agente, los perfiles, los límites del sistema y el procedimiento de escalado; documentación de traspaso & Entregables de H5, flujo de vía humana 3.4 & Plan de capacitación ejecutado, manual operativo & Al menos el 100\,\% del equipo operativo certifica la capacitación antes del acta de cierre (H6) \\
+\end{longtable}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Cronograma}
+
+\subsection{Parámetros generales}
+
+El proyecto tiene una duración de 11~meses de ejecución, equivalentes a 44~semanas. El mes~0 es el inicio; los hitos se numeran H0–H6 y coinciden exactamente con los del Project Charter del E01. Los beneficios del caso de negocio se miden en años de operación a partir del mes~12. Una semana equivale a cinco días hábiles; se supone un equipo a tiempo completo (supuesto del equipo). Las dependencias son de tipo Fin-Inicio (FS) salvo indicación explícita.
+
+\subsection{Tabla de actividades}
+
+\begin{longtable}{@{}p{0.7cm} p{4.1cm} p{0.8cm} p{1.2cm} p{1.6cm} p{1.0cm} p{2.3cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Actividad} & \textbf{WBS} & \textbf{Dur.} & \textbf{Predec.} & \textbf{Dep.} & \textbf{Hito} \\
+ & & & \textbf{(sem)} & & & \\
+\midrule
+\endhead
+\midrule\multicolumn{7}{r}{\small(continúa)}\\
+\endfoot
+\bottomrule
+\endlastfoot
+A01 & Kick-off y plan de proyecto        & 1.1 & 2  & —              & —  & H0 (sem~2) \\
+A02 & Inventario de APIs y sistemas de producto & 2.1 & 3  & A01       & FS & \\
+A03 & Diseño de arquitectura y amenaza   & 5.1 & 4  & A01            & FS & H1 (sem~8) \\
+A04 & Diseño del motor de consentimiento & 3.2 & 3  & A03            & FS & H1 (sem~8) \\
+A05 & Diseño del gateway de herramientas & 3.3 & 2  & A04            & FS & \\
+A06 & Diseño vista CQRS y contrato de API & 2.1 & 3 & A02, A03       & FS & \\
+A07 & Adaptador cuentas (dev + pruebas)  & 2.2 & 4  & A06            & FS & H2 (sem~16) \\
+A08 & Adaptador tarjetas (dev + pruebas) & 2.3 & 4  & A06            & FS & H2 (sem~16) \\
+A09 & Adaptador créditos (dev + pruebas) & 2.4 & 4  & A06            & FS & H2 (sem~16) \\
+A10 & Marca de frescura y control de vigencia & 2.5 & 2 & A07, A08, A09 & FS & H2 (sem~16) \\
+A11 & Motor de consentimiento (dev + pruebas) & 3.2 & 4 & A05         & FS & \\
+A12 & Gateway de herramientas (dev + pruebas) & 3.3 & 3 & A11         & FS & \\
+A13 & Habilidades Consulta: ver posición y movimientos & 3.1 & 3 & A10, A12 & FS & \\
+A14 & Perfil Consulta integrado y probado & 3.1 & 2 & A13             & FS & \\
+A15 & Adaptador Banca Móvil — Consulta   & 4.1 & 3  & A14            & FS & H3 (sem~24) \\
+A16 & Adaptador web — Consulta           & 4.2 & 3  & A14            & FS & H3 (sem~24) \\
+A17 & Piloto perfil Consulta (UAT interno) & 3.1 & 2 & A15, A16      & FS & H3 (sem~24) \\
+A18 & Habilidades Planificación: simular y proyectar & 3.1 & 4 & A17 & FS & \\
+A19 & Perfil Planificación integrado      & 3.1 & 2 & A18             & FS & \\
+A20 & Adaptador Banca Móvil — Planificación & 4.1 & 2 & A19          & FS & H4 (sem~32) \\
+A21 & Adaptador web — Planificación      & 4.2 & 2  & A19            & FS & H4 (sem~32) \\
+A22 & Habilidades Ofertas: mostrar y encargo & 3.1 & 4 & A17         & FS & \\
+A23 & Perfil Ofertas integrado            & 3.1 & 2 & A22, A19        & FS & \\
+A24 & Vía humana y escalado              & 3.4 & 2  & A23            & FS & \\
+A25 & Adaptador Banca Móvil — Ofertas y vía humana & 4.1 & 2 & A24  & FS & H5 (sem~40) \\
+A26 & Adaptador web — Ofertas y vía humana & 4.2 & 2 & A24           & FS & H5 (sem~40) \\
+A27 & Arnés de pruebas de comportamiento & 5.4 & 4  & A12            & FS & (paralela a A13–A17) \\
+A28 & Conducta de mercado — validación SBS & 5.2 & 3 & A25, A26      & FS & \\
+A29 & Protección de datos — revisión Ley~29733 & 5.3 & 2 & A11      & FS & (paralela a A12) \\
+A30 & Descubrimiento con Yape            & 4.3 & 6  & A03            & FS+4 & (holgura total; no bloquea hitos) \\
+A31 & Capacitación y habilitación        & 5.5 & 2  & A28            & FS & \\
+A32 & Cierre y traspaso                  & 1.3 & 2  & A31            & FS & H6 (sem~44) \\
+A33 & Gestión de riesgos y cambios (continua) & 1.2 & 44 & A01      & FS & (paralela a todo el proyecto) \\
+\end{longtable}
+
+\subsection{Ruta crítica}
+
+La ruta crítica es la secuencia de actividades sin holgura que determina la duración mínima del proyecto de 44~semanas:
+
+\[
+\text{A01} \!\to\! \text{A03} \!\to\! \text{A04} \!\to\! \text{A05} \!\to\! \text{A11} \!\to\! \text{A12} \!\to\! \text{A13} \!\to\! \text{A14} \!\to\! \text{A15} \!\to\! \text{A17} \!\to\! \text{A22} \!\to\! \text{A23} \!\to\! \text{A24} \!\to\! \text{A25} \!\to\! \text{A28} \!\to\! \text{A31} \!\to\! \text{A32}
+\]
+
+La ruta pasa por el motor de consentimiento (A11) y el gateway (A12), porque ambos son prerequisitos de todas las habilidades y del arnés. La rama de Planificación (A18–A21) corre en paralelo con la de Ofertas (A22–A23) desde A17; el hito H4 (sem~32) no es crítico porque A23 necesita además la salida de A19.
+
+\textbf{Por qué A07, A08 y A09 no son críticas.} Los tres adaptadores de producto se desarrollan en paralelo por equipos distintos desde que A06 termina (aproximadamente sem~11). Su duración combinada de 4~semanas termina en la sem~15, justo antes de A10, que a su vez alimenta A13. A11 (motor de consentimiento) termina en la sem~15 también, por lo que la convergencia en A13 no genera holgura adicional: ambas ramas llegan al mismo tiempo. Si alguno de los adaptadores se retrasa más de 2~semanas, entrará en la ruta crítica.
+
+\textbf{Holgura total de A30 (Yape).} El descubrimiento comienza 4~semanas después de A03 (aproximadamente sem~11) y dura 6~semanas. Su resultado es un informe que se entrega en H6; no es prerequisito de ninguna actividad productiva. Si la investigación concluye que la integración no es viable, el proyecto registra la decisión y ningún hito se ve afectado. El caso de negocio no incluye ningún usuario de Yape.
+
+\subsection{Tabla de hitos}
+
+\begin{tabularx}{\textwidth}{@{}l X r r@{}}
+\toprule
+\textbf{Hito} & \textbf{Descripción} & \textbf{Semana} & \textbf{Mes} \\
+\midrule
+H0 & Kick-off y plan de proyecto aprobado por el sponsor & 2  & 1  \\
+H1 & Arquitectura aprobada, amenaza modelada y diseño del consentimiento & 8  & 2  \\
+H2 & Vista de cuentas, tarjetas y créditos validada en ambiente de prueba & 16 & 4  \\
+H3 & Piloto del perfil Consulta con usuarios internos (UAT) & 24 & 6  \\
+H4 & Perfil Planificación disponible en la app y en la web & 32 & 8  \\
+H5 & Perfil Ofertas con confirmación en producción, con escape a persona & 40 & 10 \\
+H6 & Cierre formal, traspaso al equipo operativo y decisión registrada sobre Yape & 44 & 11 \\
+\bottomrule
+\end{tabularx}
+
+\subsection{Diagrama de Gantt}
+
+El diagrama muestra las 33~actividades agrupadas por componente WBS. La ruta crítica aparece en rojo oscuro. Las actividades de A07, A08 y A09 se solapan al correr en paralelo. A30 (Yape) aparece en gris para indicar holgura total.
+
+\begin{landscape}
+\begin{ganttchart}[
+  hgrid,
+  vgrid={*{3}{draw=none}, dotted},
+  title/.style={fill=bcp!15, draw=bcp!40},
+  title label font=\scriptsize\color{bcp}\bfseries,
+  bar label font=\tiny,
+  bar label node/.append style={align=left, text width=4.0cm},
+  bar/.style={fill=bcp!55, rounded corners=1pt},
+  milestone/.style={fill=cobre, shape=diamond, inner sep=1.5pt},
+  milestone label font=\tiny\bfseries\color{cobre},
+  group/.style={fill=bcp!80, draw=bcp},
+  group label font=\scriptsize\bfseries\color{white},
+  x unit=0.195cm,
+  y unit title=0.52cm,
+  y unit chart=0.40cm,
+  canvas/.append style={fill=white, draw=bcp!20}
+]{1}{44}
+
+\gantttitlelist{1,...,44}{1} \\
+
+%% ── 1. Gestión ──────────────────────────────────────────────────────────────
+\ganttgroup{1. Gestión}{1}{44} \\
+\ganttbar[bar/.append style={fill=bcp!25}]{A33 Riesgos/cambios}{1}{44} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A01 Kick-off y plan}{1}{2} \\
+\ganttmilestone{H0}{2} \\
+\ganttbar{A32 Cierre y traspaso}{43}{44} \\
+\ganttmilestone{H6}{44} \\
+
+%% ── 2. Vista de posición ────────────────────────────────────────────────────
+\ganttgroup{2. Vista y datos}{3}{16} \\
+\ganttbar{A02 Inventario APIs}{3}{5} \\
+\ganttbar{A06 Diseño CQRS}{9}{11} \\
+\ganttbar{A07 Adapt. cuentas}{12}{15} \\
+\ganttbar{A08 Adapt. tarjetas}{12}{15} \\
+\ganttbar{A09 Adapt. créditos}{12}{15} \\
+\ganttbar{A10 Frescura}{16}{17} \\
+\ganttmilestone{H2}{16} \\
+
+%% ── 3. Herramientas y gateway ───────────────────────────────────────────────
+\ganttgroup{3. Herramientas y gateway}{3}{40} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A03 Arquitectura/amenaza}{3}{6} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A04 Diseño consentimiento}{7}{9} \\
+\ganttmilestone{H1}{8} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A05 Diseño gateway}{10}{11} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A11 Motor consent. dev}{12}{15} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A12 Gateway dev}{16}{18} \\
+\ganttbar{A27 Arnés de pruebas}{19}{22} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A13 Hab. Consulta}{19}{21} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A14 Perfil Consulta}{22}{23} \\
+\ganttmilestone{H3}{24} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A17 Piloto UAT}{25}{26} \\
+\ganttbar{A18 Hab. Planificación}{27}{30} \\
+\ganttbar{A19 Perfil Planificación}{31}{32} \\
+\ganttmilestone{H4}{32} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A22 Hab. Ofertas}{27}{30} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A23 Perfil Ofertas}{33}{34} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A24 Vía humana}{35}{36} \\
+
+%% ── 4. Canales ──────────────────────────────────────────────────────────────
+\ganttgroup{4. Canales}{24}{44} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A15 Móvil-Consulta}{24}{26} \\
+\ganttbar{A16 Web-Consulta}{24}{26} \\
+\ganttbar{A20 Móvil-Planif.}{33}{34} \\
+\ganttbar{A21 Web-Planif.}{33}{34} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A25 Móvil-Ofertas}{37}{38} \\
+\ganttbar{A26 Web-Ofertas}{37}{38} \\
+\ganttmilestone{H5}{40} \\
+\ganttbar[bar/.append style={fill=ganttgray}]{A30 Descubrimiento Yape}{11}{16} \\
+
+%% ── 5. Seguridad, conducta ──────────────────────────────────────────────────
+\ganttgroup{5. Seguridad y conducta}{3}{44} \\
+\ganttbar{A29 Prot. datos}{16}{17} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A28 Validación SBS}{39}{41} \\
+\ganttbar[bar/.append style={fill=critcol!65}]{A31 Capacitación}{42}{43} \\
+
+\end{ganttchart}
+
+\vspace{0.6em}
+\noindent{\small
+\textcolor{critcol!80}{\rule{0.9cm}{5pt}}~Ruta crítica \quad
+\textcolor{bcp!55}{\rule{0.9cm}{5pt}}~Actividad normal \quad
+\textcolor{ganttgray}{\rule{0.9cm}{5pt}}~Holgura total (Yape) \quad
+\textcolor{bcp!25}{\rule{0.9cm}{5pt}}~Actividad continua \quad
+\textcolor{cobre}{$\blacklozenge$}~Hito
+}
+\end{landscape}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Presupuesto resumido}
+
+\subsection{CAPEX — Inversión año 0}
+
+La inversión total del año~0 es \usd{1\,633\,000}, cifra idéntica a la del Project Charter (E01~§5) y al flujo de caja del caso de negocio. El CAPEX base de \usd{1\,420\,000} se distribuye entre los cinco componentes de la EDT. La contingencia del 10\,\% (\usd{142\,000}) y la gestión adicional del 5\,\% (\usd{71\,000}) se suman y no se componen. El caso base supone que la contingencia se gasta en su totalidad, principalmente en el componente de Vista de posición y datos, cuya ejecución depende de las interfaces de los sistemas de producto del BCP.
+
+\begin{tabularx}{\textwidth}{@{}X r r@{}}
+\toprule
+\textbf{Componente EDT} & \textbf{USD} & \textbf{\% base} \\
+\midrule
+2. Vista de posición y datos (paquetes 2.1–2.5)         & 480\,000 & 33{,}8\,\% \\
+3. Herramientas, consentimiento y gateway (3.1–3.4)     & 360\,000 & 25{,}4\,\% \\
+4a. Canales: app y web (4.1–4.2)                        & 280\,000 & 19{,}7\,\% \\
+4b. Descubrimiento con Yape (4.3)                       &  80\,000 &  5{,}6\,\% \\
+5. Seguridad, conducta y datos (5.1–5.5)                & 140\,000 &  9{,}9\,\% \\
+1. Gestión del proyecto — base PM (1.1–1.3)             &  80\,000 &  5{,}6\,\% \\
+\midrule
+\textbf{CAPEX base}                                     & \textbf{1\,420\,000} & 100\,\% \\
+Contingencia (10\,\%)                                   & 142\,000 & \\
+Gestión PM adicional (5\,\%)                            &  71\,000 & \\
+\midrule
+\textbf{Total año 0}                                    & \textbf{1\,633\,000} & \\
+\bottomrule
+\end{tabularx}
+
+\subsection{OPEX — Operación años 1–5}
+
+\begin{tabularx}{\textwidth}{@{}X r r r r r@{}}
+\toprule
+\textbf{Concepto} & \textbf{Año 1} & \textbf{Año 2} & \textbf{Año 3} & \textbf{Año 4} & \textbf{Año 5} \\
+ & \multicolumn{5}{c}{\footnotesize(millones USD)} \\
+\midrule
+Fee de plataforma IA (fijo)              & 0{,}080 & 0{,}080 & 0{,}080 & 0{,}080 & 0{,}080 \\
+Equipo operativo (+3\,\%/año)            & 0{,}260 & 0{,}268 & 0{,}276 & 0{,}284 & 0{,}293 \\
+Soporte (+3\,\%/año)                     & 0{,}040 & 0{,}041 & 0{,}042 & 0{,}044 & 0{,}045 \\
+Inferencia (\usd{0,025}/sesión)          & 0{,}010 & 0{,}028 & 0{,}063 & 0{,}063 & 0{,}063 \\
+\midrule
+\textbf{Total OPEX}                      & \textbf{0{,}390} & \textbf{0{,}417} & \textbf{0{,}461} & \textbf{0{,}471} & \textbf{0{,}481} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.3em}
+{\small\textit{Inferencia:} Permisos vigentes: año~1 = 80\,000, año~2 = 220\,000, años~3–5 = 500\,000. Sesiones/año por usuario: 5. Costo: \usd{0,025}/sesión. Resultado: año~1 = \usd{10\,000}; año~2 = \usd{27\,500}; años~3–5 = \usd{62\,500}.}
+
+\subsection{Supuestos del presupuesto}
+
+\begin{enumerate}
+\item El tipo de cambio es USD/PEN~3,75. Es supuesto del equipo; no es el tipo de cambio oficial del BCP.
+\item La tasa de descuento del 12\,\% es supuesto del equipo. No es el WACC ni el costo de capital del BCP.
+\item Los sistemas de producto (cuentas, tarjetas, créditos) exponen interfaces de solo lectura. El costo de habilitar esas interfaces en el lado del BCP no está en este presupuesto; si no existieran, el costo de Vista de posición y datos aumentaría y la contingencia absorbería parte del impacto.
+\item El proveedor del modelo factura un fee fijo de \usd{80\,000}/año, independientemente del volumen, más \usd{0,025} por sesión de inferencia. Si el fee fuera variable por usuario, el OPEX escalaría con los permisos vigentes.
+\item El equipo operativo del año~1 (\usd{260\,000}) cubre un gestor de producto, dos ingenieros de plataforma, un especialista en seguridad y un analista de conducta de mercado, todos a tiempo completo. El crecimiento del 3\,\% anual compensa la inflación salarial esperada en Lima.
+\item La contingencia del 10\,\% (\usd{142\,000}) se gasta íntegramente en el caso base, principalmente para cubrir riesgos de integración con los sistemas de producto. Si los adaptadores 2.2–2.4 se desarrollan sin incidentes, podría liberarse parcialmente, mejorando el VAN.
+\item Los 500\,000 permisos vigentes desde el año~3 equivalen aproximadamente al 5\,\% de la base digital del BCP (calculado sobre el 76\,\% de 13,7~millones de clientes; Credicorp, 2025). No es una meta comercial del banco.
+\item El descubrimiento con Yape (\usd{80\,000}) financia investigación técnica. El presupuesto no presupone que Yape acepte la integración ni incluye ningún beneficio atribuido a usuarios de Yape.
+\item Los costos de Seguridad, conducta y datos (\usd{140\,000}) incluyen la auditoría externa requerida por SBS~504-2021 (art.~22) y la participación del oficial de conducta de mercado (SBS~3274-2017, art.~9.5) en el diseño y la validación del agente.
+\item La habilitación (arnés de pruebas, capacitación interna y documentación de traspaso) está incluida en el paquete de Gestión del proyecto (\usd{80\,000} base). Si el arnés requiere herramientas de evaluación externas, el costo adicional se cubriría con la contingencia.
+\item No se presupuesta ninguna integración con Credicorp Capital, con la SMV ni con la sociedad agente del grupo, pues la asesoría de inversión está fuera del alcance (REQ-20).
+\item Si una fase posterior incluyera desembolso o pago ejecutado por el agente, la autenticación reforzada exigida por SBS~504-2021 (art.~19) requeriría un presupuesto adicional no estimado en este entregable.
+\end{enumerate}
+
+\subsection{Indicadores financieros (referencia al E01)}
+
+Los indicadores financieros se calculan en el E01 y se reproducen aquí para garantizar la trazabilidad entre la línea base de costo y el caso de negocio. Cualquier cambio en el CAPEX, en el OPEX o en la rampa de adopción afecta directamente el VAN y el payback.
+
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+\textbf{Indicador} & \textbf{Valor} & \textbf{Lectura} \\
+\midrule
+VAN al 12\,\%           & \usd{2\,292\,923}  & Cubre la tasa del equipo. Sensible a la adopción (ver E01~§4). \\
+TIR                     & 43{,}0\,\%        & Holgura amplia sobre el 12\,\%. Cae a 5,1\,\% con 250\,000 permisos. \\
+Payback simple          & 2{,}59 años       & El acumulado cruza cero durante el año~3 de operación. \\
+TCO (inversión + OPEX 5 años) & \usd{3\,850\,741} & Incluye la contingencia íntegra. \\
+ROI sobre la inversión  & 268{,}1\,\%      & (Beneficios $-$ TCO) / inversión. El CAPEX no se resta dos veces. \\
+\bottomrule
+\end{tabularx}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Trazabilidad EDT \texorpdfstring{$\to$}{->} plazo \texorpdfstring{$\to$}{->} costo}
+
+La siguiente tabla verifica el criterio de revisión del E02: cada componente de la EDT tiene un hito de cierre con semana precisa y un costo asignado. La suma cuadra exactamente con el CAPEX total del E01.
+
+\begin{tabularx}{\textwidth}{@{}X l r r r@{}}
+\toprule
+\textbf{Componente EDT} & \textbf{Hito de cierre} & \textbf{Sem.} & \textbf{Mes} & \textbf{USD} \\
+\midrule
+1. Gestión del proyecto       & H6 — Cierre y traspaso        & 44 & 11 &  80\,000 \\
+2. Vista de posición y datos  & H2 — Vista en prueba          & 16 &  4 & 480\,000 \\
+3. Herramientas y gateway     & H5 — Producción               & 40 & 10 & 360\,000 \\
+4a. Canales (app + web)       & H5 — Producción               & 40 & 10 & 280\,000 \\
+4b. Descubrimiento Yape       & H6 — Decisión registrada      & 44 & 11 &  80\,000 \\
+5. Seguridad, conducta, datos & H5 — Producción               & 40 & 10 & 140\,000 \\
+\midrule
+\textbf{CAPEX base}           &                               &    &    & \textbf{1\,420\,000} \\
+Contingencia (10\,\%)         & Distribuida según riesgo      & —  & —  &  142\,000 \\
+Gestión PM adicional (5\,\%)  & Distribuida en todo el proyecto & — & — &   71\,000 \\
+\midrule
+\textbf{Total}                &                               &    &    & \textbf{1\,633\,000} \\
+\bottomrule
+\end{tabularx}
+
+Cada componente tiene un responsable, un hito de cierre fechado y un costo asignado en el CAPEX del E01. La ruta crítica determina el Hito~H5 (semana~40) como el más tardío antes del cierre; cualquier retraso en las actividades marcadas en la ruta crítica retrasaría la fecha de producción y deterioraría el VAN al desplazar los beneficios del año~1 de operación. La contingencia (\usd{142\,000}) cubre principalmente el componente~2 (Vista de posición y datos), que depende de las interfaces de los sistemas de producto del BCP y es la fuente de mayor incertidumbre técnica del proyecto. El descubrimiento con Yape (holgura total) no impacta ningún hito si se cancela o si concluye que la integración no es viable en este ciclo.
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{thebibliography}{99}
+
+\bibitem[PMI(2021)]{pmbok}
+Project Management Institute. (2021). \textit{Guía de los fundamentos para la dirección de proyectos} (Guía del PMBOK) (7.ª ed.).
+
+\bibitem[DSDM(2014)]{dsdm}
+DSDM Consortium. (2014). \textit{Agile project framework handbook} (2.ª ed.). DSDM Consortium.
+
+\bibitem[Credicorp(2025a)]{credicorp-ar}
+Credicorp Ltd. (2025a). \textit{Annual and sustainability report 2024}. \url{https://credicorp.gcs-web.com/system/files-encrypted/nasdaq_kms/assets/2025/02/28/17-34-02/Annual%20and%20Sustainability%20Report%202024%20-%20ENG_.pdf}
+
+\bibitem[Credicorp(2025b)]{credicorp-6k}
+Credicorp Ltd. (2025b). \textit{Results for the quarter ended December 31, 2024} (Form 6-K, Exhibit 99.1). \url{https://www.sec.gov/Archives/edgar/data/1001290/000114036125004694/ef20043470_ex99-1.htm}
+
+\bibitem[SBS(2021)]{sbs504}
+Superintendencia de Banca, Seguros y AFP. (2021). \textit{Resolución SBS N.°~504-2021, Reglamento para la gestión de la seguridad de la información y la ciberseguridad}. \url{https://busquedas.elperuano.pe/dispositivo/NL/1929393-1}
+
+\bibitem[SBS(2017/2026)]{sbs3274}
+Superintendencia de Banca, Seguros y AFP. (2017/2026). \textit{Resolución SBS N.°~3274-2017, Reglamento de gestión de conducta de mercado} (texto consolidado al 2 de julio de 2026). \url{https://intranet2.sbs.gob.pe/dv_int_cn/1731/v12.0/Adjuntos/3274-2017%20R%2002.07.26.pdf}
+
+\bibitem[SBS(2026)]{sbs1741}
+Superintendencia de Banca, Seguros y AFP. (2026). \textit{Resolución SBS N.°~01741-2026}. \url{https://intranet2.sbs.gob.pe/dv_int_cn/2589/v1.0/Adjuntos/R%2001741-2026.pdf}
+
+\bibitem[Congreso(2011)]{ley29733}
+Congreso de la República del Perú. (2011). \textit{Ley N.°~29733, Ley de Protección de Datos Personales}. \url{https://www.leyes.congreso.gob.pe/Documentos/Leyes/29733.pdf}
+
+\bibitem[DS(2023)]{smv}
+Ministerio de Economía y Finanzas. (2023). \textit{Decreto Supremo N.°~020-2023-EF, Texto Único Ordenado de la Ley del Mercado de Valores}. \url{https://www.smv.gob.pe/ServicioConsultaNormas/uploads/TUO_LMV_DECRETO_SUPREMO_N_020_2023_EF.pdf}
+
+\bibitem[FINOS(s.\,f.)]{finos}
+FINOS. (s.\,f.). \textit{MI-24: Human-in-the-loop action approval gate}. \url{https://air-governance-framework.finos.org/mitigations/mi-24_human-in-the-loop-action-approval-gate.html}
+
+\bibitem[MAS(2026)]{safr}
+Monetary Authority of Singapore. (2026). \textit{Safeguards for agentic finance at runtime} (SAFR v1.1). \url{https://www.mas.gov.sg/-/media/mas-media-library/development/fintech/ai-safr/safr-v1-1.pdf}
+
+\bibitem[Sapag(2011)]{sapag}
+Sapag Chain, N. (2011). \textit{Proyectos de inversión: Formulación y evaluación} (2.ª ed.). Pearson Educación.
+
+\end{thebibliography}
+
+\end{document}

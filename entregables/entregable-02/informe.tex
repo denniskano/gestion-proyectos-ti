@@ -143,6 +143,29 @@ RQ14 & Won't & No se rediseña la app, la web ni Yape, y no se escribe en los si
 
 RQ11 es el único requisito de la línea base que no está en la ruta crítica: el descubrimiento puede terminar hasta la semana~40 sin mover el cierre. RQ12 habilita a las personas; la actividad del piloto tiene cuatro semanas de holgura, y la de la salida a producción está en la ruta porque comparte la ventana con las herramientas de Ofertas.
 
+La siguiente tabla consolida la trazabilidad en sentido contrario: desde cada paquete, los requisitos que lo justifican.
+
+\begin{table}[H]
+\centering
+\caption{Matriz de trazabilidad: paquete EDT y requisitos que cubre.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X l@{}}
+\toprule
+\textbf{EDT} & \textbf{Requisitos cubiertos} & \textbf{MoSCoW} \\
+\midrule
+1.1 & RQ01 — Vista vigente; cifra no confirmada si no lo está. & Must \\
+1.2 & RQ02 Consentimiento, RQ03 Simulación, RQ04 No ejecutar. & Must \\
+1.3 & RQ07 Piloto Consulta, RQ08 Planificación, RQ09 Ofertas. & Must \\
+1.4 & RQ11 Descubrimiento Yape. & Should \\
+1.5 & RQ05 Vía humana, RQ06 Trazas, RQ10 Doce casos. & Must \\
+1.6 & RQ12 Personal habilitado. & Should \\
+1.0 & Dirección del proyecto. No apunta a un requisito funcional. & — \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Los Won't (RQ13 y RQ14) no tienen paquete porque están fuera del charter; aparecen en la lista solo para que no vuelvan al alcance.
+
 \section{EDT y diccionario}
 
 La EDT tiene un solo entregable mayor y siete paquetes. Los seis primeros de producto son los del presupuesto del charter, con el mismo identificador y el mismo monto. El paquete 1.0 es la dirección del proyecto y se paga con la reserva de gestión. La contingencia no es un paquete: no produce un entregable.
@@ -201,7 +224,7 @@ La unidad es la semana. El mes tiene cuatro semanas. El mes~1 termina en la sema
 
 La relación es fin-inicio, salvo donde se indica un paralelo. El inicio temprano de una actividad es el máximo fin de sus predecesoras, más una semana. La holgura total es inicio tardío menos inicio temprano. La ruta crítica es la de holgura cero. El fin tardío del proyecto se ancla al fin temprano, de modo que alargar una actividad crítica mueve el cierre.
 
-Esas duraciones son juicio del equipo, por analogía con una integración bancaria de solo lectura. No hay un histórico del BCP para este agente ni una estimación de tres puntos. Por eso la duración, igual que el costo, está en amarillo.
+Las duraciones son juicio del equipo, por analogía con una integración bancaria de solo lectura. No hay un histórico del BCP para este agente ni una estimación de tres puntos. A03 (vista de posición, 8 semanas) se calibra con el tiempo típico de levantamiento y certificación de APIs de producto en banca retail; A09 (piloto, 2 semanas) refleja el tiempo mínimo para 5\,000 sesiones controladas con monitoreo diario; A06 (descubrimiento Yape, 8 semanas) refleja la experiencia del equipo en investigaciones de integración sin acuerdo previo. Por eso la duración, igual que el costo, está en amarillo.
 
 \begin{table}[H]
 \centering
@@ -478,17 +501,17 @@ Al cerrar el mes~4 se ha reconocido \usd{875\,808}, el 58,7\,\% del gasto de las
 \centering
 \caption{Recurso principal de cada paquete. El costo ya está en el paquete.}
 \small
-\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\begin{tabularx}{\textwidth}{@{}l X c X@{}}
 \toprule
-\textbf{EDT} & \textbf{Quién hace el trabajo} & \textbf{Qué no hace} \\
+\textbf{EDT} & \textbf{Quién hace el trabajo} & \textbf{FTE est.} & \textbf{Qué no hace} \\
 \midrule
-1.0 & Un director de proyecto durante los 11 meses. & No promete la conversión del 2\,\% ni compromete a Yape. \\
-1.1 & Equipo del CIO y dueños de cuentas, tarjetas y créditos. & No modifica esos sistemas. \\
-1.2 & Equipo de herramientas y consentimiento. & No abre el catálogo ni ejecuta un pago. \\
-1.3 & Equipo de canales, sobre la sesión existente. & No rediseña la aplicación ni la web. \\
-1.4 & Un analista de descubrimiento. & No escribe en Yape. \\
-1.5 & Conducta de mercado, CISO y Riesgo de crédito. & No firman un despliegue si un caso falla. \\
-1.6 & Equipo de canales, en formación. & No convierte al personal en colocadores del agente. \\
+1.0 & Un director de proyecto durante los 11 meses. & 1 & No promete la conversión del 2\,\% ni compromete a Yape. \\
+1.1 & Equipo del CIO y dueños de cuentas, tarjetas y créditos. & 4 & No modifica esos sistemas. \\
+1.2 & Equipo de herramientas y consentimiento. & 3 & No abre el catálogo ni ejecuta un pago. \\
+1.3 & Equipo de canales, sobre la sesión existente. & 3 & No rediseña la aplicación ni la web. \\
+1.4 & Un analista de descubrimiento. & 1 & No escribe en Yape. \\
+1.5 & Conducta de mercado, CISO y Riesgo de crédito. & 3 & No firman un despliegue si un caso falla. \\
+1.6 & Equipo de canales, en formación. & 2 & No convierte al personal en colocadores del agente. \\
 \bottomrule
 \end{tabularx}
 \end{table}
