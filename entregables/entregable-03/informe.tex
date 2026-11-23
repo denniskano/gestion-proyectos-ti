@@ -1,0 +1,242 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage[top=2.6cm,bottom=2.5cm,left=2.4cm,right=2.4cm,headheight=26pt]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{caption}
+\usepackage{colortbl}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bcp}{HTML}{0B2545}
+\definecolor{cobre}{HTML}{C65D12}
+\definecolor{tinta}{HTML}{1C2833}
+\definecolor{suave}{HTML}{F3EFE7}
+
+\setstretch{1.15}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.28}
+\captionsetup{font=small,labelfont={bf,color=bcp},skip=6pt,justification=centering}
+\captionsetup[table]{position=top}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{bcp}{\small Agente financiero personal}}
+\fancyhead[R]{\textcolor{bcp}{\small Piloto Consulta}}
+\fancyfoot[L]{\textcolor{tinta}{\footnotesize Banca Personas · BCP}}
+\fancyfoot[R]{\textcolor{tinta}{\footnotesize\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{cobre}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}{\Large\bfseries\color{bcp}}{\thesection.}{0.6em}{}[\vspace{-0.2em}{\color{cobre}\titlerule[0.8pt]}]
+\titleformat{\subsection}{\large\bfseries\color{bcp}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{0.7em}{0.7em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{0.5em}
+\setlength{\cftbeforetabskip}{0.35em}
+\setlist[itemize]{leftmargin=1.3em,itemsep=0.25em,topsep=0.3em}
+\setlist[enumerate]{leftmargin=1.5em,itemsep=0.25em,topsep=0.3em}
+
+\hypersetup{pdftitle={Piloto Consulta — Agente financiero personal},pdfauthor={Franco Stywar Antony Vargas Chino; Albert Christian Hidalgo Sánchez; Sergio Perez Ruiz; Carlos E. Ruiz Perez; Dennis Jack Paitan Cano}}
+\newcommand{\usd}[1]{USD~#1}
+
+\begin{document}
+\pagenumbering{roman}
+
+\begin{center}
+\vspace*{0.15cm}
+\includegraphics[width=2.7cm]{../images/logo-unu.png}\\[0.55em]
+{\color{bcp}\large\bfseries UNIVERSIDAD NACIONAL DE UCAYALI}\\[0.28em]
+{\color{bcp} Escuela de Posgrado}\\[0.12em]
+Maestría en Ingeniería de Sistemas\\[0.08em]
+con mención en Gestión de Tecnologías de la Información\\[0.75em]
+Docente: Dr.\ Horacio Soriano Alava, PMP\\[1.05cm]
+{\color{cobre}\small Piloto del proyecto}\\[0.55em]
+{\color{bcp}\fontsize{20}{25}\selectfont\bfseries Trabajo ágil del\\[0.12em] piloto Consulta}\\[0.5em]
+{\Large Agente financiero personal}\\[0.15em]
+{\large Banca Móvil y banca por internet}\\[0.35em]
+{\color{tinta} Banco de Crédito del Perú · Banca Personas}\\[0.75cm]
+{\color{bcp}\rule{0.42\textwidth}{0.7pt}}\\[0.7em]
+\begin{tabular}{@{}>{\bfseries\color{bcp}}l l@{}}
+Versión & 1.0 \\
+Fecha & Noviembre 2026 \\
+Estado & Diseño del piloto \\
+\end{tabular}\\[0.95cm]
+{\color{bcp}\bfseries Elaborado por}\\[0.35em]
+Franco Stywar Antony Vargas Chino\\
+Albert Christian Hidalgo Sánchez\\
+Sergio Perez Ruiz\\
+Carlos E. Ruiz Perez\\
+Dennis Jack Paitan Cano
+\vfill
+{\small Uso interno}
+\end{center}
+\thispagestyle{empty}
+\clearpage
+
+{\setstretch{1.08}
+\tableofcontents
+\vspace{1.1em}
+\listoftables}
+\clearpage
+\pagenumbering{arabic}
+
+\section{Objeto}
+
+El acta autoriza un agente que informa y simula. La línea base de alcance, cronograma y costo fija ese trabajo en 44 semanas y en \usd{1\,633\,000}. El camino crítico, los hitos y los paquetes no se reabren aquí.
+
+Esa línea base es predictiva: la vista de posición depende del CIO, la salida depende de tres firmas y el cierre está en la semana~44. Esas dependencias no se administran con un sprint. El tramo en el que el cliente percibe valor, y en el que el texto de la respuesta todavía se puede corregir, es el piloto del perfil Consulta.
+
+Consulta es el primer perfil. Autoriza dos habilidades: ver la posición y explicar un movimiento. No simula un crédito, no proyecta un plan, no muestra ofertas y no prepara un encargo. El hito H3, en la semana~24, pide ese perfil en marcha con 5\,000 clientes y los casos de comportamiento que le corresponden ya pasados. La vista de cuentas, tarjetas y créditos tiene que estar en prueba antes, en H2, semana~16. Entre ambas fechas hay ocho semanas. Este diseño usa esas ocho semanas, que ya están en el adaptador de Consulta y en la pasarela. No agrega costo ni mueve H3.
+
+El trabajo ágil se limita a ese piloto. Planificación sigue en H4 y Ofertas con confirmación en H5, en el orden de la línea base.
+
+\section{Roles}
+
+Hay tres responsabilidades. Las personas salen de los equipos que la línea base ya nombró. No se crea un puesto ni se reparte de nuevo el costo.
+
+\begin{table}[H]
+\centering
+\caption{Responsabilidades en el piloto Consulta.}
+\small
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+\textbf{Rol} & \textbf{Quién} & \textbf{Qué le corresponde} \\
+\midrule
+Responsable de producto & Banca Personas Digital. & Ordena el backlog del piloto y acepta o devuelve cada historia. Mantiene el límite del acta: el agente informa y simula. \\
+Scrum Master & Dirección del proyecto. & Cuida el sprint de cuatro semanas y despeja impedimentos del equipo. Si una historia pone en riesgo la semana~24, lo escala al director del proyecto. \\
+Desarrolladores & Canales, y herramientas y consentimiento. & Construyen y prueban las historias del sprint, sobre la sesión que el cliente ya tiene. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Tres actores miran el sprint y no entran al equipo. El CIO entrega la vista en H2: es una dependencia de entrada, no una historia. Conducta de mercado y el CISO revisan el texto y la traza. Si un caso falla, no firman. Ninguno de los tres escribe historias ni adelanta el trabajo de H4.
+
+El responsable de producto no cambia el presupuesto autorizado ni mete en este piloto la simulación, las ofertas o Yape. El Scrum Master no reestima la ruta crítica ni administra la contingencia de \usd{142\,000}. Los desarrolladores no modifican los sistemas de producto y no abren habilidades fuera de Consulta.
+
+\section{Backlog del producto}
+
+El backlog es solo del piloto. El orden es el orden en que el cliente necesita el servicio, no una segunda prioridad sobre la línea base. Las diez historias son necesarias para H3. Las cinco primeras caben en el sprint que se planifica abajo. Las otras cinco quedan para las semanas~21 a~24, todavía antes del hito.
+
+La historia está escrita desde el cliente. El criterio dice cómo se comprueba, con un cliente de prueba, sin efecto sobre saldos, pagos ni desembolsos.
+
+\begin{table}[H]
+\centering
+\caption{Backlog del piloto Consulta, en orden de necesidad del cliente.}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l c >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Id} & \textbf{Orden} & \textbf{Historia} & \textbf{Queda aceptada cuando} \\
+\midrule
+HU-01 & 1 & Como cliente, quiero abrir el agente en Banca Móvil con la sesión que ya tengo, para no crear otra clave ni otra aplicación. & No aparece un registro nuevo. La sesión de la aplicación alcanza. \\
+HU-02 & 2 & Como cliente, quiero conceder Consulta de forma expresa y separada, para que el agente solo lea lo que yo autoricé. & No hay casilla premarcada. El permiso nombra ver la posición y explicar movimientos, y no ofrece simular ni ver ofertas. \\
+HU-03 & 3 & Como cliente, quiero ver mi posición cuando la vista está vigente, para conocer saldo y obligaciones con una cifra de esa vista. & La cifra en pantalla es la que devolvió la vista, y se muestra que el dato está vigente. \\
+HU-04 & 4 & Como cliente, quiero que me digan que el dato no está confirmado cuando la vista venció, para no decidir con un saldo viejo. & La respuesta no trae cifra y dice que el dato no está confirmado. \\
+HU-05 & 5 & Como cliente, quiero una respuesta sin números cuando la herramienta de saldo no devuelve dato, para que no aparezca una cifra inventada. & La herramienta vuelve vacía y la respuesta no contiene ninguna cifra. \\
+HU-06 & 6 & Como cliente, quiero que me expliquen un movimiento según el extracto, para entender el cargo sin que el agente lo reclasifique ni abra una disputa. & La explicación coincide con el extracto. No se abre disputa ni se usa el dato de otro cliente. \\
+HU-07 & 7 & Como cliente, quiero revocar Consulta y que la consulta siguiente ya no lea mi posición, para retirar el permiso cuando yo quiera. & Después de revocar, la llamada siguiente no usa la vista. \\
+HU-08 & 8 & Como cliente, quiero pasar con una persona en cualquier momento, para no quedar solo con el agente. & Desde la conversación se llega a una persona, en la aplicación. \\
+HU-09 & 9 & Como cliente, quiero que quede registro de lo que se consultó y que esa conversación no entrene el modelo. & La traza muestra la herramienta y el resultado. La conversación no entra al entrenamiento. \\
+HU-10 & 10 & Como cliente, quiero abrir el mismo agente en la banca por internet, con la sesión que ya tengo. & El mismo permiso de Consulta sirve en la banca por internet, sin otra aplicación. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+HU-03, HU-04 y HU-05 usan la vista que H2 deja en prueba. Si esa vista no está, esas tres historias no entran al sprint: el equipo no fabrica un saldo. HU-01 y HU-02 sí pueden adelantarse, porque no leen la posición.
+
+\subsection{Fuera de este backlog}
+
+Estas piezas siguen en la línea base y no se vuelven historias del piloto.
+
+\begin{table}[H]
+\centering
+\caption{Trabajo que el piloto no toma.}
+\small
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+\toprule
+\textbf{Queda fuera} & \textbf{Dónde sigue} \\
+\midrule
+Simular un crédito y proyectar un plan. & Perfil Planificación, hito H4. \\
+Mostrar ofertas y preparar un encargo. & Perfil Ofertas con confirmación, hito H5. \\
+Descubrimiento con Yape. & Sigue sin construcción. La decisión se registra al cierre. \\
+Asesorar, recomendar valores, reemplazar a Clara o a Salvador, escribir en los sistemas de producto. & El acta ya lo excluyó. \\
+Casos de simulación, de oferta, de encargo y de pedido de envío por Yape. & Se prueban con el perfil que los habilita, antes de H5. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Sprint}
+
+Se planifica un solo sprint, el primero del piloto. Dura cuatro semanas, las mismas que un mes de la línea base: de la semana~17 a la semana~20. Empieza cuando H2 ya cerró. Termina dos semanas antes de que acabe el adaptador de Consulta y cuatro semanas antes de H3.
+
+\subsection{Objetivo}
+
+Al cierre de la semana~20, un cliente de prueba con Consulta concedido abre el agente en Banca Móvil con su sesión y ocurre una de estas tres cosas, según el estado de la vista: ve el saldo vigente que la vista devolvió, o recibe el aviso de que el dato no está confirmado, o no recibe ninguna cifra porque la herramienta volvió vacía.
+
+El objetivo se cumple solo si las tres respuestas se demuestran y ninguna mueve un saldo, un pago o un desembolso. Los 5\,000 clientes del piloto no son la meta de este sprint. Esa meta es H3.
+
+\subsection{Historias elegidas}
+
+Entran HU-01, HU-02, HU-03, HU-04 y HU-05. Son las cinco que hacen verificable el objetivo. No hay velocidad previa de este equipo, así que no se usan puntos. La selección es el mínimo que el objetivo exige, y el tiempo ya está dentro de las seis semanas del adaptador de Consulta.
+
+HU-06 a HU-10 permanecen en el backlog, en ese orden, para las semanas~21 a~24.
+
+\subsection{Tareas}
+
+\begin{table}[H]
+\centering
+\caption{Tareas del sprint, semanas 17 a 20.}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l l X l@{}}
+\toprule
+\textbf{Id} & \textbf{Historia} & \textbf{Tarea} & \textbf{Equipo} \\
+\midrule
+T01 & HU-01 & Abrir el agente con la sesión de Banca Móvil, sin otra autenticación. & Canales \\
+T02 & HU-01 & Comprobar con el cliente de prueba que no aparece un registro nuevo. & Canales \\
+T03 & HU-02 & Mostrar el consentimiento de Consulta, sin casilla premarcada y sin habilidades de otro perfil. & Herramientas \\
+T04 & HU-02 & Guardar la concesión y el texto que vio el cliente. & Herramientas \\
+T05 & HU-03 & Consultar la vista y mostrar saldo, obligaciones y vigencia. & Canales \\
+T06 & HU-03 & Comprobar que la cifra en pantalla es la que devolvió la vista. & Herramientas \\
+T07 & HU-04 & Forzar una vista vencida y exigir la respuesta sin cifra, con el aviso de dato no confirmado. & Herramientas \\
+T08 & HU-05 & Forzar una herramienta vacía y exigir que la respuesta no contenga cifra. & Herramientas \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Una historia queda hecha cuando se cumplen sus criterios, la traza coincide con lo que el cliente vio y no hay efecto sobre saldos, pagos ni desembolsos. Conducta de mercado puede devolver HU-02 o HU-04 si el texto no dice lo que el criterio pide.
+
+\subsection{Comprobación}
+
+En la revisión, al final de la semana~20, el responsable de producto recorre con el cliente de prueba los cinco pasos. Si uno falla, esa historia vuelve al backlog y el objetivo del sprint no se da por cumplido. El recorrido es este.
+
+\begin{enumerate}
+  \item Abre Banca Móvil con su sesión. No se le pide otra clave.
+  \item Concede Consulta. La pantalla no trae casilla premarcada y no ofrece simular ni ver ofertas.
+  \item Con la vista vigente, el saldo que ve es el que devolvió la vista.
+  \item Con la vista vencida, la respuesta no contiene cifra y dice que el dato no está confirmado.
+  \item Con la herramienta vacía, la respuesta no contiene cifra.
+\end{enumerate}
+
+El sprint no adelanta H3 y no atrasa la ruta crítica: termina en la semana~20, y el adaptador de Consulta sigue hasta la semana~22. La segunda tanda, de la semana~21 a la~24, toma HU-06 a HU-10 y deja el piloto listo para los 5\,000 clientes. Esa tanda no se planifica en este documento.
+
+\end{document}
