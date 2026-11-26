@@ -19,6 +19,7 @@
 \usepackage{tocloft}
 \usepackage{caption}
 \usepackage{colortbl}
+\usepackage{tikz}
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 
@@ -50,8 +51,10 @@
 \titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
 \setlength{\cftbeforesecskip}{0.5em}
 \setlength{\cftbeforetabskip}{0.35em}
+\setlength{\cftbeforefigskip}{0.35em}
 \setlist[itemize]{leftmargin=1.3em,itemsep=0.25em,topsep=0.3em}
 \setlist[enumerate]{leftmargin=1.5em,itemsep=0.25em,topsep=0.3em}
 
@@ -95,7 +98,9 @@ Dennis Jack Paitan Cano
 {\setstretch{1.08}
 \tableofcontents
 \vspace{1.1em}
-\listoftables}
+\listoftables
+\vspace{1.1em}
+\listoffigures}
 \clearpage
 \pagenumbering{arabic}
 
@@ -198,7 +203,41 @@ El objetivo se cumple solo si las tres respuestas se demuestran y ninguna mueve 
 
 Entran HU-01, HU-02, HU-03, HU-04 y HU-05. Son las cinco que hacen verificable el objetivo. No hay velocidad previa de este equipo, así que no se usan puntos. La selección es el mínimo que el objetivo exige, y el tiempo ya está dentro de las seis semanas del adaptador de Consulta.
 
-HU-06 a HU-10 permanecen en el backlog, en ese orden, para las semanas~21 a~24.
+HU-06 a HU-10 permanecen en el backlog, en ese orden, para las semanas~21 a~24. El tablero de la semana~17 las deja ahí. Las cinco del sprint entran en Por hacer. En curso y Hecho se llenan durante las cuatro semanas, cuando alguien toma la historia y cuando el criterio se cumple.
+
+\begin{figure}[H]
+\centering
+\caption{Tablero al abrir el sprint, semana 17.}
+\label{fig:tablero}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  sprint/.style={rectangle, rounded corners=1.2pt, draw=cobre, fill=suave, text width=3.35cm, minimum height=1.15cm, align=center, inner sep=2pt, font=\scriptsize, text=tinta},
+  espera/.style={rectangle, rounded corners=1.2pt, draw=bcp!70, fill=white, text width=3.35cm, minimum height=1.15cm, align=center, inner sep=2pt, font=\scriptsize, text=tinta}]
+  \draw[bcp!25, fill=bcp!4] (0,0.2) rectangle (3.9,7.55);
+  \draw[cobre!40, fill=cobre!7] (4.05,0.2) rectangle (7.95,7.55);
+  \draw[bcp!25, fill=bcp!4] (8.1,0.2) rectangle (12.0,7.55);
+  \draw[bcp!25, fill=bcp!4] (12.15,0.2) rectangle (16.05,7.55);
+  \fill[bcp] (0,7.55) rectangle (3.9,8.35);
+  \fill[cobre] (4.05,7.55) rectangle (7.95,8.35);
+  \fill[bcp] (8.1,7.55) rectangle (12.0,8.35);
+  \fill[bcp] (12.15,7.55) rectangle (16.05,8.35);
+  \node[text=white, align=center, font=\scriptsize] at (1.95,7.95) {\textbf{Backlog}\\semanas 21 a 24};
+  \node[text=white, align=center, font=\scriptsize] at (6.0,7.95) {\textbf{Por hacer}\\semanas 17 a 20};
+  \node[text=white, align=center, font=\scriptsize] at (10.05,7.95) {\textbf{En curso}};
+  \node[text=white, align=center, font=\scriptsize] at (14.1,7.95) {\textbf{Hecho}};
+  \node[espera] at (1.95,6.62) {{\bfseries HU-06}\\Explicar un movimiento};
+  \node[espera] at (1.95,5.34) {{\bfseries HU-07}\\Revocar Consulta};
+  \node[espera] at (1.95,4.06) {{\bfseries HU-08}\\Pasar a una persona};
+  \node[espera] at (1.95,2.78) {{\bfseries HU-09}\\Registro de la consulta};
+  \node[espera] at (1.95,1.50) {{\bfseries HU-10}\\Banca por internet};
+  \node[sprint] at (6.0,6.62) {{\bfseries\color{cobre} HU-01}\\Sesión en la app\\T01 · T02};
+  \node[sprint] at (6.0,5.34) {{\bfseries\color{cobre} HU-02}\\Conceder Consulta\\T03 · T04};
+  \node[sprint] at (6.0,4.06) {{\bfseries\color{cobre} HU-03}\\Posición vigente\\T05 · T06};
+  \node[sprint] at (6.0,2.78) {{\bfseries\color{cobre} HU-04}\\Dato no confirmado\\T07};
+  \node[sprint] at (6.0,1.50) {{\bfseries\color{cobre} HU-05}\\Herramienta vacía\\T08};
+  \node[align=center, font=\scriptsize, text=tinta, text width=3.3cm] at (10.05,3.85) {Vacío al abrir el sprint. La historia pasa aquí cuando el equipo la toma.};
+  \node[align=center, font=\scriptsize, text=tinta, text width=3.3cm] at (14.1,3.85) {Vacío al abrir el sprint. La historia pasa aquí cuando el criterio se cumple.};
+\end{tikzpicture}
+\end{figure}
 
 \subsection{Tareas}
 
