@@ -116,52 +116,54 @@ El trabajo ágil se limita a ese piloto. Planificación sigue en H4 y Ofertas co
 
 \section{Roles}
 
-Hay tres responsabilidades. Las personas salen de los equipos que la línea base ya nombró. No se crea un puesto ni se reparte de nuevo el costo.
+Hay tres responsabilidades y cinco integrantes. Cada uno actúa por un equipo que la línea base ya nombró. No se crea un puesto en el banco ni se reparte de nuevo el costo.
 
 \begin{table}[H]
 \centering
 \caption{Responsabilidades en el piloto Consulta.}
 \small
-\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.55cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
 \toprule
-\textbf{Rol} & \textbf{Quién} & \textbf{Qué le corresponde} \\
+\textbf{Rol} & \textbf{Integrante} & \textbf{Qué le corresponde} \\
 \midrule
-Responsable de producto & Banca Personas Digital. & Ordena el backlog del piloto y acepta o devuelve cada historia. Mantiene el límite del acta: el agente informa y simula. \\
-Scrum Master & Dirección del proyecto. & Cuida el sprint de cuatro semanas y despeja impedimentos del equipo. Si una historia pone en riesgo la semana~24, lo escala al director del proyecto. \\
-Desarrolladores & Canales, y herramientas y consentimiento. & Construyen y prueban las historias del sprint, sobre la sesión que el cliente ya tiene. \\
+Responsable de producto & Franco Stywar Antony Vargas Chino, por Banca Personas Digital. & Ordena el backlog, acepta el sprint y mantiene el límite del acta. No toma una historia mientras sigue en el backlog. \\
+Scrum Master & Albert Christian Hidalgo Sánchez, por la dirección del proyecto. & Cuida el sprint y despeja impedimentos. Si una historia pone en riesgo la semana~24, lo escala al director. No toma una historia mientras sigue en el backlog. \\
+Desarrollador & Sergio Perez Ruiz, por canales. & HU-01 y HU-03: abre el agente con la sesión de Banca Móvil y muestra la vista. \\
+Desarrollador & Carlos E. Ruiz Perez, por herramientas y consentimiento. & HU-02 y HU-04: arma el consentimiento de Consulta y comprueba la vista vencida. \\
+Desarrollador & Dennis Jack Paitan Cano, por herramientas y consentimiento. & HU-05: comprueba la herramienta vacía. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 Tres actores miran el sprint y no entran al equipo. El CIO entrega la vista en H2: es una dependencia de entrada, no una historia. Conducta de mercado y el CISO revisan el texto y la traza. Si un caso falla, no firman. Ninguno de los tres escribe historias ni adelanta el trabajo de H4.
 
-El responsable de producto no cambia el presupuesto autorizado ni mete en este piloto la simulación, las ofertas o Yape. El Scrum Master no reestima la ruta crítica ni administra la contingencia de \usd{142\,000}. Los desarrolladores no modifican los sistemas de producto y no abren habilidades fuera de Consulta.
+Franco no cambia el presupuesto autorizado ni mete en este piloto la simulación, las ofertas o Yape. Albert no reestima la ruta crítica ni administra la contingencia de \usd{142\,000}. Sergio, Carlos y Dennis no modifican los sistemas de producto y no abren habilidades fuera de Consulta.
 
 \section{Backlog del producto}
 
 El backlog es solo del piloto. El orden es el orden en que el cliente necesita el servicio, no una segunda prioridad sobre la línea base. Las diez historias son necesarias para H3. Las cinco primeras caben en el sprint que se planifica abajo. Las otras cinco quedan para las semanas~21 a~24, todavía antes del hito.
 
-La historia está escrita desde el cliente. El criterio dice cómo se comprueba, con un cliente de prueba, sin efecto sobre saldos, pagos ni desembolsos.
+La historia está escrita desde el cliente. El criterio dice cómo se comprueba, con un cliente de prueba, sin efecto sobre saldos, pagos ni desembolsos. El integrante aparece cuando la historia entra al sprint. HU-06 a HU-10 siguen en el backlog y todavía no tienen a quién.
 
 \begin{table}[H]
 \centering
 \caption{Backlog del piloto Consulta, en orden de necesidad del cliente.}
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\begin{tabularx}{\textwidth}{@{}l c >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{2.15cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
 \toprule
-\textbf{Id} & \textbf{Orden} & \textbf{Historia} & \textbf{Queda aceptada cuando} \\
+\textbf{Id} & \textbf{Integrante} & \textbf{Historia} & \textbf{Queda aceptada cuando} \\
 \midrule
-HU-01 & 1 & Como cliente, quiero abrir el agente en Banca Móvil con la sesión que ya tengo, para no crear otra clave ni otra aplicación. & No aparece un registro nuevo. La sesión de la aplicación alcanza. \\
-HU-02 & 2 & Como cliente, quiero conceder Consulta de forma expresa y separada, para que el agente solo lea lo que yo autoricé. & No hay casilla premarcada. El permiso nombra ver la posición y explicar movimientos, y no ofrece simular ni ver ofertas. \\
-HU-03 & 3 & Como cliente, quiero ver mi posición cuando la vista está vigente, para conocer saldo y obligaciones con una cifra de esa vista. & La cifra en pantalla es la que devolvió la vista, y se muestra que el dato está vigente. \\
-HU-04 & 4 & Como cliente, quiero que me digan que el dato no está confirmado cuando la vista venció, para no decidir con un saldo viejo. & La respuesta no trae cifra y dice que el dato no está confirmado. \\
-HU-05 & 5 & Como cliente, quiero una respuesta sin números cuando la herramienta de saldo no devuelve dato, para que no aparezca una cifra inventada. & La herramienta vuelve vacía y la respuesta no contiene ninguna cifra. \\
-HU-06 & 6 & Como cliente, quiero que me expliquen un movimiento según el extracto, para entender el cargo sin que el agente lo reclasifique ni abra una disputa. & La explicación coincide con el extracto. No se abre disputa ni se usa el dato de otro cliente. \\
-HU-07 & 7 & Como cliente, quiero revocar Consulta y que la consulta siguiente ya no lea mi posición, para retirar el permiso cuando yo quiera. & Después de revocar, la llamada siguiente no usa la vista. \\
-HU-08 & 8 & Como cliente, quiero pasar con una persona en cualquier momento, para no quedar solo con el agente. & Desde la conversación se llega a una persona, en la aplicación. \\
-HU-09 & 9 & Como cliente, quiero que quede registro de lo que se consultó y que esa conversación no entrene el modelo. & La traza muestra la herramienta y el resultado. La conversación no entra al entrenamiento. \\
-HU-10 & 10 & Como cliente, quiero abrir el mismo agente en la banca por internet, con la sesión que ya tengo. & El mismo permiso de Consulta sirve en la banca por internet, sin otra aplicación. \\
+HU-01 & Sergio Perez & Como cliente, quiero abrir el agente en Banca Móvil con la sesión que ya tengo, para no crear otra clave ni otra aplicación. & No aparece un registro nuevo. La sesión de la aplicación alcanza. \\
+HU-02 & Carlos E. Ruiz & Como cliente, quiero conceder Consulta de forma expresa y separada, para que el agente solo lea lo que yo autoricé. & No hay casilla premarcada. El permiso nombra ver la posición y explicar movimientos, y no ofrece simular ni ver ofertas. \\
+HU-03 & Sergio Perez & Como cliente, quiero ver mi posición cuando la vista está vigente, para conocer saldo y obligaciones con una cifra de esa vista. & La cifra en pantalla es la que devolvió la vista, y se muestra que el dato está vigente. \\
+HU-04 & Carlos E. Ruiz & Como cliente, quiero que me digan que el dato no está confirmado cuando la vista venció, para no decidir con un saldo viejo. & La respuesta no trae cifra y dice que el dato no está confirmado. \\
+HU-05 & Dennis Paitan & Como cliente, quiero una respuesta sin números cuando la herramienta de saldo no devuelve dato, para que no aparezca una cifra inventada. & La herramienta vuelve vacía y la respuesta no contiene ninguna cifra. \\
+HU-06 & Sin asignar & Como cliente, quiero que me expliquen un movimiento según el extracto, para entender el cargo sin que el agente lo reclasifique ni abra una disputa. & La explicación coincide con el extracto. No se abre disputa ni se usa el dato de otro cliente. \\
+HU-07 & Sin asignar & Como cliente, quiero revocar Consulta y que la consulta siguiente ya no lea mi posición, para retirar el permiso cuando yo quiera. & Después de revocar, la llamada siguiente no usa la vista. \\
+HU-08 & Sin asignar & Como cliente, quiero pasar con una persona en cualquier momento, para no quedar solo con el agente. & Desde la conversación se llega a una persona, en la aplicación. \\
+HU-09 & Sin asignar & Como cliente, quiero que quede registro de lo que se consultó y que esa conversación no entrene el modelo. & La traza muestra la herramienta y el resultado. La conversación no entra al entrenamiento. \\
+HU-10 & Sin asignar & Como cliente, quiero abrir el mismo agente en la banca por internet, con la sesión que ya tengo. & El mismo permiso de Consulta sirve en la banca por internet, sin otra aplicación. \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -229,11 +231,11 @@ HU-06 a HU-10 permanecen en el backlog, en ese orden, para las semanas~21 a~24. 
   \node[espera] at (1.95,4.06) {{\bfseries HU-08}\\Pasar a una persona};
   \node[espera] at (1.95,2.78) {{\bfseries HU-09}\\Registro de la consulta};
   \node[espera] at (1.95,1.50) {{\bfseries HU-10}\\Banca por internet};
-  \node[sprint] at (6.0,6.62) {{\bfseries\color{cobre} HU-01}\\Sesión en la app\\T01 · T02};
-  \node[sprint] at (6.0,5.34) {{\bfseries\color{cobre} HU-02}\\Conceder Consulta\\T03 · T04};
-  \node[sprint] at (6.0,4.06) {{\bfseries\color{cobre} HU-03}\\Posición vigente\\T05 · T06};
-  \node[sprint] at (6.0,2.78) {{\bfseries\color{cobre} HU-04}\\Dato no confirmado\\T07};
-  \node[sprint] at (6.0,1.50) {{\bfseries\color{cobre} HU-05}\\Herramienta vacía\\T08};
+  \node[sprint] at (6.0,6.62) {{\bfseries\color{cobre} HU-01}\\Sesión en la app\\Sergio};
+  \node[sprint] at (6.0,5.34) {{\bfseries\color{cobre} HU-02}\\Conceder Consulta\\Carlos};
+  \node[sprint] at (6.0,4.06) {{\bfseries\color{cobre} HU-03}\\Posición vigente\\Sergio};
+  \node[sprint] at (6.0,2.78) {{\bfseries\color{cobre} HU-04}\\Dato no confirmado\\Carlos};
+  \node[sprint] at (6.0,1.50) {{\bfseries\color{cobre} HU-05}\\Herramienta vacía\\Dennis};
   \node[align=center, font=\scriptsize, text=tinta, text width=3.3cm] at (10.05,3.85) {Vacío al abrir el sprint. La historia pasa aquí cuando el equipo la toma.};
   \node[align=center, font=\scriptsize, text=tinta, text width=3.3cm] at (14.1,3.85) {Vacío al abrir el sprint. La historia pasa aquí cuando el criterio se cumple.};
 \end{tikzpicture}
@@ -248,16 +250,16 @@ HU-06 a HU-10 permanecen en el backlog, en ese orden, para las semanas~21 a~24. 
 \setlength{\tabcolsep}{3.5pt}
 \begin{tabularx}{\textwidth}{@{}l l X l@{}}
 \toprule
-\textbf{Id} & \textbf{Historia} & \textbf{Tarea} & \textbf{Equipo} \\
+\textbf{Id} & \textbf{Historia} & \textbf{Tarea} & \textbf{Integrante} \\
 \midrule
-T01 & HU-01 & Abrir el agente con la sesión de Banca Móvil, sin otra autenticación. & Canales \\
-T02 & HU-01 & Comprobar con el cliente de prueba que no aparece un registro nuevo. & Canales \\
-T03 & HU-02 & Mostrar el consentimiento de Consulta, sin casilla premarcada y sin habilidades de otro perfil. & Herramientas \\
-T04 & HU-02 & Guardar la concesión y el texto que vio el cliente. & Herramientas \\
-T05 & HU-03 & Consultar la vista y mostrar saldo, obligaciones y vigencia. & Canales \\
-T06 & HU-03 & Comprobar que la cifra en pantalla es la que devolvió la vista. & Herramientas \\
-T07 & HU-04 & Forzar una vista vencida y exigir la respuesta sin cifra, con el aviso de dato no confirmado. & Herramientas \\
-T08 & HU-05 & Forzar una herramienta vacía y exigir que la respuesta no contenga cifra. & Herramientas \\
+T01 & HU-01 & Abrir el agente con la sesión de Banca Móvil, sin otra autenticación. & Sergio Perez \\
+T02 & HU-01 & Comprobar con el cliente de prueba que no aparece un registro nuevo. & Sergio Perez \\
+T03 & HU-02 & Mostrar el consentimiento de Consulta, sin casilla premarcada y sin habilidades de otro perfil. & Carlos E. Ruiz \\
+T04 & HU-02 & Guardar la concesión y el texto que vio el cliente. & Carlos E. Ruiz \\
+T05 & HU-03 & Consultar la vista y mostrar saldo, obligaciones y vigencia. & Sergio Perez \\
+T06 & HU-03 & Comprobar que la cifra en pantalla es la que devolvió la vista. & Sergio Perez \\
+T07 & HU-04 & Forzar una vista vencida y exigir la respuesta sin cifra, con el aviso de dato no confirmado. & Carlos E. Ruiz \\
+T08 & HU-05 & Forzar una herramienta vacía y exigir que la respuesta no contenga cifra. & Dennis Paitan \\
 \bottomrule
 \end{tabularx}
 \end{table}
